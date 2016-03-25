@@ -1,4 +1,4 @@
-Northern Command (1951,1406)
+Northern Command (1876,1381)
 W-1  (71,108)
 E-6  (2517,1286)
 S-5  (1166,1455)
