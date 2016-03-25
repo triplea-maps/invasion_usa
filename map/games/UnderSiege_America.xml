@@ -6878,14 +6878,14 @@ The United States of America, against the advise of the United Nations, has cont
 <li>The invaders are not allied and can attack and take territories from one another, after a declaration of war. However, they cannot move into the others' invasion zones.
 <li>A Single invade is the winner by controlling 13 cities on its own.</ul>
 <br />
-<b>Units (Attack/Defense/Movement/Count/PU Cost):</b><ul> 
-<li>Infantry&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3/3/1/24/3 
-<li>Militia&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5(3)/3/1/-/-&nbsp;&nbsp;&nbsp;(Militia attack at 3 when stacked with non-militia units) 
-<li>Mechanized&nbsp;&nbsp;&nbsp;&nbsp;3/3/2/9/4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(may transport one infantry/militia with transport option)
-<li>Armor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5/5/2/12/5&nbsp;&nbsp;&nbsp;&nbsp;(can blitz) 
-<li>Helicopter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5/5/4/9/8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(may transport one infantry/militia with transport option)
-<li>Bomber&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7/7/6/6/12
-<li>Strike&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7/0/99/-/-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(US only - gains one token per laser tower)</ul>
+<b>Units (Attack/Defense/Movement/PU Cost (Count)):</b><ul> 
+<li>Infantry&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3/3/1/3 (24)
+<li>Militia&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5(3)/3/1/- (-)&nbsp;&nbsp;&nbsp;(Militia attack at 3 when stacked with non-militia units) 
+<li>Mechanized&nbsp;&nbsp;&nbsp;&nbsp;3/3/2/4 (9)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(may transport one infantry/militia with transport option)
+<li>Armor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5/5/2/5 (12)&nbsp;&nbsp;&nbsp;&nbsp;(can blitz) 
+<li>Helicopter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5/5/4/8 (9)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(may transport one infantry/militia with transport option)
+<li>Bomber&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7/7/6/12 (6)
+<li>Strike&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7/0/99/- (-)nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(US only - gains one token per laser tower)</ul>
 <br />
 <br /><b>Cities and mountians territories:</b> Attacker suffers a -1 penalty for attacking into these territories.
 <br /><b>Combined Arms:</b> Units gain an attack benefit when attacking with different classed units:
