@@ -4192,7 +4192,7 @@
 			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentAmericanVCCount13"/>
 			<option name="resource" value="techTokens"/>
 			<option name="resourceCount" value="10"/>
-			<option name="when" value="before:americanRoll2Tech"/>
+			<option name="when" value="before:americanRoll1Tech"/>
 			<option name="uses" value="1"/>
 		</attatchment>
 
