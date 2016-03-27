@@ -418,10 +418,10 @@
 
 	<!-- Player list with Alliances added -->
 	<playerList>
-		<player name="Western" optional="true" canBeDisabled="false"/>
-		<player name="Southern" optional="true" canBeDisabled="false"/>
-		<player name="Eastern" optional="true" canBeDisabled="false"/>
-		<player name="Americans" optional="true" canBeDisabled="false"/>
+		<player name="Western" optional="false" canBeDisabled="false"/>
+		<player name="Southern" optional="false" canBeDisabled="false"/>
+		<player name="Eastern" optional="false" canBeDisabled="false"/>
+		<player name="Americans" optional="false" canBeDisabled="false"/>
 
 		<alliance player="Western" alliance="Asian Alliance"/>
 		<alliance player="Southern" alliance="People's Liberation Front"/>
@@ -919,7 +919,7 @@
 			<option name="transportCapacity" value="2"/>
 			<option name="isAirTransport" value="true"/>
 			<option name="maxBuiltPerPlayer" value="9"/>
-			<!-- Unlike other units, Air units can only be placed cities and landing zones-->
+			<!-- Unlike other units, Air units can only be placed cities and landing zones -->
 			<option name="unitPlacementOnlyAllowedIn" value="W-1:W-2:W-3:W-4:W-5:W-6:S-1:S-2:S-3:S-4:S-5:S-6:E-1:E-2:E-3:E-4:E-5:E-6:Washington D.C.:New York:Boston:Philadelphia:Buffalo:Pittsburgh:San Diego:Memphis:Indianapolis:New Orleans:Los Angeles:Denver:Milwaukee:Detroit:Houston:Chicago:San Francisco:Portland:Tampa:Kansas City:St. Louis:Salt Lake City:Seattle:San Antonio:Dallas:Phoenix:Minneapolis:Atlanta:Miami:Cleveland"/>
 		</attatchment>
 
@@ -1012,7 +1012,7 @@
 		<attatchment name="territoryAttatchment" attatchTo="W-1" javaClass="games.strategy.triplea.attatchments.TerritoryAttachment" type="territory">
 			<option name="production" value="0"/>
 			<option name="unitProduction" value="5"/>
-			<!-- <option name="capital" value="Western"/> -->
+			<option name="capital" value="Western"/>
 		</attatchment>
 
 		<attatchment name="territoryAttatchment" attatchTo="W-2" javaClass="games.strategy.triplea.attatchments.TerritoryAttachment" type="territory">
@@ -1064,7 +1064,7 @@
 		<attatchment name="territoryAttatchment" attatchTo="S-5" javaClass="games.strategy.triplea.attatchments.TerritoryAttachment" type="territory">
 			<option name="production" value="0"/>
 			<option name="unitProduction" value="5"/>
-			<!-- <option name="capital" value="Southern"/> -->
+			<option name="capital" value="Southern"/>
 		</attatchment>
 
 		<attatchment name="territoryAttatchment" attatchTo="S-6" javaClass="games.strategy.triplea.attatchments.TerritoryAttachment" type="territory">
@@ -1101,7 +1101,7 @@
 		<attatchment name="territoryAttatchment" attatchTo="E-6" javaClass="games.strategy.triplea.attatchments.TerritoryAttachment" type="territory">
 			<option name="production" value="0"/>
 			<option name="unitProduction" value="5"/>
-			<!-- <option name="capital" value="Eastern"/> -->
+			<option name="capital" value="Eastern"/>
 		</attatchment>
 
 		<!-- Victory Cities -->
@@ -1109,35 +1109,35 @@
 			<option name="production" value="4"/>
 			<option name="unitProduction" value="0"/>
 			<option name="territoryEffect" value="city"/>
-			<option name="victoryCity" value="1"/>                        
+			<option name="capital" value="Americans"/>                        
 		</attatchment>
 
 		<attatchment name="territoryAttatchment" attatchTo="New York" javaClass="games.strategy.triplea.attatchments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
 			<option name="unitProduction" value="0"/>
 			<option name="territoryEffect" value="city"/>
-			<option name="victoryCity" value="1"/>                        
+			<option name="capital" value="Americans"/>                        
 		</attatchment>
 
 		<attatchment name="territoryAttatchment" attatchTo="Boston" javaClass="games.strategy.triplea.attatchments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
 			<option name="unitProduction" value="0"/>
 			<option name="territoryEffect" value="city"/>
-			<option name="victoryCity" value="1"/>                        
+			<option name="capital" value="Americans"/>                        
 		</attatchment>
 
 		<attatchment name="territoryAttatchment" attatchTo="Philadelphia" javaClass="games.strategy.triplea.attatchments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
 			<option name="unitProduction" value="0"/>
 			<option name="territoryEffect" value="city"/>
-			<option name="victoryCity" value="1"/>                        
+			<option name="capital" value="Americans"/>                        
 		</attatchment>
 
 		<attatchment name="territoryAttatchment" attatchTo="Buffalo" javaClass="games.strategy.triplea.attatchments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
 			<option name="unitProduction" value="0"/>
 			<option name="territoryEffect" value="city"/>
-			<option name="victoryCity" value="1"/>                        
+			<option name="capital" value="Americans"/>                        
 		</attatchment>
 
 		<attatchment name="territoryAttatchment" attatchTo="Pittsburgh" javaClass="games.strategy.triplea.attatchments.TerritoryAttachment" type="territory">
@@ -1145,42 +1145,42 @@
 			<option name="unitProduction" value="0"/>
 			<option name="territoryEffect" value="city"/>
 			<option name="territoryEffect" value="mountain"/>
-			<option name="victoryCity" value="1"/>                        
+			<option name="capital" value="Americans"/>                        
 		</attatchment>
 
 		<attatchment name="territoryAttatchment" attatchTo="San Diego" javaClass="games.strategy.triplea.attatchments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
 			<option name="unitProduction" value="0"/>
 			<option name="territoryEffect" value="city"/>
-			<option name="victoryCity" value="1"/>                        
+			<option name="capital" value="Americans"/>                        
 		</attatchment>
 
 		<attatchment name="territoryAttatchment" attatchTo="Memphis" javaClass="games.strategy.triplea.attatchments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
 			<option name="unitProduction" value="0"/>
 			<option name="territoryEffect" value="city"/>
-			<option name="victoryCity" value="1"/>                        
+			<option name="capital" value="Americans"/>                        
 		</attatchment>
 
 		<attatchment name="territoryAttatchment" attatchTo="Indianapolis" javaClass="games.strategy.triplea.attatchments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
 			<option name="unitProduction" value="0"/>
 			<option name="territoryEffect" value="city"/>
-			<option name="victoryCity" value="1"/>                        
+			<option name="capital" value="Americans"/>                        
 		</attatchment>
 
 		<attatchment name="territoryAttatchment" attatchTo="New Orleans" javaClass="games.strategy.triplea.attatchments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
 			<option name="unitProduction" value="0"/>
 			<option name="territoryEffect" value="city"/>
-			<option name="victoryCity" value="1"/>                        
+			<option name="capital" value="Americans"/>                        
 		</attatchment>
 
 		<attatchment name="territoryAttatchment" attatchTo="Los Angeles" javaClass="games.strategy.triplea.attatchments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
 			<option name="unitProduction" value="0"/>
 			<option name="territoryEffect" value="city"/>
-			<option name="victoryCity" value="1"/>                        
+			<option name="capital" value="Americans"/>                        
 		</attatchment>
 
 		<attatchment name="territoryAttatchment" attatchTo="Denver" javaClass="games.strategy.triplea.attatchments.TerritoryAttachment" type="territory">
@@ -1188,77 +1188,77 @@
 			<option name="unitProduction" value="0"/>
 			<option name="territoryEffect" value="city"/>
 			<option name="territoryEffect" value="mountain"/>
-			<option name="victoryCity" value="1"/>                        
+			<option name="capital" value="Americans"/>                        
 		</attatchment>
 
 		<attatchment name="territoryAttatchment" attatchTo="Milwaukee" javaClass="games.strategy.triplea.attatchments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
 			<option name="unitProduction" value="0"/>
 			<option name="territoryEffect" value="city"/>
-			<option name="victoryCity" value="1"/> 
+			<option name="capital" value="Americans"/> 
 		</attatchment>
 
 		<attatchment name="territoryAttatchment" attatchTo="Detroit" javaClass="games.strategy.triplea.attatchments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
 			<option name="unitProduction" value="0"/>
 			<option name="territoryEffect" value="city"/>
-			<option name="victoryCity" value="1"/>                        
+			<option name="capital" value="Americans"/>                        
 		</attatchment>
 
 		<attatchment name="territoryAttatchment" attatchTo="Houston" javaClass="games.strategy.triplea.attatchments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
 			<option name="unitProduction" value="0"/>
 			<option name="territoryEffect" value="city"/>
-			<option name="victoryCity" value="1"/>                        
+			<option name="capital" value="Americans"/>                        
 		</attatchment>
 
 		<attatchment name="territoryAttatchment" attatchTo="Chicago" javaClass="games.strategy.triplea.attatchments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
 			<option name="unitProduction" value="0"/>
 			<option name="territoryEffect" value="city"/>
-			<option name="victoryCity" value="1"/>                        
+			<option name="capital" value="Americans"/>                        
 		</attatchment>
 
 		<attatchment name="territoryAttatchment" attatchTo="San Francisco" javaClass="games.strategy.triplea.attatchments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
 			<option name="unitProduction" value="0"/>
 			<option name="territoryEffect" value="city"/>
-			<option name="victoryCity" value="1"/>                        
+			<option name="capital" value="Americans"/>                        
 		</attatchment>
 
 		<attatchment name="territoryAttatchment" attatchTo="Portland" javaClass="games.strategy.triplea.attatchments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
 			<option name="unitProduction" value="0"/>
 			<option name="territoryEffect" value="city"/>
-			<option name="victoryCity" value="1"/>                        
+			<option name="capital" value="Americans"/>                        
 		</attatchment>
 
 		<attatchment name="territoryAttatchment" attatchTo="Tampa" javaClass="games.strategy.triplea.attatchments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
 			<option name="unitProduction" value="0"/>
 			<option name="territoryEffect" value="city"/>
-			<option name="victoryCity" value="1"/>                        
+			<option name="capital" value="Americans"/>                        
 		</attatchment>
 
 		<attatchment name="territoryAttatchment" attatchTo="Kansas City" javaClass="games.strategy.triplea.attatchments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
 			<option name="unitProduction" value="0"/>
 			<option name="territoryEffect" value="city"/>
-			<option name="victoryCity" value="1"/>                        
+			<option name="capital" value="Americans"/>                        
 		</attatchment>
 
 		<attatchment name="territoryAttatchment" attatchTo="St. Louis" javaClass="games.strategy.triplea.attatchments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
 			<option name="unitProduction" value="0"/>
 			<option name="territoryEffect" value="city"/>
-			<option name="victoryCity" value="1"/>                        
+			<option name="capital" value="Americans"/>                        
 		</attatchment>
 
 		<attatchment name="territoryAttatchment" attatchTo="Salt Lake City" javaClass="games.strategy.triplea.attatchments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
 			<option name="unitProduction" value="0"/>
 			<option name="territoryEffect" value="city"/>
-			<option name="victoryCity" value="1"/>                        
+			<option name="capital" value="Americans"/>                        
 		</attatchment>
 
 		<attatchment name="territoryAttatchment" attatchTo="Seattle" javaClass="games.strategy.triplea.attatchments.TerritoryAttachment" type="territory">
@@ -1266,35 +1266,35 @@
 			<option name="unitProduction" value="5"/>
 			<option name="territoryEffect" value="city"/>
 			<option name="territoryEffect" value="mountain"/>
-			<option name="victoryCity" value="1"/>                        
+			<option name="capital" value="Americans"/>                        
 		</attatchment>
 
 		<attatchment name="territoryAttatchment" attatchTo="San Antonio" javaClass="games.strategy.triplea.attatchments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
 			<option name="unitProduction" value="5"/>
 			<option name="territoryEffect" value="city"/>
-			<option name="victoryCity" value="1"/>                        
+			<option name="capital" value="Americans"/>                        
 		</attatchment>
 
 		<attatchment name="territoryAttatchment" attatchTo="Dallas" javaClass="games.strategy.triplea.attatchments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
 			<option name="unitProduction" value="0"/>
 			<option name="territoryEffect" value="city"/>
-			<option name="victoryCity" value="1"/>                        
+			<option name="capital" value="Americans"/>                        
 		</attatchment>
 
 		<attatchment name="territoryAttatchment" attatchTo="Phoenix" javaClass="games.strategy.triplea.attatchments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
 			<option name="unitProduction" value="0"/>
 			<option name="territoryEffect" value="city"/>
-			<option name="victoryCity" value="1"/>                        
+			<option name="capital" value="Americans"/>                        
 		</attatchment>
 
 		<attatchment name="territoryAttatchment" attatchTo="Minneapolis" javaClass="games.strategy.triplea.attatchments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
 			<option name="unitProduction" value="0"/>
 			<option name="territoryEffect" value="city"/>
-			<option name="victoryCity" value="1"/>                        
+			<option name="capital" value="Americans"/>                        
 		</attatchment>
 
 		<attatchment name="territoryAttatchment" attatchTo="Atlanta" javaClass="games.strategy.triplea.attatchments.TerritoryAttachment" type="territory">
@@ -1302,21 +1302,21 @@
 			<option name="unitProduction" value="5"/>
 			<option name="territoryEffect" value="city"/>
 			<option name="territoryEffect" value="mountain"/>
-			<option name="victoryCity" value="1"/>                        
+			<option name="capital" value="Americans"/>                        
 		</attatchment>
 
 		<attatchment name="territoryAttatchment" attatchTo="Miami" javaClass="games.strategy.triplea.attatchments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
 			<option name="unitProduction" value="0"/>
 			<option name="territoryEffect" value="city"/>
-			<option name="victoryCity" value="1"/>                        
+			<option name="capital" value="Americans"/>                        
 		</attatchment>
 
 		<attatchment name="territoryAttatchment" attatchTo="Cleveland" javaClass="games.strategy.triplea.attatchments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
 			<option name="unitProduction" value="0"/>
 			<option name="territoryEffect" value="city"/>
-			<option name="victoryCity" value="1"/>                        
+			<option name="capital" value="Americans"/>                        
 		</attatchment>
 
 		<!-- West territories -->
@@ -6644,32 +6644,32 @@
 		<attatchment name="playerAttatchment" attatchTo="Eastern" javaClass="games.strategy.triplea.attatchments.PlayerAttachment" type="player">
 			<option name="movementLimit" value="owned:bomber:helicopter:armor:mechanized:infantry" count="5"/>
 			<option name="placementLimit" value="owned:bomber:helicopter:armor:mechanized:infantry" count="5"/>
-			<option name="retainCapitalNumber" value="0"/>
-			<option name="retainCapitalProduceNumber" value="0"/>
+			<option name="retainCapitalNumber" value="1"/>
+			<option name="retainCapitalProduceNumber" value="1"/>
 		</attatchment>
 
 		<!-- Southern Player -->
 		<attatchment name="playerAttatchment" attatchTo="Southern" javaClass="games.strategy.triplea.attatchments.PlayerAttachment" type="player">
 			<option name="movementLimit" value="owned:bomber:helicopter:armor:mechanized:infantry" count="5"/>
 			<option name="placementLimit" value="owned:bomber:helicopter:armor:mechanized:infantry" count="5"/>
-			<option name="retainCapitalNumber" value="0"/>
-			<option name="retainCapitalProduceNumber" value="0"/>
+			<option name="retainCapitalNumber" value="1"/>
+			<option name="retainCapitalProduceNumber" value="1"/>
 		</attatchment>
 
 		<!-- Western Player -->
 		<attatchment name="playerAttatchment" attatchTo="Western" javaClass="games.strategy.triplea.attatchments.PlayerAttachment" type="player">
 			<option name="movementLimit" value="owned:bomber:helicopter:armor:mechanized:infantry" count="5"/>
 			<option name="placementLimit" value="owned:bomber:helicopter:armor:mechanized:infantry" count="5"/>
-			<option name="retainCapitalNumber" value="0"/>
-			<option name="retainCapitalProduceNumber" value="0"/>
+			<option name="retainCapitalNumber" value="1"/>
+			<option name="retainCapitalProduceNumber" value="1"/>
 		</attatchment>
 
 		<!-- American Player -->
 		<attatchment name="playerAttatchment" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.PlayerAttachment" type="player">
 			<option name="movementLimit" value="owned:bomber:helicopter:armor:mechanized:infantry:militia" count="5"/>
 			<option name="placementLimit" value="owned:bomber:helicopter:armor:mechanized:infantry:militia" count="5"/>
-			<option name="retainCapitalNumber" value="0"/>
-			<option name="retainCapitalProduceNumber" value="0"/>
+			<option name="retainCapitalNumber" value="1"/>
+			<option name="retainCapitalProduceNumber" value="1"/>
 		</attatchment>
 
 		<!-- Political Action Attachments -->
@@ -6917,6 +6917,11 @@
 			<boolean/>
 		</property>
 
+		<!-- Kamikaze Airplanes will allow all air units on the map to use all their movement to get to a battle -->
+		<property name="Kamikaze Airplanes" value="false" editable="false">
+			<boolean/>
+		</property>
+
 		<!-- Display Options -->
 		<property name="Selectable Zero Movement Units" value="false" editable="false">
 			<boolean/>
@@ -7011,11 +7016,21 @@
 			<boolean/>
 		</property>
 
-		<property name="Units May Give Bonus Movement" value="ture" editable="false">
+		<property name="Units May Give Bonus Movement" value="false" editable="false">
 			<boolean/>
 		</property>
 				
 		<property name="Surviving Air Move To Land" value="true" editable="false">
+			<boolean/>
+		</property>
+
+		<!-- Any territory that contains enemy units will not produce any income or resources -->
+		<property name="Contested Territories Produce No Income" value="true" editable="false">
+			<boolean/>
+		</property>
+
+		<!-- Any territory abandoned may be taken over by the remaining units on the same turn it was abandoned on. Also includes if a territory is attacked and both all the attackers and all defenders die, then any other player with combat units will take over the territory. -->
+		<property name="Abandoned Territories May Be Taken Over Immediately" value="true" editable="false">
 			<boolean/>
 		</property>
 
