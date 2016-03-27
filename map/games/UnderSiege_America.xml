@@ -1929,6 +1929,21 @@
 			<option name="gameProperty" value="No Reinforcement"/>
 		</attatchment>
 
+		<!-- Give Reinforcements to Americans -->
+		<attatchment name="conditionAttachmentGiveReinforcementsToAmerican" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.RulesAttachment" type="player">
+			<option name="gameProperty" value="Give Set Reinforcements to the Americans"/>
+		</attatchment>
+
+		<attatchment name="conditionAttachmentGiveReinforcementsToAmericanTurns4" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.RulesAttachment" type="player">
+			<option name="gameProperty" value="Give Set Reinforcements to the Americans"/>
+			<option name="turns" value="4:8:12:16:20:24:28"/>
+		</attatchment>
+
+		<attatchment name="conditionAttachmentNoGiveReinforcementsToAmerican" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.RulesAttachment" type="player">
+			<option name="gameProperty" value="Give Set Reinforcements to the Americans"/>
+			<option name="invert" value="true"/>
+		</attatchment>
+
 		<!-- Add To American Purchase -->
 		<attatchment name="conditionAttachmentAddToAmericanPurchase" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.RulesAttachment" type="player">
 			<option name="gameProperty" value="Add American Reinforcements to Purchase"/>
@@ -4187,9 +4202,25 @@
 			<option name="when" value="after:americanBattle"/>
 		</attatchment>
 		
+		<!-- Reinforcements Given no Tech Roll -->
+		<attatchment name="triggerAttachmentGiveReinforcementsToAmericanNoPUs" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentGiveReinforcementsToAmerican"/>
+			<option name="resource" value="PUs"/>
+			<option name="resourceCount" value="-999"/>
+			<option name="when" value="before:americanRoll1Tech"/>
+		</attatchment>
+
+		<!-- American's TechTokens for First Tech Roll -->
+		<attatchment name="triggerAttachmentGiveReinforcementsToAmericanNoTechTokens" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentGiveReinforcementsToAmerican"/>
+			<option name="resource" value="techTokens"/>
+			<option name="resourceCount" value="-999"/>
+			<option name="when" value="before:americanRoll1Tech"/>
+		</attatchment>
+
 		<!-- American's TechTokens for First Tech Roll -->
 		<attatchment name="triggerAttachmentAmericanTechTokensForTechFirstRoll" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentAmericanVCCount13"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentAmericanVCCount13:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="techTokens"/>
 			<option name="resourceCount" value="10"/>
 			<option name="when" value="before:americanRoll1Tech"/>
@@ -4198,7 +4229,7 @@
 
 		<!-- American's TechTokens for Second Tech Roll -->
 		<attatchment name="triggerAttachmentAmericanTechTokensForTechSecondRoll" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentAmericanVCCount13"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentAmericanVCCount13:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="techTokens"/>
 			<option name="resourceCount" value="10"/>
 			<option name="when" value="before:americanRoll2Tech"/>
@@ -4905,7 +4936,7 @@
 		<!-- American Reinforcement Trigger Assignments -->
 		<!-- Reinforcement PUs -->
 		<attatchment name="triggerAttachmentAssignReinforcementsPUs" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentRetainAmericanResources"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentRetainAmericanResources:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="PUs"/>
 			<option name="resourceCount" value="4"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -4913,99 +4944,172 @@
 		
 		<!-- Cleanup Triggers for American Reinforcements -->
 		<attatchment name="triggerAttachmentRemovePUsFromPurchase" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentGiveReinforcementsToAmerican"/>
+			<option name="conditionType" value="OR"/>
 			<option name="resource" value="PUs"/>
 			<option name="resourceCount" value="-999"/>
 			<option name="when" value="after:americanPurchase"/>
 		</attatchment>
 
 		<attatchment name="triggerAttachmentRemoveAUsFromPurchase" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoRetainAmericanResources"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoRetainAmericanResources:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="AUs"/>
 			<option name="resourceCount" value="-999"/>
 			<option name="when" value="after:americanPurchase"/>
 		</attatchment>
 
 		<attatchment name="triggerAttachmentRemoveBUsFromPurchase" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoRetainAmericanResources"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoRetainAmericanResources:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="BUs"/>
 			<option name="resourceCount" value="-999"/>
 			<option name="when" value="after:americanPurchase"/>
 		</attatchment>
 
 		<attatchment name="triggerAttachmentRemoveHUsFromPurchase" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoRetainAmericanResources"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoRetainAmericanResources:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="HUs"/>
 			<option name="resourceCount" value="-999"/>
 			<option name="when" value="after:americanPurchase"/>
 		</attatchment>
 
 		<attatchment name="triggerAttachmentRemoveIUsFromPurchase" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoRetainAmericanResources"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoRetainAmericanResources:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="IUs"/>
 			<option name="resourceCount" value="-999"/>
 			<option name="when" value="after:americanPurchase"/>
 		</attatchment>
 
 		<attatchment name="triggerAttachmentRemoveMUsFromPurchase" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoRetainAmericanResources"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoRetainAmericanResources:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="MUs"/>
 			<option name="resourceCount" value="-999"/>
 			<option name="when" value="after:americanPurchase"/>
 		</attatchment>
 
+		<!-- Give Reinforcements to Americans -->
+		<attatchment name="triggerAttachmentGiveReinforcementsToAmericansGiven" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentGiveReinforcementsToAmerican:conditionAttachmentAddToAmericanPurchase"/>
+			<option name="purchase" value="militia" count="3"/>
+			<option name="purchase" value="infantry" count="2"/>
+			<option name="purchase" value="mechanized:armor:helicopter" count="1"/>
+			<option name="when" value="before:americanPurchase"/>
+		</attatchment>
+
+		<attatchment name="triggerAttachmentGiveReinforcementsToAmericansGiven2" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentGiveReinforcementsToAmericanTurns4:conditionAttachmentAddToAmericanPurchase"/>
+			<option name="purchase" value="armor:bomber" count="1"/>
+			<option name="when" value="before:americanPurchase"/>
+		</attatchment>
+
+		<attatchment name="triggerAttachmentGiveReinforcementsToAmericansPurchase1" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentGiveReinforcementsToAmerican:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="purchase" value="militia" count="3"/>
+			<option name="resource" value="IUs"/>
+			<option name="resourceCount" value="2"/>
+			<option name="when" value="before:americanPurchase"/>
+		</attatchment>
+
+		<attatchment name="triggerAttachmentGiveReinforcementsToAmericansPurchase2" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentGiveReinforcementsToAmerican:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="resource" value="HUs"/>
+			<option name="resourceCount" value="1"/>
+			<option name="when" value="before:americanPurchase"/>
+		</attatchment>
+
+		<attatchment name="triggerAttachmentGiveReinforcementsToAmericansPurchase3" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentGiveReinforcementsToAmerican:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="resource" value="AUs"/>
+			<option name="resourceCount" value="1"/>
+			<option name="when" value="before:americanPurchase"/>
+		</attatchment>
+
+		<attatchment name="triggerAttachmentGiveReinforcementsToAmericansPurchase4" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentGiveReinforcementsToAmerican:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="resource" value="MUs"/>
+			<option name="resourceCount" value="1"/>
+			<option name="when" value="before:americanPurchase"/>
+		</attatchment>
+
+		<attatchment name="triggerAttachmentGiveReinforcementsToAmericansPurchase5" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentGiveReinforcementsToAmerican:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="resource" value="PUs"/>
+			<option name="resourceCount" value="5"/>
+			<option name="when" value="before:americanPurchase"/>
+		</attatchment>
+
+		<attatchment name="triggerAttachmentGiveReinforcementsToAmericansPurchase6" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentGiveReinforcementsToAmericanTurns4:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="resource" value="BUs"/>
+			<option name="resourceCount" value="1"/>
+			<option name="when" value="before:americanPurchase"/>
+		</attatchment>
+
+		<attatchment name="triggerAttachmentGiveReinforcementsToAmericansPurchase7" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentGiveReinforcementsToAmericanTurns4:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="resource" value="AUs"/>
+			<option name="resourceCount" value="1"/>
+			<option name="when" value="before:americanPurchase"/>
+		</attatchment>
+
+		<attatchment name="triggerAttachmentGiveReinforcementsToAmericansPurchase8" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentGiveReinforcementsToAmericanTurns4:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="resource" value="PUs"/>
+			<option name="resourceCount" value="2"/>
+			<option name="when" value="before:americanPurchase"/>
+		</attatchment>
+
 		<!-- American Reinforcements1 Assignment Trigger -->
 		<attatchment name="triggerAttachmentAssignReinforcementsGroup1" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="availableTech" value="ReinforcementsGroup1:MinneapolisMoblizes:ClearWeather:WesternFreedomFighters:LegionsOfLiberty:MountedMilitia:SouthernRebelsDestroy"/>
 			<option name="uses" value="1"/>
 		</attatchment>
 
 		<!-- American ReinforcementsGroup2 Assignment Trigger -->
 		<attatchment name="triggerAttachmentAssignReinforcementsGroup2" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="availableTech" value="ReinforcementsGroup2:EaglesNest:Miners:MinneapolisAir:ChicagoMoblizes:MountainGuerillaUnits:DetroitMechs"/>
 			<option name="uses" value="1"/>
 		</attatchment>
 
 		<!-- American ReinforcementsGroup3 Assignment Trigger -->
 		<attatchment name="triggerAttachmentAssignReinforcementsGroup3" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="availableTech" value="ReinforcementsGroup3:BuffaloMechs:PlainsRiders:SouthernRebelsUnite:LegionsOfLibertyCity:MoblizedOil:LiveFreeOrDie"/>
 			<option name="uses" value="1"/>
 		</attatchment>
 
 		<!-- American ReinforcementsGroup4 Assignment Trigger  -->
 		<attatchment name="triggerAttachmentAssignReinforcementsGroup4" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="availableTech" value="ReinforcementsGroup4:TexasRangers:RockyMountainNRA:WellFedSoldiers:WesternRevolts:WheatfieldThrashers:AngryPlainsRebels"/>
 			<option name="uses" value="1"/>
 		</attatchment>
 
 		<!-- American ReinforcementsGroup5 Assignment Trigger -->
 		<attatchment name="triggerAttachmentAssignReinforcementsGroup5" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="availableTech" value="ReinforcementsGroup5:NationalGuard:SteelDefense:BostonMountains:MilitiaMinutemen:StLouisVeterans:RemeberTheAlamo"/>
 			<option name="uses" value="1"/>
 		</attatchment>
 
 		<!-- American ReinforcementsGroup6 Assignment Trigger -->
 		<attatchment name="triggerAttachmentAssignReinforcementsGroup6" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="availableTech" value="ReinforcementsGroup6:MajorOffensive:WestenResistance:MileHighMilitia:RockyMountainRefugees:RockyMountainSurvivors:TheScorpions"/>
 			<option name="uses" value="1"/>
 		</attatchment>
 
 		<!-- Angry Plains Rebles Assignment Triggers -->
 		<attatchment name="triggerAttachmentAngryPlainsRebelsFreeFormGiven" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentAngryPlainsRebels:conditionAttachmentAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentAngryPlainsRebels:conditionAttachmentAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="militia:infantry" count="3"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
 		</attatchment>
 
 		<attatchment name="triggerAttachmentAngryPlainsRebelsFreeFormPurchase1" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentAngryPlainsRebels:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentAngryPlainsRebels:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="militia" count="3"/>
 			<option name="resource" value="IUs"/>
 			<option name="resourceCount" value="3"/>
@@ -5014,7 +5118,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentAngryPlainsRebelsFreeFormPurchase2" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentAngryPlainsRebels:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentAngryPlainsRebels:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="PUs"/>
 			<option name="resourceCount" value="3"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5022,7 +5126,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentAngryPlainsRebelsNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentAngryPlainsRebels:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentAngryPlainsRebels:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="AngryPlainsRebels_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -5030,14 +5134,14 @@
 
 		<!-- Legions Of Liberty City Assignment Triggers -->
 		<attatchment name="triggerAttachmentLegionsOfLibertyCityFreeFormGiven" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentLegionsOfLibertyCity:conditionAttachmentAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentLegionsOfLibertyCity:conditionAttachmentAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="infantry" count="2"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
 		</attatchment>
 
 		<attatchment name="triggerAttachmentLegionsOfLibertyCityFreeFormPurchase1" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentLegionsOfLibertyCity:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentLegionsOfLibertyCity:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="IUs"/>
 			<option name="resourceCount" value="2"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5045,7 +5149,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentLegionsOfLibertyCityFreeFormPurchase2" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentLegionsOfLibertyCity:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentLegionsOfLibertyCity:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="PUs"/>
 			<option name="resourceCount" value="2"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5053,7 +5157,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentLegionsOfLibertyCityNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentLegionsOfLibertyCity:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentLegionsOfLibertyCity:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="LegionsOfLibertyCity_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -5068,7 +5172,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentRemeberTheAlamoNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentRemeberTheAlamo:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentRemeberTheAlamo:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="RememberTheAlamo_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -5099,7 +5203,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentStLouisVeteransNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentStLouisVeterans:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentStLouisVeterans:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="StLouisVeterans_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -5114,7 +5218,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentLiveFreeOrDieNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentLiveFreeOrDie:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentLiveFreeOrDie:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="LiveFreeOrDie_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -5122,7 +5226,7 @@
 
 		<!-- Western Resistance Assignment Triggers -->
 		<attatchment name="triggerAttachmentWestenResistanceFreeFormGiven" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWestenResistance:conditionAttachmentAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWestenResistance:conditionAttachmentAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="militia" count="2"/>
 			<option name="purchase" value="helicopter" count="1"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5130,7 +5234,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentWestenResistanceFreeFormPurchase1" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWestenResistance:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWestenResistance:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="militia" count="2"/>
 			<option name="resource" value="HUs"/>
 			<option name="resourceCount" value="1"/>
@@ -5139,7 +5243,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentWestenResistanceFreeFormPurchase2" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWestenResistance:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWestenResistance:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="PUs"/>
 			<option name="resourceCount" value="1"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5147,7 +5251,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentWestenResistanceNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWestenResistance:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWestenResistance:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="WestenResistance_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -5163,7 +5267,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentClearWeatherNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentClearWeather:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentClearWeather:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="ClearWeather_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -5179,7 +5283,7 @@
 
 		<!-- Major Offensive Assignment Triggers -->
 		<attatchment name="triggerAttachmentMajorOffensiveFreeFormGiven" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMajorOffensive:conditionAttachmentAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMajorOffensive:conditionAttachmentAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="helicopter" count="2"/>
 			<option name="players" value="Americans"/>
 			<option name="playerAttachmentName" value="RulesAttachment" count="rulesAttatchment"/>
@@ -5189,7 +5293,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentMajorOffensiveFreeFormPurchase1" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMajorOffensive:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMajorOffensive:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="HUs"/>
 			<option name="resourceCount" value="2"/>
 			<option name="playerAttachmentName" value="RulesAttachment" count="rulesAttatchment"/>
@@ -5199,7 +5303,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentMajorOffensiveFreeFormPurchase2" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMajorOffensive:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMajorOffensive:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="PUs"/>
 			<option name="resourceCount" value="2"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5207,7 +5311,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentMajorOffensiveNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMajorOffensive:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMajorOffensive:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="MajorOffensive_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -5215,14 +5319,14 @@
 
 		<!-- Southern Rebels Unite Assignment Triggers -->
 		<attatchment name="triggerAttachmentSouthernRebelsUniteFreeFormGiven" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentSouthernRebelsUnite:conditionAttachmentAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentSouthernRebelsUnite:conditionAttachmentAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="militia:mechanized" count="2"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
 		</attatchment>
 
 		<attatchment name="triggerAttachmentSouthernRebelsUniteFreeFormPurchase1" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentSouthernRebelsUnite:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentSouthernRebelsUnite:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="militia" count="2"/>
 			<option name="resource" value="MUs"/>
 			<option name="resourceCount" value="2"/>
@@ -5231,7 +5335,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentSouthernRebelsUniteFreeFormPurchase2" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentSouthernRebelsUnite:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentSouthernRebelsUnite:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="PUs"/>
 			<option name="resourceCount" value="2"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5239,7 +5343,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentSouthernRebelsUniteNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentSouthernRebelsUnite:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentSouthernRebelsUnite:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="SouthernRebelsUnite_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -5278,7 +5382,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentMinneapolisAirNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMinneapolisAir:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMinneapolisAir:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="MinneapolisAir_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -5293,7 +5397,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentMinersNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMiners:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMiners:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="Miners_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -5301,7 +5405,7 @@
 
 		<!-- Rocky Mountain Survivors Assignment Triggers -->
 		<attatchment name="triggerAttachmentRockyMountainSurvivorsFreeFormGiven" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentRockyMountainSurvivors:conditionAttachmentAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentRockyMountainSurvivors:conditionAttachmentAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="militia" count="2"/>
 			<option name="purchase" value="armor" count="1"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5309,7 +5413,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentRockyMountainSurvivorsFreeFormPurchase1" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentRockyMountainSurvivors:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentRockyMountainSurvivors:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="militia" count="2"/>
 			<option name="resource" value="AUs"/>
 			<option name="resourceCount" value="1"/>
@@ -5318,7 +5422,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentRockyMountainSurvivorsFreeFormPurchase2" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentRockyMountainSurvivors:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentRockyMountainSurvivors:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="PUs"/>
 			<option name="resourceCount" value="1"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5326,7 +5430,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentRockyMountainSurvivorsNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentRockyMountainSurvivors:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentRockyMountainSurvivors:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="RockyMountainSurvivors_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -5334,7 +5438,7 @@
 		
 		<!-- The Scorpions Assignment Triggers -->
 		<attatchment name="triggerAttachmentTheScorpionsFreeFormGiven" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentTheScorpions:conditionAttachmentAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentTheScorpions:conditionAttachmentAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="militia" count="2"/>
 			<option name="purchase" value="armor" count="1"/>
 			<option name="purchase" value="mechanized" count="1"/>
@@ -5343,7 +5447,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentTheScorpionsFreeFormPurchase1" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentTheScorpions:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentTheScorpions:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="militia" count="2"/>
 			<option name="resource" value="AUs"/>
 			<option name="resourceCount" value="1"/>
@@ -5352,7 +5456,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentTheScorpionsFreeFormPurchase2" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentTheScorpions:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentTheScorpions:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="MUs"/>
 			<option name="resourceCount" value="1"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5360,7 +5464,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentTheScorpionsFreeFormPurchase3" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentTheScorpions:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentTheScorpions:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="PUs"/>
 			<option name="resourceCount" value="2"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5368,7 +5472,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentTheScorpionsNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentTheScorpions:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentTheScorpions:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="TheScorpions_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -5399,7 +5503,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentDetroitMechsNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentDetroitMechs:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentDetroitMechs:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="DetroitMechs_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -5407,7 +5511,7 @@
 
 		<!-- Mounted Miilitia Assignment Triggers -->
 		<attatchment name="triggerAttachmentMountedMilitiaFreeFormGiven" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMountedMilitia:conditionAttachmentAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMountedMilitia:conditionAttachmentAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="militia" count="2"/>
 			<option name="purchase" value="mechanized" count="1"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5415,7 +5519,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentMountedMilitiaFreeFormPurchase1" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMountedMilitia:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMountedMilitia:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="militia" count="2"/>
 			<option name="resource" value="MUs"/>
 			<option name="resourceCount" value="1"/>
@@ -5424,7 +5528,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentMountedMilitiaFreeFormPurchase2" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMountedMilitia:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMountedMilitia:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="PUs"/>
 			<option name="resourceCount" value="1"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5432,7 +5536,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentMountedMilitiaNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMountedMilitia:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMountedMilitia:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="MountedMilitia_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -5440,7 +5544,7 @@
 
 		<!-- Rocky Mountain NRA Assignment Triggers -->
 		<attatchment name="triggerAttachmentRockyMountainNRAFreeFormGiven" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentRockyMountainNRA:conditionAttachmentAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentRockyMountainNRA:conditionAttachmentAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="militia" count="3"/>
 			<option name="purchase" value="armor" count="1"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5448,7 +5552,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentRockyMountainNRAFreeFormPurchase1" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentRockyMountainNRA:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentRockyMountainNRA:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="militia" count="3"/>
 			<option name="resource" value="AUs"/>
 			<option name="resourceCount" value="1"/>
@@ -5457,7 +5561,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentRockyMountainNRAFreeFormPurchase2" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentRockyMountainNRA:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentRockyMountainNRA:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="PUs"/>
 			<option name="resourceCount" value="1"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5465,7 +5569,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentRockyMountainNRANotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentRockyMountainNRA:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentRockyMountainNRA:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="RockyMountainNRA_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -5473,7 +5577,7 @@
 
 		<!-- Eagles Nest Assignment Triggers -->
 		<attatchment name="triggerAttachmentEaglesNestFreeFormGiven" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentEaglesNest:conditionAttachmentAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentEaglesNest:conditionAttachmentAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="militia" count="3"/>
 			<option name="purchase" value="armor" count="1"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5481,7 +5585,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentEaglesNestFreeFormPurchase1" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentEaglesNest:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentEaglesNest:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="militia" count="3"/>
 			<option name="resource" value="AUs"/>
 			<option name="resourceCount" value="1"/>
@@ -5490,7 +5594,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentEaglesNestFreeFormPurchase2" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentEaglesNest:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentEaglesNest:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="PUs"/>
 			<option name="resourceCount" value="1"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5498,7 +5602,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentEaglesNestNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentEaglesNest:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentEaglesNest:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="EaglesNest_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -5506,14 +5610,14 @@
 
 		<!-- National Guard Assignment Triggers -->
 		<attatchment name="triggerAttachmentNationalGuardFreeFormGiven" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentNationalGuard:conditionAttachmentAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentNationalGuard:conditionAttachmentAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="infantry" count="5"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
 		</attatchment>
 
 		<attatchment name="triggerAttachmentNationalGuardFreeFormPurchase1" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentNationalGuard:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentNationalGuard:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="IUs"/>
 			<option name="resourceCount" value="5"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5521,7 +5625,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentNationalGuardFreeFormPurchase2" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentNationalGuard:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentNationalGuard:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="PUs"/>
 			<option name="resourceCount" value="5"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5529,7 +5633,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentNationalGuardNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentNationalGuard:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentNationalGuard:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="NationalGuard_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -5544,7 +5648,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentMountainGuerillaUnitsNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMountainGuerillaUnits:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMountainGuerillaUnits:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="MountainGuerillaUnits_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -5583,7 +5687,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentBuffaloMechsNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentBuffaloMechs:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentBuffaloMechs:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="BuffaloMechs_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -5630,7 +5734,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentChicagoMoblizesNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentChicagoMoblizes:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentChicagoMoblizes:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="ChicagoMoblizes_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -5638,7 +5742,7 @@
 
 		<!-- Boston Mountains Assignment Triggers -->
 		<attatchment name="triggerAttachmentBostonMountainsFreeFormGiven" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentBostonMountains:conditionAttachmentAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentBostonMountains:conditionAttachmentAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="militia" count="2"/>
 			<option name="purchase" value="armor" count="1"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5646,7 +5750,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentBostonMountainsFreeFormPurchase1" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentBostonMountains:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentBostonMountains:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="militia" count="2"/>
 			<option name="resource" value="AUs"/>
 			<option name="resourceCount" value="1"/>
@@ -5655,7 +5759,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentBostonMountainsFreeFormPurchase2" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentBostonMountains:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentBostonMountains:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="PUs"/>
 			<option name="resourceCount" value="1"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5663,7 +5767,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentBostonMountainsNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentBostonMountains:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentBostonMountains:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="BostonMountains_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -5703,7 +5807,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentMinneapolisMoblizesNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMinneapolisMoblizes:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMinneapolisMoblizes:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="MinneapolisMoblizes_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -5711,7 +5815,7 @@
 
 		<!-- Partisan Minutemen Assignment Triggers -->
 		<attatchment name="triggerAttachmentMilitiaMinutemenFreeFormGiven" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMilitiaMinutemen:conditionAttachmentAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMilitiaMinutemen:conditionAttachmentAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="militia" count="2"/>
 			<option name="purchase" value="helicopter" count="1"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5719,7 +5823,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentMilitiaMinutemenFreeFormPurchase1" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMilitiaMinutemen:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMilitiaMinutemen:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="militia" count="2"/>
 			<option name="resource" value="HUs"/>
 			<option name="resourceCount" value="1"/>
@@ -5728,7 +5832,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentMilitiaMinutemenFreeFormPurchase2" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMilitiaMinutemen:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMilitiaMinutemen:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="PUs"/>
 			<option name="resourceCount" value="1"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5736,7 +5840,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentMilitiaMinutemenNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMilitiaMinutemen:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMilitiaMinutemen:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="MilitiaMinutemen_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -5751,7 +5855,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentRockyMountainRefugeesNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentRockyMountainRefugees:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentRockyMountainRefugees:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="RockyMountainRefugees_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -5759,7 +5863,7 @@
 
 		<!-- Western Freedom Fighters Assignment Triggers -->
 		<attatchment name="triggerAttachmentWesternFreedomFightersFreeFormGiven" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWesternFreedomFighters:conditionAttachmentAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWesternFreedomFighters:conditionAttachmentAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="militia" count="2"/>
 			<option name="purchase" value="armor" count="1"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5767,7 +5871,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentWesternFreedomFightersFreeFormPurchase1" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWesternFreedomFighters:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWesternFreedomFighters:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="militia" count="2"/>
 			<option name="resource" value="AUs"/>
 			<option name="resourceCount" value="1"/>
@@ -5776,7 +5880,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentWesternFreedomFightersFreeFormPurchase2" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWesternFreedomFighters:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWesternFreedomFighters:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="PUs"/>
 			<option name="resourceCount" value="1"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5784,7 +5888,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentWesternFreedomFightersNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWesternFreedomFighters:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWesternFreedomFighters:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="WesternFreedomFighters_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -5792,14 +5896,14 @@
 
 		<!-- Legions Of Liberty Assignment Triggers -->
 		<attatchment name="triggerAttachmentLegionsOfLibertyFreeFormGiven" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentLegionsOfLiberty:conditionAttachmentAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentLegionsOfLiberty:conditionAttachmentAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="infantry" count="2"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
 		</attatchment>
 
 		<attatchment name="triggerAttachmentLegionsOfLibertyFreeFormPurchase1" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentLegionsOfLiberty:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentLegionsOfLiberty:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="IUs"/>
 			<option name="resourceCount" value="2"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5807,7 +5911,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentLegionsOfLibertyFreeFormPurchase2" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentLegionsOfLiberty:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentLegionsOfLiberty:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="PUs"/>
 			<option name="resourceCount" value="2"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5815,7 +5919,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentLegionsOfLibertyNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentLegionsOfLiberty:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentLegionsOfLiberty:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="LegionsOfLiberty_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -5823,7 +5927,7 @@
 
 		<!-- Western Revolts Assignment Triggers -->
 		<attatchment name="triggerAttachmentWesternRevoltsFreeFormGiven" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWesternRevolts:conditionAttachmentAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWesternRevolts:conditionAttachmentAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="militia" count="2"/>
 			<option name="purchase" value="helicopter:mechanized" count="1"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5831,7 +5935,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentWesternRevoltsFreeFormPurchase1" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWesternRevolts:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWesternRevolts:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="militia" count="2"/>
 			<option name="resource" value="HUs"/>
 			<option name="resourceCount" value="1"/>
@@ -5840,14 +5944,14 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentWesternRevoltsFreeFormPurchase2" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWesternRevolts:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWesternRevolts:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="MUs"/>
 			<option name="resourceCount" value="1"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
 		</attatchment>
 		<attatchment name="triggerAttachmentWesternRevoltsFreeFormPurchase3" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWesternRevolts:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWesternRevolts:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="PUs"/>
 			<option name="resourceCount" value="2"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5855,7 +5959,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentWesternRevoltsNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWesternRevolts:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWesternRevolts:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="WesternRevolts_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -5870,7 +5974,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentSouthernRebelsDestroyNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentSouthernRebelsDestroy:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentSouthernRebelsDestroy:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="SouthernRebelsDestroy_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -5885,7 +5989,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentWheatfieldThrashersNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWheatfieldThrashers:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWheatfieldThrashers:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="WheatfieldThrashers_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -5893,7 +5997,7 @@
 		
 		<!-- Texas Rangers Assignment Triggers -->
 		<attatchment name="triggerAttachmentTexasRangersFreeFormGiven" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentTexasRangers:conditionAttachmentAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentTexasRangers:conditionAttachmentAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="militia" count="3"/>
 			<option name="purchase" value="helicopter" count="1"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5901,7 +6005,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentTexasRangerslFreeFormPurchase1" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentTexasRangers:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentTexasRangers:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="militia" count="3"/>
 			<option name="resource" value="HUs"/>
 			<option name="resourceCount" value="1"/>
@@ -5910,7 +6014,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentTexasRangerslFreeFormPurchase2" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentTexasRangers:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentTexasRangers:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="PUs"/>
 			<option name="resourceCount" value="1"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5918,7 +6022,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentTexasRangersNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentTexasRangers:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentTexasRangers:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="TexasRangers_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -5926,7 +6030,7 @@
 
 		<!-- Moblized Oil Assignment Triggers -->
 		<attatchment name="triggerAttachmentMoblizedOilFreeFormGiven" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMoblizedOil:conditionAttachmentAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMoblizedOil:conditionAttachmentAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="infantry" count="2"/>
 			<option name="purchase" value="mechanized" count="2"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5934,7 +6038,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentMoblizedOilFreeFormPurchase1" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMoblizedOil:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMoblizedOil:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="IUs"/>
 			<option name="resourceCount" value="2"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5942,7 +6046,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentMoblizedOilFreeFormPurchase2" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMoblizedOil:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMoblizedOil:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="MUs"/>
 			<option name="resourceCount" value="2"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5950,7 +6054,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentMoblizedOilFreeFormPurchase3" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMoblizedOil:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMoblizedOil:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="PUs"/>
 			<option name="resourceCount" value="4"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5958,7 +6062,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentMoblizedOilNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMoblizedOil:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMoblizedOil:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="MoblizedOil_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -5966,7 +6070,7 @@
 
 		<!-- Well Fed Soldiers Assignment Triggers -->
 		<attatchment name="triggerAttachmentWellFedSoldiersFreeFormGiven" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWellFedSoldiers:conditionAttachmentAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWellFedSoldiers:conditionAttachmentAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="militia" count="2"/>
 			<option name="purchase" value="infantry" count="2"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5974,7 +6078,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentWellFedSoldiersFreeFormPurchase1" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWellFedSoldiers:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWellFedSoldiers:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="militia" count="2"/>
 			<option name="resource" value="IUs"/>
 			<option name="resourceCount" value="2"/>
@@ -5983,7 +6087,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentWellFedSoldiersFreeFormPurchase2" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWellFedSoldiers:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWellFedSoldiers:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="PUs"/>
 			<option name="resourceCount" value="2"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -5991,7 +6095,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentWellFedSoldiersNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWellFedSoldiers:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWellFedSoldiers:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="WellFedSoldiers_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -5999,7 +6103,7 @@
 
 		<!-- Steel Defense Assignment Triggers -->
 		<attatchment name="triggerAttachmentSteelDefenseFreeFormGiven" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentSteelDefense:conditionAttachmentAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentSteelDefense:conditionAttachmentAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="armor" count="2"/>
 			<option name="purchase" value="mechanized" count="1"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -6007,7 +6111,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentSteelDefenseFreeFormPurchase1" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentSteelDefense:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentSteelDefense:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="AUs"/>
 			<option name="resourceCount" value="2"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -6015,7 +6119,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentSteelDefenseFreeFormPurchase2" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentSteelDefense:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentSteelDefense:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="MUs"/>
 			<option name="resourceCount" value="1"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -6023,7 +6127,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentSteelDefenseFreeFormPurchase3" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentSteelDefense:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentSteelDefense:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="resource" value="PUs"/>
 			<option name="resourceCount" value="3"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -6031,7 +6135,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentSteelDefenseNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentSteelDefense:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentSteelDefense:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="SteelDefense_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -6039,7 +6143,7 @@
 
 		<!-- Plains Riders Assignment Triggers -->
 		<attatchment name="triggerAttachmentPlainsRidersFreeFormGiven" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentPlainsRiders:conditionAttachmentAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentPlainsRiders:conditionAttachmentAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="militia" count="2"/>
 			<option name="purchase" value="mechanized" count="1"/>
 			<option name="when" value="before:americanPurchase"/>
@@ -6047,7 +6151,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentPlainsRidersFreeFormPurchase1" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentPlainsRiders:conditionAttachmentNoAddToAmericanPurchase"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentPlainsRiders:conditionAttachmentNoAddToAmericanPurchase:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="purchase" value="militia" count="2"/>
 			<option name="resource" value="MUs"/>
 			<option name="resourceCount" value="1"/>
@@ -6064,7 +6168,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentPlainsRidersNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentPlainsRiders:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentPlainsRiders:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="PlainsRiders_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -6079,7 +6183,7 @@
 		</attatchment>
 
 		<attatchment name="triggerAttachmentMileHighMilitiaNotifaction" attatchTo="Americans" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMileHighMilitia:conditionAttachmentUseReinforcementNotifactions"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentMileHighMilitia:conditionAttachmentUseReinforcementNotifactions:conditionAttachmentNoGiveReinforcementsToAmerican"/>
 			<option name="notification" value="MileHighMilitia_Notifaction"/>
 			<option name="when" value="before:americanPurchase"/>
 			<option name="uses" value="1"/>
@@ -6260,6 +6364,7 @@
 		<attatchment name="triggerAttachmentNotifaction014EasternArrivalStory" attatchTo="Eastern" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentUseStoryNotifacations"/>
 			<option name="notification" value="EasternArrival_Story"/>
+			<option name="players" value="Americans:Western:Southern:Eastern"/>
 			<option name="when" value="before:easternInitialPlace"/>
 			<option name="uses" value="1"/>
 		</attatchment>
@@ -6268,6 +6373,7 @@
 		<attatchment name="triggerAttachmentNotifaction013SouthernArrivalStory" attatchTo="Southern" javaClass="games.strategy.triplea.attatchments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentUseStoryNotifacations"/>
 			<option name="notification" value="SouthernArrival_Story"/>
+			<option name="players" value="Americans:Western:Southern:Eastern"/>
 			<option name="when" value="before:southernInitialPlace"/>
 			<option name="uses" value="1"/>
 		</attatchment>
@@ -6850,7 +6956,7 @@
 			<boolean/>
 		</property>
 
-		<property name="Unplaced units live when not placed" value ="true" editable="true">
+		<property name="Unplaced units live when not placed" value ="false" editable="true">
 			<boolean/>
 		</property>
 
@@ -6987,6 +7093,10 @@
 			<boolean/>
 		</property>
 
+		<property name="Transport Infantry" value="false" editable="true">
+			<boolean/>
+		</property>
+
 		<property name="No Laser Tower for Americans" value="false" editable="true">
 			<boolean/>
 		</property>
@@ -6995,11 +7105,11 @@
 			<boolean/>
 		</property>
 
-		<property name="Transport Infantry" value="false" editable="true">
+		<property name="No Reinforcement" value="false" editable="true">
 			<boolean/>
 		</property>
 
-		<property name="No Reinforcement" value="false" editable="true">
+		<property name="Give Set Reinforcements to the Americans" value="false" editable="true">
 			<boolean/>
 		</property>
 
