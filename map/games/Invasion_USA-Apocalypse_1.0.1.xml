@@ -676,7 +676,7 @@
                      <attachment name="territoryAttachment" attachTo="Northern Command" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
                         <option name="unitProduction" value="0"/>
 			<option name="production" value="0"/>
-                        <option name="isImpassible" value="true"/>
+                        <option name="isImpassable" value="true"/>
                         <option name="capital" value="Americans"/>  
                     </attachment>
 
@@ -689,55 +689,55 @@
 			<option name="production" value="0"/>
                         <option name="unitProduction" value="1"/>
 
-                        <option name="isImpassible" value="true"/>
+                        <option name="isImpassable" value="true"/>
                     </attachment>
 
                      <attachment name="territoryAttachment" attachTo="E-3" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="0"/>
                         <option name="unitProduction" value="1"/>
-                        <option name="isImpassible" value="true"/>
+                        <option name="isImpassable" value="true"/>
                     </attachment>
 
                      <attachment name="territoryAttachment" attachTo="E-4" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="0"/>
                         <option name="unitProduction" value="1"/>
-                        <option name="isImpassible" value="true"/>
+                        <option name="isImpassable" value="true"/>
                     </attachment>
 
                      <attachment name="territoryAttachment" attachTo="E-5" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="0"/>
                         <option name="unitProduction" value="1"/>
-                        <option name="isImpassible" value="true"/>
+                        <option name="isImpassable" value="true"/>
                     </attachment>
 
                      <attachment name="territoryAttachment" attachTo="E-6" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="0"/>
                         <option name="unitProduction" value="1"/>
-                        <option name="isImpassible" value="true"/>
+                        <option name="isImpassable" value="true"/>
                     </attachment>
 
                      <attachment name="territoryAttachment" attachTo="S-1" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="0"/>
                         <option name="unitProduction" value="1"/>
-                        <option name="isImpassible" value="true"/>
+                        <option name="isImpassable" value="true"/>
                     </attachment>
 
                      <attachment name="territoryAttachment" attachTo="S-2" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="0"/>
                         <option name="unitProduction" value="1"/>
-                        <option name="isImpassible" value="true"/>
+                        <option name="isImpassable" value="true"/>
                     </attachment>
 
                      <attachment name="territoryAttachment" attachTo="S-3" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="0"/>
                         <option name="unitProduction" value="1"/>
-                        <option name="isImpassible" value="true"/>
+                        <option name="isImpassable" value="true"/>
                     </attachment>
 
                      <attachment name="territoryAttachment" attachTo="S-4" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="0"/>
                         <option name="unitProduction" value="1"/>
-                        <option name="isImpassible" value="true"/>
+                        <option name="isImpassable" value="true"/>
                     </attachment>
 
                      <attachment name="territoryAttachment" attachTo="S-5" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
@@ -749,38 +749,38 @@
                      <attachment name="territoryAttachment" attachTo="S-6" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="0"/>
                         <option name="unitProduction" value="1"/>
-                        <option name="isImpassible" value="true"/>
+                        <option name="isImpassable" value="true"/>
                     </attachment>
 
                      <attachment name="territoryAttachment" attachTo="W-1" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="0"/>
                         <option name="unitProduction" value="1"/>
-                        <option name="isImpassible" value="true"/>
+                        <option name="isImpassable" value="true"/>
 
                     </attachment>
 
                      <attachment name="territoryAttachment" attachTo="W-2" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="0"/>
                         <option name="unitProduction" value="1"/>
-                        <option name="isImpassible" value="true"/>
+                        <option name="isImpassable" value="true"/>
                     </attachment>
 
                      <attachment name="territoryAttachment" attachTo="W-3" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="0"/>
                         <option name="unitProduction" value="1"/>
-                        <option name="isImpassible" value="true"/>
+                        <option name="isImpassable" value="true"/>
                     </attachment>
 
                      <attachment name="territoryAttachment" attachTo="W-4" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="0"/>
                         <option name="unitProduction" value="1"/>
-                        <option name="isImpassible" value="true"/>
+                        <option name="isImpassable" value="true"/>
                     </attachment>
 
                      <attachment name="territoryAttachment" attachTo="W-5" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="0"/>
                         <option name="unitProduction" value="1"/>
-                        <option name="isImpassible" value="true"/>
+                        <option name="isImpassable" value="true"/>
                     </attachment>
 
                      <attachment name="territoryAttachment" attachTo="W-6" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
