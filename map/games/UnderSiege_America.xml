@@ -1892,7 +1892,7 @@
 		<!-- Continue to Receive Laser Tower (Americans Only) -->
 		<attachment name="conditionAttachmentAmericanLaser" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentUseInitialLaser"/>
-			<option name="turns" value="2-+"/>
+			<option name="rounds" value="2-+"/>
 		</attachment>
 
 		<!-- No Laser Tower (Americans Only) -->
@@ -1903,19 +1903,19 @@
 		<!-- Use American PreSet -->
 		<attachment name="conditionAttachmentUseAmericanPreSet" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="gameProperty" value="Use American Pre-Setup"/>
-			<option name="turns" value="1"/>
+			<option name="rounds" value="1"/>
 		</attachment>
 
 		<attachment name="conditionAttachmentNoUseAmericanPreSet" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="gameProperty" value="Use American Pre-Setup"/>
 			<option name="invert" value="true"/>
-			<option name="turns" value="1"/>
+			<option name="rounds" value="1"/>
 		</attachment>
 
 		<!-- Mechanized Infantry and Paratroopers -->
 		<attachment name="conditionAttachmentUseTransport" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="gameProperty" value="Transport Infantry"/>
-			<option name="turns" value="1"/>
+			<option name="rounds" value="1"/>
 		</attachment>
 
 		<!-- Use Reinforcements -->
@@ -1936,7 +1936,7 @@
 
 		<attachment name="conditionAttachmentGiveReinforcementsToAmericanTurns4" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="gameProperty" value="Give Set Reinforcements to the Americans"/>
-			<option name="turns" value="4:8:12:16:20:24:28"/>
+			<option name="rounds" value="4:8:12:16:20:24:28"/>
 		</attachment>
 
 		<attachment name="conditionAttachmentNoGiveReinforcementsToAmerican" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
@@ -1967,7 +1967,7 @@
 		<!-- Foward Landing Zones (Seattle, San Antonio and Atlanta) -->
 		<attachment name="conditionAttachmentFowardLandingsZones" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="gameProperty" value="Invaders use forward Landing Zones"/>
-			<option name="turns" value="2-+"/>
+			<option name="rounds" value="2-+"/>
 		</attachment>
 		
 		<!-- Western Reinforcements by territory PUs -->
@@ -2034,13 +2034,13 @@
 		<!-- Game Conditions -->
 		<!-- Use for Tutorial only -->
 		<attachment name="conditionAttachmentWesternTurn2" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
-			<option name="turns" value="2-9"/>
+			<option name="rounds" value="2-9"/>
 		</attachment>
 
 		<!-- Turn 6 Warning -->
 		<attachment name="conditionAttachmentInvaderTurn6Warning" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="players" value="Western:Southern:Eastern"/>
-			<option name="turns" value="6"/>
+			<option name="rounds" value="6"/>
 		</attachment>
 
 		<!-- American VC count -->
@@ -2504,23 +2504,23 @@
 		<!-- American Victory 12 turns 13 cities -->
 		<attachment name="conditionAttachmentAmericansWin" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount13"/>
-			<option name="turns" value="12-+"/>
+			<option name="rounds" value="12-+"/>
 		</attachment>
 		
 		<attachment name="conditionAttachmentAmericansPower" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount18"/>
-			<option name="turns" value="12-+"/>
+			<option name="rounds" value="12-+"/>
 		</attachment>
 		
 		<attachment name="conditionAttachmentAmericansTotal" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount30"/>
-			<option name="turns" value="12-+"/>
+			<option name="rounds" value="12-+"/>
 		</attachment>
 		
 		<!-- Joint Invader Victory (Americans Lose) -->
 		<attachment name="conditionAttachmentAmericansLose" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCountNo13"/>
-			<option name="turns" value="1-12"/>
+			<option name="rounds" value="1-12"/>
 		</attachment>
 		
 		<!-- Western Victory -->
@@ -2574,49 +2574,49 @@
 		<!-- Western 8 by 5 Reinforcement Conditions -->
 		<attachment name="conditionAttachmentWestern8x5Turn2" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWesternNoPUsReinforcements:conditionAttachmentWestern8x5"/>
-			<option name="turns" value="2:3"/>
+			<option name="rounds" value="2:3"/>
 		</attachment>
 
 		<attachment name="conditionAttachmentWestern8x5Turn4" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWesternNoPUsReinforcements:conditionAttachmentWestern8x5"/>
-			<option name="turns" value="4:5"/>
+			<option name="rounds" value="4:5"/>
 		</attachment>
 
 		<attachment name="conditionAttachmentWestern8x5Turn6" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWesternNoPUsReinforcements:conditionAttachmentWestern8x5"/>
-			<option name="turns" value="6"/>
+			<option name="rounds" value="6"/>
 		</attachment>
 
 		<!-- Southern 8 by 5 Reinforcement Conditions -->
 		<attachment name="conditionAttachmentSouthern8x5Turn2" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentSouthernNoPUsReinforcements:conditionAttachmentSouthern8x5"/>
-			<option name="turns" value="2:3"/>
+			<option name="rounds" value="2:3"/>
 		</attachment>
 
 		<attachment name="conditionAttachmentSouthern8x5Turn4" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentSouthernNoPUsReinforcements:conditionAttachmentSouthern8x5"/>
-			<option name="turns" value="4:5"/>
+			<option name="rounds" value="4:5"/>
 		</attachment>
 
 		<attachment name="conditionAttachmentSouthern8x5Turn6" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentSouthernNoPUsReinforcements:conditionAttachmentSouthern8x5"/>
-			<option name="turns" value="6"/>
+			<option name="rounds" value="6"/>
 		</attachment>
 
 		<!-- Eastern 8 by 5 Reinforcement Conditions -->
 		<attachment name="conditionAttachmentEastern8x5Turn2" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentEasternNoPUsReinforcements:conditionAttachmentEastern8x5"/>
-			<option name="turns" value="2:3"/>
+			<option name="rounds" value="2:3"/>
 		</attachment>
 
 		<attachment name="conditionAttachmentEastern8x5Turn4" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentEasternNoPUsReinforcements:conditionAttachmentEastern8x5"/>
-			<option name="turns" value="4:5"/>
+			<option name="rounds" value="4:5"/>
 		</attachment>
 
 		<attachment name="conditionAttachmentEastern8x5Turn6" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentEasternNoPUsReinforcements:conditionAttachmentEastern8x5"/>
-			<option name="turns" value="6"/>
+			<option name="rounds" value="6"/>
 		</attachment>
 		
 		<!-- City Ownership checks -->
@@ -2989,13 +2989,13 @@
 		<!-- Western -->
 		<attachment name="conditionAttachmentWesternSeattleTruck" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="battle" value="Western:any:any:currentRound:Seattle"/>
-			<option name="turns" value="3-6"/>
+			<option name="rounds" value="3-6"/>
 		</attachment>
 
 		<attachment name="conditionAttachmentWesternSeattleOwnership" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="directPresenceTerritories" value="Seattle"/>
 			<option name="unitPresence" value="truck" count="0"/>
-			<option name="turns" value="3-6"/>
+			<option name="rounds" value="3-6"/>
 		</attachment>
 
 		<attachment name="conditionAttachmentWesternSeattleNoEnemy" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
@@ -3020,12 +3020,12 @@
 		<attachment name="conditionAttachmentSouthernSanAntonioTruck" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="directPresenceTerritories" value="San Antonio"/>
 			<option name="unitPresence" value="truck" count="0"/>
-			<option name="turns" value="3-6"/>
+			<option name="rounds" value="3-6"/>
 		</attachment>
 
 		<attachment name="conditionAttachmentSouthernSanAntonioOwnership" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="directOwnershipTerritories" value="San Antonio"/>
-			<option name="turns" value="3-6"/>
+			<option name="rounds" value="3-6"/>
 		</attachment>
 
 		<attachment name="conditionAttachmentSouthernSanAntonioNoEnemy" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
@@ -3050,12 +3050,12 @@
 		<attachment name="conditionAttachmentEasternAtlantaTruck" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="directPresenceTerritories" value="Atlanta"/>
 			<option name="unitPresence" value="truck" count="0"/>
-			<option name="turns" value="3-6"/>
+			<option name="rounds" value="3-6"/>
 		</attachment>
 
 		<attachment name="conditionAttachmentEasternAtlantaOwnership" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="directOwnershipTerritories" value="Atlanta"/>
-			<option name="turns" value="3-6"/>
+			<option name="rounds" value="3-6"/>
 		</attachment>
 
 		<attachment name="conditionAttachmentEasternAtlantaNoEnemy" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
@@ -3440,103 +3440,103 @@
 		<!-- American Victory City Count Triggers -->
 		<attachment name="objectiveAttachmentAmericans_have_13_Victory_Cities" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount13:conditionAttachmentAmericanVCCount14"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="10"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentAmericans_have_14_Victory_Cities" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount14:conditionAttachmentAmericanVCCount15"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="10"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentAmericans_have_15_Victory_Cities" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount15:conditionAttachmentAmericanVCCount16"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="10"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentAmericans_have_16_Victory_Cities" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount16:conditionAttachmentAmericanVCCount17"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="10"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentAmericans_have_17_Victory_Cities" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount17:conditionAttachmentAmericanVCCount18"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="10"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentAmericans_have_18_Victory_Cities" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount18:conditionAttachmentAmericanVCCount19"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="10"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentAmericans_have_19_Victory_Cities" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount19:conditionAttachmentAmericanVCCount20"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="10"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentAmericans_have_20_Victory_Cities" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount20:conditionAttachmentAmericanVCCount21"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="10"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentAmericans_have_21_Victory_Cities" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount21:conditionAttachmentAmericanVCCount22"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="10"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentAmericans_have_22_Victory_Cities" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount22:conditionAttachmentAmericanVCCount23"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="10"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentAmericans_have_23_Victory_Cities" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount23:conditionAttachmentAmericanVCCount24"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="10"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentAmericans_have_24_Victory_Cities" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount24:conditionAttachmentAmericanVCCount25"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="10"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentAmericans_have_25_Victory_Cities" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount25:conditionAttachmentAmericanVCCount26"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="10"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentAmericans_have_26_Victory_Cities" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount26:conditionAttachmentAmericanVCCount27"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="10"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentAmericans_have_27_Victory_Cities" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount27:conditionAttachmentAmericanVCCount28"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="10"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentAmericans_have_28_Victory_Cities" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount28:conditionAttachmentAmericanVCCount29"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="10"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentAmericans_have_29_Victory_Cities" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount29:conditionAttachmentAmericanVCCount30"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="10"/>
 		</attachment>
 
@@ -3549,181 +3549,181 @@
 		<!-- Western Victory City Count -->
 		<attachment name="objectiveAttachmentWestern_has_control_of_no_Victory_Cities" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentWesternVCCount00"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentWestern_has_control_of_1_Victory_Cities" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentWesternVCCount01:conditionAttachmentWesternVCCount02"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentWestern_has_control_of_2_Victory_Cities" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentWesternVCCount02:conditionAttachmentWesternVCCount03"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentWestern_has_control_of_3_Victory_Cities" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentWesternVCCount03:conditionAttachmentWesternVCCount04"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentWestern_has_control_of_4_Victory_Cities" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentWesternVCCount04:conditionAttachmentWesternVCCount05"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentWestern_has_control_of_5_Victory_Cities" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentWesternVCCount05:conditionAttachmentWesternVCCount06"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentWestern_has_control_of_6_Victory_Cities" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentWesternVCCount06:conditionAttachmentWesternVCCount07"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentWestern_has_control_of_7_Victory_Cities" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentWesternVCCount07:conditionAttachmentWesternVCCount08"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentWestern_has_control_of_8_Victory_Cities" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentWesternVCCount08:conditionAttachmentWesternVCCount09"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentWestern_has_control_of_9_Victory_Cities" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentWesternVCCount09:conditionAttachmentWesternVCCount10"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentWestern_has_control_of_10_Victory_Cities" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentWesternVCCount10:conditionAttachmentWesternVCCount11"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentWestern_has_control_of_11_Victory_Cities" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentWesternVCCount11:conditionAttachmentWesternVCCount12"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentWestern_has_control_of_12_Victory_Cities" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentWesternVCCount12:conditionAttachmentWesternVCCount13"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentWestern_has_control_of_13_Victory_Cities" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentWesternVCCount13:conditionAttachmentWesternVCCount14"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentWestern_has_control_of_14_Victory_Cities" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentWesternVCCount14:conditionAttachmentWesternVCCount15"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentWestern_has_control_of_15_Victory_Cities" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentWesternVCCount15:conditionAttachmentWesternVCCount16"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentWestern_has_control_of_16_Victory_Cities" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentWesternVCCount16:conditionAttachmentWesternVCCount17"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentWestern_has_control_of_17_Victory_Cities" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentWesternVCCount17:conditionAttachmentWesternVCCount18"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentWestern_has_control_of_18_Victory_Cities" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentWesternVCCount18:conditionAttachmentWesternVCCount19"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentWestern_has_control_of_19_Victory_Cities" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentWesternVCCount19:conditionAttachmentWesternVCCount20"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentWestern_has_control_of_20_Victory_Cities" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentWesternVCCount20:conditionAttachmentWesternVCCount21"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentWestern_has_control_of_21_Victory_Cities" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentWesternVCCount21:conditionAttachmentWesternVCCount22"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentWestern_has_control_of_22_Victory_Cities" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentWesternVCCount22:conditionAttachmentWesternVCCount23"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentWestern_has_control_of_23_Victory_Cities" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentWesternVCCount23:conditionAttachmentWesternVCCount24"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentWestern_has_control_of_24_Victory_Cities" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentWesternVCCount24:conditionAttachmentWesternVCCount25"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentWestern_has_control_of_25_Victory_Cities" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentWesternVCCount25:conditionAttachmentWesternVCCount26"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentWestern_has_control_of_26_Victory_Cities" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentWesternVCCount26:conditionAttachmentWesternVCCount27"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentWestern_has_control_of_27_Victory_Cities" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentWesternVCCount27:conditionAttachmentWesternVCCount28"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentWestern_has_control_of_28_Victory_Cities" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentWesternVCCount28:conditionAttachmentWesternVCCount29"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentWestern_has_control_of_29_Victory_Cities" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentWesternVCCount29:conditionAttachmentWesternVCCount30"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
@@ -3736,181 +3736,181 @@
 		<!-- Southern Victory City Count -->
 		<attachment name="objectiveAttachmentSouthern_has_control_of_No_Victory_Cities" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentSouthernVCCount00"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentSouthern_has_control_of_1_Victory_City" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentSouthernVCCount01:conditionAttachmentSouthernVCCount02"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentSouthern_has_control_of_2_Victory_Cities" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentSouthernVCCount02:conditionAttachmentSouthernVCCount03"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentSouthern_has_control_of_3_Victory_Cities" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentSouthernVCCount03:conditionAttachmentSouthernVCCount04"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentSouthern_has_control_of_4_Victory_Cities" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentSouthernVCCount04:conditionAttachmentSouthernVCCount05"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentSouthern_has_control_of_5_Victory_Cities" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentSouthernVCCount05:conditionAttachmentSouthernVCCount06"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentSouthern_has_control_of_6_Victory_Cities" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentSouthernVCCount06:conditionAttachmentSouthernVCCount07"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentSouthern_has_control_of_7_Victory_Cities" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentSouthernVCCount07:conditionAttachmentSouthernVCCount08"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentSouthern_has_control_of_8_Victory_Cities" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentSouthernVCCount08:conditionAttachmentSouthernVCCount09"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentSouthern_has_control_of_9_Victory_Cities" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentSouthernVCCount09:conditionAttachmentSouthernVCCount10"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentSouthern_has_control_of_10_Victory_Cities" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentSouthernVCCount10:conditionAttachmentSouthernVCCount11"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentSouthern_has_control_of_11_Victory_Cities" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentSouthernVCCount11:conditionAttachmentSouthernVCCount12"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentSouthern_has_control_of_12_Victory_Cities" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentSouthernVCCount12:conditionAttachmentSouthernVCCount13"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentSouthern_has_control_of_13_Victory_Cities" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentSouthernVCCount13:conditionAttachmentSouthernVCCount14"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentSouthern_has_control_of_14_Victory_Cities" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentSouthernVCCount14:conditionAttachmentSouthernVCCount15"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentSouthern_has_control_of_15_Victory_Cities" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentSouthernVCCount15:conditionAttachmentSouthernVCCount16"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentSouthern_has_control_of_16_Victory_Cities" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentSouthernVCCount16:conditionAttachmentSouthernVCCount17"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentSouthern_has_control_of_17_Victory_Cities" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentSouthernVCCount17:conditionAttachmentSouthernVCCount18"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentSouthern_has_control_of_18_Victory_Cities" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentSouthernVCCount18:conditionAttachmentSouthernVCCount19"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentSouthern_has_control_of_19_Victory_Cities" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentSouthernVCCount19:conditionAttachmentSouthernVCCount20"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentSouthern_has_control_of_20_Victory_Cities" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentSouthernVCCount20:conditionAttachmentSouthernVCCount21"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentSouthern_has_control_of_21_Victory_Cities" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentSouthernVCCount21:conditionAttachmentSouthernVCCount22"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentSouthern_has_control_of_22_Victory_Cities" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentSouthernVCCount22:conditionAttachmentSouthernVCCount23"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentSouthern_has_control_of_23_Victory_Cities" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentSouthernVCCount23:conditionAttachmentSouthernVCCount24"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentSouthern_has_control_of_24_Victory_Cities" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentSouthernVCCount24:conditionAttachmentSouthernVCCount25"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentSouthern_has_control_of_25_Victory_Cities" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentSouthernVCCount25:conditionAttachmentSouthernVCCount26"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentSouthern_has_control_of_26_Victory_Cities" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentSouthernVCCount26:conditionAttachmentSouthernVCCount27"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentSouthern_has_control_of_27_Victory_Cities" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentSouthernVCCount27:conditionAttachmentSouthernVCCount28"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentSouthern_has_control_of_28_Victory_Cities" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentSouthernVCCount28:conditionAttachmentSouthernVCCount29"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentSouthern_has_control_of_29_Victory_Cities" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentSouthernVCCount29:conditionAttachmentSouthernVCCount30"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
@@ -3923,181 +3923,181 @@
 		<!-- Eastern Victory City Count -->
 		<attachment name="objectiveAttachmentEastern_has_control_of_no_Victory_Cities" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentEasternVCCount00"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentEastern_has_control_of_1_Victory_City" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentEasternVCCount01:conditionAttachmentEasternVCCount02"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentEastern_has_control_of_2_Victory_Cities" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentEasternVCCount02:conditionAttachmentEasternVCCount03"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentEastern_has_control_of_3_Victory_Cities" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentEasternVCCount03:conditionAttachmentEasternVCCount04"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentEastern_has_control_of_4_Victory_Cities" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentEasternVCCount04:conditionAttachmentEasternVCCount05"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentEastern_has_control_of_5_Victory_Cities" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentEasternVCCount05:conditionAttachmentEasternVCCount06"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentEastern_has_control_of_6_Victory_Cities" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentEasternVCCount06:conditionAttachmentEasternVCCount07"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentEastern_has_control_of_7_Victory_Cities" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentEasternVCCount07:conditionAttachmentEasternVCCount08"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentEastern_has_control_of_8_Victory_Cities" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentEasternVCCount08:conditionAttachmentEasternVCCount09"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentEastern_has_control_of_9_Victory_Cities" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentEasternVCCount09:conditionAttachmentEasternVCCount10"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentEastern_has_control_of_10_Victory_Cities" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentEasternVCCount10:conditionAttachmentEasternVCCount11"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentEastern_has_control_of_11_Victory_Cities" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentEasternVCCount11:conditionAttachmentEasternVCCount12"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentEastern_has_control_of_12_Victory_Cities" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentEasternVCCount12:conditionAttachmentEasternVCCount13"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentEastern_has_control_of_13_Victory_Cities" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentEasternVCCount13:conditionAttachmentEasternVCCount14"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentEastern_has_control_of_14_Victory_Cities" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentEasternVCCount14:conditionAttachmentEasternVCCount15"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentEastern_has_control_of_15_Victory_Cities" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentEasternVCCount15:conditionAttachmentEasternVCCount16"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentEastern_has_control_of_16_Victory_Cities" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentEasternVCCount16:conditionAttachmentEasternVCCount17"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentEastern_has_control_of_17_Victory_Cities" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentEasternVCCount17:conditionAttachmentEasternVCCount18"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentEastern_has_control_of_18_Victory_Cities" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentEasternVCCount18:conditionAttachmentEasternVCCount19"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentEastern_has_control_of_19_Victory_Cities" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentEasternVCCount19:conditionAttachmentEasternVCCount20"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentEastern_has_control_of_20_Victory_Cities" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentEasternVCCount20:conditionAttachmentEasternVCCount21"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentEastern_has_control_of_21_Victory_Cities" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentEasternVCCount21:conditionAttachmentEasternVCCount22"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentEastern_has_control_of_22_Victory_Cities" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentEasternVCCount22:conditionAttachmentEasternVCCount23"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentEastern_has_control_of_23_Victory_Cities" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentEasternVCCount23:conditionAttachmentEasternVCCount24"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentEastern_has_control_of_24_Victory_Cities" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentEasternVCCount24:conditionAttachmentEasternVCCount25"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentEastern_has_control_of_25_Victory_Cities" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentEasternVCCount25:conditionAttachmentEasternVCCount26"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentEastern_has_control_of_26_Victory_Cities" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentEasternVCCount26:conditionAttachmentEasternVCCount27"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentEastern_has_control_of_27_Victory_Cities" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentEasternVCCount27:conditionAttachmentEasternVCCount28"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentEastern_has_control_of_28_Victory_Cities" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentEasternVCCount28:conditionAttachmentEasternVCCount29"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
 		<attachment name="objectiveAttachmentEastern_has_control_of_29_Victory_Cities" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentEasternVCCount29:conditionAttachmentEasternVCCount30"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="objectiveValue" value="8"/>
 		</attachment>
 
@@ -4379,7 +4379,7 @@
 		<!-- American Victory City Count Triggers -->
 		<attachment name="triggerAttachmentAmericans_have_13_Victory_Cities" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount13:conditionAttachmentAmericanVCCount14"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="resource" value="techTokens"/>
 			<option name="resourceCount" value="10"/>
 			<option name="notification" value="American_Count_13"/>
@@ -4388,7 +4388,7 @@
 
 		<attachment name="triggerAttachmentAmericans_have_14_Victory_Cities" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount14:conditionAttachmentAmericanVCCount15"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="resource" value="techTokens"/>
 			<option name="resourceCount" value="10"/>
 			<option name="notification" value="American_Count_14"/>
@@ -4397,7 +4397,7 @@
 
 		<attachment name="triggerAttachmentAmericans_have_15_Victory_Cities" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount15:conditionAttachmentAmericanVCCount16"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="resource" value="techTokens"/>
 			<option name="resourceCount" value="10"/>
 			<option name="notification" value="American_Count_15"/>
@@ -4406,7 +4406,7 @@
 
 		<attachment name="triggerAttachmentAmericans_have_16_Victory_Cities" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount16:conditionAttachmentAmericanVCCount17"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="resource" value="techTokens"/>
 			<option name="resourceCount" value="10"/>
 			<option name="notification" value="American_Count_16"/>
@@ -4415,7 +4415,7 @@
 
 		<attachment name="triggerAttachmentAmericans_have_17_Victory_Cities" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount17:conditionAttachmentAmericanVCCount18"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="resource" value="techTokens"/>
 			<option name="resourceCount" value="10"/>
 			<option name="notification" value="American_Count_17"/>
@@ -4424,7 +4424,7 @@
 
 		<attachment name="triggerAttachmentAmericans_have_18_Victory_Cities" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount18:conditionAttachmentAmericanVCCount19"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="resource" value="techTokens"/>
 			<option name="resourceCount" value="10"/>
 			<option name="notification" value="American_Count_18"/>
@@ -4433,7 +4433,7 @@
 
 		<attachment name="triggerAttachmentAmericans_have_19_Victory_Cities" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount19:conditionAttachmentAmericanVCCount20"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="resource" value="techTokens"/>
 			<option name="resourceCount" value="10"/>
 			<option name="notification" value="American_Count_19"/>
@@ -4442,7 +4442,7 @@
 
 		<attachment name="triggerAttachmentAmericans_have_20_Victory_Cities" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount20:conditionAttachmentAmericanVCCount21"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="resource" value="techTokens"/>
 			<option name="resourceCount" value="10"/>
 			<option name="notification" value="American_Count_20"/>
@@ -4451,7 +4451,7 @@
 
 		<attachment name="triggerAttachmentAmericans_have_21_Victory_Cities" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount21:conditionAttachmentAmericanVCCount22"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="resource" value="techTokens"/>
 			<option name="resourceCount" value="10"/>
 			<option name="notification" value="American_Count_21"/>
@@ -4460,7 +4460,7 @@
 
 		<attachment name="triggerAttachmentAmericans_have_22_Victory_Cities" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount22:conditionAttachmentAmericanVCCount23"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="resource" value="techTokens"/>
 			<option name="resourceCount" value="10"/>
 			<option name="notification" value="American_Count_22"/>
@@ -4469,7 +4469,7 @@
 
 		<attachment name="triggerAttachmentAmericans_have_23_Victory_Cities" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount23:conditionAttachmentAmericanVCCount24"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="resource" value="techTokens"/>
 			<option name="resourceCount" value="10"/>
 			<option name="notification" value="American_Count_23"/>
@@ -4478,7 +4478,7 @@
 
 		<attachment name="triggerAttachmentAmericans_have_24_Victory_Cities" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount24:conditionAttachmentAmericanVCCount25"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="resource" value="techTokens"/>
 			<option name="resourceCount" value="10"/>
 			<option name="notification" value="American_Count_24"/>
@@ -4487,7 +4487,7 @@
 
 		<attachment name="triggerAttachmentAmericans_have_25_Victory_Cities" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount25:conditionAttachmentAmericanVCCount26"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="resource" value="techTokens"/>
 			<option name="resourceCount" value="10"/>
 			<option name="notification" value="American_Count_25"/>
@@ -4496,7 +4496,7 @@
 
 		<attachment name="triggerAttachmentAmericans_have_26_Victory_Cities" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount26:conditionAttachmentAmericanVCCount27"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="resource" value="techTokens"/>
 			<option name="resourceCount" value="10"/>
 			<option name="notification" value="American_Count_26"/>
@@ -4505,7 +4505,7 @@
 
 		<attachment name="triggerAttachmentAmericans_have_27_Victory_Cities" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount27:conditionAttachmentAmericanVCCount28"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="resource" value="techTokens"/>
 			<option name="resourceCount" value="10"/>
 			<option name="notification" value="American_Count_27"/>
@@ -4514,7 +4514,7 @@
 
 		<attachment name="triggerAttachmentAmericans_have_28_Victory_Cities" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount28:conditionAttachmentAmericanVCCount29"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="resource" value="techTokens"/>
 			<option name="resourceCount" value="10"/>
 			<option name="notification" value="American_Count_28"/>
@@ -4523,7 +4523,7 @@
 
 		<attachment name="triggerAttachmentAmericans_have_29_Victory_Cities" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount29:conditionAttachmentAmericanVCCount30"/>
-			<option name="conditionType" value="XOR"/>
+			<option name="conditionType" value="1"/>
 			<option name="resource" value="techTokens"/>
 			<option name="resourceCount" value="10"/>
 			<option name="notification" value="American_Count_29"/>
