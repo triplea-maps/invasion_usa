@@ -8128,7 +8128,7 @@
 		</property>
 
 		<!-- Custom Game Properties -->
-		<property name="Turn Off Tutorial Notifications" value="false" editable="true">
+		<property name="Turn Off Tutorial Notifications" value="true" editable="false">
 			<boolean/>
 		</property>
 
