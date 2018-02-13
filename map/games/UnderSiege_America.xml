@@ -6022,7 +6022,7 @@
 			<option name="conditions" value="conditionAttachmentWesternNoPUsReinforcements:conditionAttachmentAmericanVCCount13"/>
 			<option name="resource" value="PUs"/>
 			<option name="resourceCount" value="-999"/>
-			<option name="when" value="after:easternEndTurn"/>
+			<option name="when" value="after:americanEndTurn"/>
 		</attachment>
 		
 		<!-- Southern Remove all PUs -->
@@ -6030,7 +6030,7 @@
 			<option name="conditions" value="conditionAttachmentSouthernNoPUsReinforcements:conditionAttachmentAmericanVCCount13"/>
 			<option name="resource" value="PUs"/>
 			<option name="resourceCount" value="-999"/>
-			<option name="when" value="after:southernEndTurn"/>
+			<option name="when" value="after:americanEndTurn"/>
 		</attachment>
 		
 		<!-- Eastern Remove all PUs -->
@@ -6038,7 +6038,7 @@
 			<option name="conditions" value="conditionAttachmentEasternNoPUsReinforcements:conditionAttachmentAmericanVCCount13"/>
 			<option name="resource" value="PUs"/>
 			<option name="resourceCount" value="-999"/>
-			<option name="when" value="after:easternEndTurn"/>
+			<option name="when" value="after:americanEndTurn"/>
 		</attachment>
 		
 		<!-- Northern Remove all PUs -->
@@ -6046,7 +6046,7 @@
 			<option name="conditions" value="conditionAttachmentNorthernNoPUsReinforcements:conditionAttachmentAmericanVCCount13:conditionAttachmentNorthernInGame"/>
 			<option name="resource" value="PUs"/>
 			<option name="resourceCount" value="-999"/>
-			<option name="when" value="after:northernEndTurn"/>
+			<option name="when" value="after:americanEndTurn"/>
 		</attachment>
 		
 		<!-- Western Give 8 PUs before purchase -->
