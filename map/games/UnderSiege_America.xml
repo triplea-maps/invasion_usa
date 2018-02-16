@@ -8574,7 +8574,7 @@
 			<option name="uses" value="1"/>
 		</attachment>
 
-		<!-- Game Options2 Tutorial (without Laser)-->
+		<!-- Map Options2 Tutorial (without Laser)-->
 		<attachment name="triggerAttachmentNotifaction009GameOptions2NoLaser" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentUseTutorialNotifications:conditionAttachmentNoTutorialNotifications"/>
 			<option name="notification" value="GameOptions2_Tutorial"/>
@@ -8583,7 +8583,7 @@
 			<option name="uses" value="1"/>
 		</attachment>
 
-		<!-- Game Options Tutorial (without Laser)-->
+		<!-- Map Options Tutorial (without Laser)-->
 		<attachment name="triggerAttachmentNotifaction008GameOptionsNoLaser" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentUseTutorialNotifications:conditionAttachmentNoTutorialNotifications"/>
 			<option name="players" value="Americans:Western:Southern:Eastern:Northern"/>
@@ -8636,7 +8636,7 @@
 			<option name="uses" value="1"/>
 		</attachment>
 
-		<!-- Game Options2 Tutorial (with Laser)-->
+		<!-- Map Options2 Tutorial (with Laser)-->
 		<attachment name="triggerAttachmentNotifactionGameOptions2" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentUseTutorialNotifications:conditionAttachmentNoTutorialNotifications"/>
 			<option name="notification" value="GameOptions2_Tutorial"/>
@@ -8645,7 +8645,7 @@
 			<option name="uses" value="1"/>
 		</attachment>
 
-		<!-- Game Options Tutorial (with Laser)-->
+		<!-- Map Options Tutorial (with Laser)-->
 		<attachment name="triggerAttachmentNotifactionGameOptions1" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanInitialLaser:conditionAttachmentUseTutorialNotifications:conditionAttachmentNoStoryNotifications"/>
 			<option name="notification" value="GameOptions_Tutorial"/>
@@ -9292,7 +9292,7 @@
 
 <div style="padding:5px;font-size:12px;background-color:#AD3800;text-align:justify;width:402px;">
 <hr><center><b>Apocalypse</b></center>
-<center>'Game Options'</center>
+<center>'Map Options'</center>
 <center>'Add fifth Player (Northern)' Checked</center>
 <hr>
 </div>
@@ -9433,7 +9433,7 @@ There are 3 test for Liberating a Victory City<ol>
 <li>Militia units can be deployed to controlled contested territories as long as there are less then 2 Militia units there
 <li>Air units can move to controlled contested territories during Non-Combat Movement as long a there are less then 5 friendly units there</ul>
 
-<center><b>Game Options</b></center><hr>
+<center><b>Map Options</b></center><hr>
 <b>Bids</b><ul>
 <li>Place Bid amounts for each player here: Default 0</ul>
 <b>Low Luck</b><ul>
