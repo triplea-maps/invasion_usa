@@ -2121,8 +2121,8 @@
 
 		<attachment name="conditionAttachmentUseTutorialNotifications" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="gameProperty" value="Turn Off Tutorial Notifications"/>
-			<!-- Undo to turn on Tutorial
-			<option name="invert" value="true"/> -->
+			<!-- Undo to turn on Tutorial -->
+			<option name="invert" value="true"/>
 		</attachment>
 
 		<!-- Display Story Notifications -->
@@ -9192,7 +9192,7 @@
 		</property>
 
 		<!-- Custom Game Properties -->
-		<property name="Turn Off Tutorial Notifications" value="true" editable="true">
+		<property name="Turn Off Tutorial Notifications" value="false" editable="true">
 			<boolean/>
 		</property>
 
