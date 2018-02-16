@@ -4513,8 +4513,7 @@
 		
 		<!-- American's Initial forces -->
 		<attachment name="triggerAttachmentAmericanInitialForces" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentNoUseAmericanPreSet:conditionAttachmentAmericanHumanPlayer"/>
-			<option name="placement" value="Northern Command:reinforce" count="2"/>
+			<option name="conditions" value="conditionAttachmentNoUseAmericanPreSet"/>
 			<option name="purchase" value="bomber" count="6"/>
 			<option name="purchase" value="helicopter" count="9"/>
 			<option name="purchase" value="armor" count="12"/>
@@ -4526,9 +4525,8 @@
 
 		<!-- American Pre-Setup (Changes production frontier to No PUs) -->
 		<attachment name="triggerAttachmentUseAmericanPreSet" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseAmericanPreSet:conditionAttachmentAmericanAIPlayer"/>
+			<option name="conditions" value="conditionAttachmentUseAmericanPreSet"/>
 			<option name="conditionType" value="OR"/>
-			<option name="placement" value="Northern Command:reinforce" count="2"/>
 			<option name="placement" value="Seattle:infantry:armor" count="1"/>
 			<option name="placement" value="Portland:infantry:infantry" count="1"/>
 			<option name="placement" value="San Francisco:infantry:mechanized" count="1"/>
@@ -4564,6 +4562,14 @@
 		</attachment>
 		
 		<!-- Add 1 to American Initial Reinforcement Tokens -->
+		<attachment name="triggerAttachmentAmericanInitialTechRoll" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentUseReinforcements"/>
+			<option name="placement" value="Northern Command:reinforce" count="2"/>
+			<option name="when" value="before:americanInitialPlace"/>
+			<option name="uses" value="1"/>
+		</attachment>
+
+		<!-- Add 1 to American Initial Reinforcement Tokens -->
 		<attachment name="triggerAttachmentAdd1AmericanInitialTechRoll" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentAdd1AmericanTechRoll"/>
 			<option name="placement" value="Northern Command:reinforce" count="1"/>
@@ -4589,7 +4595,7 @@
 
 		<!-- American Territory Ownership -->
 		<attachment name="triggerAttachmentAmericanOwnership" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentAmericanVCCount13"/>
+			<option name="conditions" value="conditionAttachmentUseAmericanPreSet:conditionAttachmentAmericanVCCount13"/>
 			<option name="changeOwnership" value="WWa:any:Americans:false"/>
 			<option name="changeOwnership" value="NWC:any:Americans:false"/>
 			<option name="changeOwnership" value="CCa:any:Americans:false"/>
@@ -6128,7 +6134,7 @@
 			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentAmericanReinforce6"/>
 			<option name="resource" value="techTokens"/>
 			<option name="resourceCount" value="10"/>
-			<option name="when" value="before:americanRoll5Tech"/>
+			<option name="when" value="before:americanRoll6Tech"/>
 		</attachment>
 
 		<!-- American's TechTokens for Seventh Tech Roll -->
@@ -6136,7 +6142,7 @@
 			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentAmericanReinforce7"/>
 			<option name="resource" value="techTokens"/>
 			<option name="resourceCount" value="10"/>
-			<option name="when" value="before:americanRoll5Tech"/>
+			<option name="when" value="before:americanRoll7Tech"/>
 		</attachment>
 
 		<!-- American's Remove 7 Reinforce Counters -->
@@ -8298,7 +8304,20 @@
 		</attachment>
 
 		<attachment name="triggerAttachmentAmericanProductionPUs" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentAmericansWin:conditionAttachmentUseReinforcements"/>
+			<option name="conditions" value="conditionAttachmentAmericansWin:conditionAttachmentUseReinforcements:conditionAttachmentNorthernNotInGame"/>
+			<option name="frontier" value="productionPUs"/>
+			<option name="players" value="Americans"/>
+			<option name="playerAttachmentName" value="RulesAttachment" count="rulesAttachment"/>
+			<option name="playerProperty" value="movementRestrictionTerritories" count="-reset-N-1:N-2:N-3:N-4:N-5:Canada:Northern Command"/>
+			<option name="unitAttachmentName" value="UnitAttachment" count="unitAttachment"/>
+			<option name="unitType" value="mechanized:helicopter:bomber:armor:infantry"/>
+			<option name="unitProperty" value="maxBuiltPerPlayer" count="-reset-"/>
+			<option name="when" value="after:americanEndTurn"/>
+			<option name="uses" value="1"/>
+		</attachment>
+
+		<attachment name="triggerAttachmentAmericanProductionPUs_5" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentAmericansWin:conditionAttachmentUseReinforcements:conditionAttachmentNorthernInGame"/>
 			<option name="frontier" value="productionPUs"/>
 			<option name="players" value="Americans"/>
 			<option name="playerAttachmentName" value="RulesAttachment" count="rulesAttachment"/>
@@ -8326,7 +8345,20 @@
 		</attachment>
 
 		<attachment name="triggerAttachmentInvaderProductionPUs" attachTo="Western" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentAmericansLose:conditionAttachmentUseReinforcements"/>
+			<option name="conditions" value="conditionAttachmentAmericansLose:conditionAttachmentUseReinforcements:conditionAttachmentNorthernNotInGame"/>
+			<option name="frontier" value="productionPUs"/>
+			<option name="players" value="Western:Southern:Eastern"/>
+			<option name="playerAttachmentName" value="RulesAttachment" count="rulesAttachment"/>
+			<option name="playerProperty" value="movementRestrictionTerritories" count="-reset-N-1:N-2:N-3:N-4:N-5:Canada:Northern Command"/>
+			<option name="unitAttachmentName" value="UnitAttachment" count="unitAttachment"/>
+			<option name="unitType" value="mechanized:helicopter:bomber:armor:infantry"/>
+			<option name="unitProperty" value="maxBuiltPerPlayer" count="-reset-"/>
+			<option name="when" value="after:americanEndTurn"/>
+			<option name="uses" value="1"/>
+		</attachment>
+
+		<attachment name="triggerAttachmentInvaderProductionPUs_5" attachTo="Western" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentAmericansLose:conditionAttachmentUseReinforcements:conditionAttachmentNorthernInGame"/>
 			<option name="frontier" value="productionPUs"/>
 			<option name="players" value="Western:Southern:Eastern:Northern"/>
 			<option name="playerAttachmentName" value="RulesAttachment" count="rulesAttachment"/>
