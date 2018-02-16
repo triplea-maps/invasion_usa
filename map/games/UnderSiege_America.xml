@@ -477,7 +477,6 @@
 		<delegate name="placeBid" javaClass="games.strategy.triplea.delegate.BidPlaceDelegate" display="Bid Placement"/>
 		<delegate name="bid" javaClass="games.strategy.triplea.delegate.BidPurchaseDelegate" display="Deploy Forces"/>
 		<delegate name="userActions" javaClass="games.strategy.triplea.delegate.UserActionDelegate" display="Actions And Operations"/>
-		<delegate name="politics" javaClass="games.strategy.triplea.delegate.PoliticsDelegate" display="Political Actions"/>
 		<delegate name="tech" javaClass="games.strategy.triplea.delegate.TechnologyDelegate" display="Determine Reinforcements"/>
 		<delegate name="techActivation" javaClass="games.strategy.triplea.delegate.TechActivationDelegate" display="Receive Reinforcements"/>
 		<delegate name="purchase" javaClass="games.strategy.triplea.delegate.PurchaseDelegate" display="Strategic Planning"/>
@@ -524,7 +523,6 @@
 			<step name="northernInitialPlace" delegate="place" player="Northern" maxRunCount="1" display="Euro-Asian Group Mobilizes 15 units into their Landing Zones"/> 
 
 			<!-- Western Game Sequence -->
-			<step name="westernPolitics" delegate="politics" player="Western" display="Asian Alliance Politics"/>
 			<step name="westernRollTech" delegate="tech" player="Western" display="Asian Alliance development of regular forces"/>
 			<step name="westernTechActivation" delegate="techActivation" player="Western" display="Asian Alliance reinforcements"/>
 			<step name="westernPurchase" delegate="purchase" player="Western" display="Asian Alliance Receive Reinforcements"/>
@@ -535,7 +533,6 @@
 			<step name="westernEndTurn" delegate="endTurn" player="Western"/>
 
 			<!-- Southern Game Sequence -->
-			<step name="southernPolitics" delegate="politics" player="Southern" display="Peoples Liberation Front Politics"/>
 			<step name="southernRollTech" delegate="tech" player="Southern" display="Peoples Liberation Front development of regular forces"/>
 			<step name="southernTechActivation" delegate="techActivation" player="Southern" display="Peoples Liberation Front reinforcements"/>
 			<step name="southernPurchase" delegate="purchase" player="Southern" display="Peoples Liberation Front Receive Reinforcements"/>
@@ -546,7 +543,6 @@
 			<step name="southernEndTurn" delegate="endTurn" player="Southern"/>
 
 			<!-- Eastern Game Sequence -->
-			<step name="easternPolitics" delegate="politics" player="Eastern" display="Euro-Hegemony Politics"/>
 			<step name="easternRollTech" delegate="tech" player="Eastern" display="Euro-Hegemony development of regular forces"/>
 			<step name="easternTechActivation" delegate="techActivation" player="Eastern" display="Euro-Hegemony reinforcements"/>
 			<step name="easternPurchase" delegate="purchase" player="Eastern" display="Euro-Hegemony Receive Reinforcements"/>
@@ -557,7 +553,6 @@
 			<step name="easternEndTurn" delegate="endTurn" player="Eastern"/>
 
 			<!-- Northern Game Sequence -->
-			<step name="northernPolitics" delegate="politics" player="Northern" display="Euro-Asian Group Politics"/>
 			<step name="northernRollTech" delegate="tech" player="Northern" display="Euro-Asian Group development of regular forces"/>
 			<step name="northernTechActivation" delegate="techActivation" player="Northern" display="Euro-Asian Group reinforcements"/>
 			<step name="northernPurchase" delegate="purchase" player="Northern" display="Euro-Asian Group Receive Reinforcements"/>
@@ -627,7 +622,7 @@
 		</productionRule>
 
 		<productionRule name="buyReinforce">
-			<cost resource="PUs" quantity="100" />
+			<cost resource="PUs" quantity="10" />
 			<result resourceOrUnit="reinforce" quantity="1"/>
 		</productionRule>
 
@@ -663,28 +658,28 @@
 
 		<!-- American only unit -->
 		<productionRule name="buyMilitia">
-			<cost resource="PUs" quantity="4" />
+			<cost resource="PUs" quantity="6" />
 			<result resourceOrUnit="militia" quantity="1"/>
 		</productionRule>
 
 		<productionRule name="buyLaser">
-			<cost resource="PUs" quantity="100" />
+			<cost resource="PUs" quantity="25" />
 			<result resourceOrUnit="laser" quantity="1"/>
 		</productionRule>
 
 		<productionRule name="buyStrike">
-			<cost resource="PUs" quantity="100" />
+			<cost resource="PUs" quantity="5" />
 			<result resourceOrUnit="strike" quantity="1"/>
 		</productionRule>
 
 		<!-- Invader only unit -->
 		<productionRule name="buyTruck">
-			<cost resource="PUs" quantity="100" />
+			<cost resource="PUs" quantity="25" />
 			<result resourceOrUnit="truck" quantity="1"/>
 		</productionRule>
 
 		<productionRule name="buyTransport">
-			<cost resource="PUs" quantity="100" />
+			<cost resource="PUs" quantity="25" />
 			<result resourceOrUnit="transport" quantity="1"/>
 		</productionRule>
 
@@ -1067,19 +1062,16 @@
 
 		<!-- Laser (American only unit) -->
 		<attachment name="unitAttachment" attachTo="laser" javaClass="games.strategy.triplea.attachments.UnitAttachment" type="unitType">
-			<option name="movement" value="0"/>
-			<option name="attack" value="0"/>
-			<option name="defense" value="0"/>
-			<option name="canBeDamaged" value="false"/>
+			<option name="canBeDamaged" value="true"/>
 			<option name="isInfrastructure" value="true"/>
 			<option name="canProduceUnits" value="true"/>
 			<option name="isConstruction" value="true"/>
 			<option name="constructionType" value="laser"/>
-			<!-- <option name="createsUnitsList" value="1:strike"/> -->
+			<option name="canProduceXUnits" value="-1"/>
 			<option name="maxConstructionsPerTypePerTerr" value="1"/>
 			<option name="constructionsPerTerrPerTypePerTurn" value="1"/>
 			<option name="destroyedWhenCapturedBy" value="Western:Southern:Eastern:Northern"/>
-			<!-- Like Air units, this unit can only be placed in cities, but not landing zones -->
+			<!-- This unit can only be placed in cities, but not landing zones -->
 			<option name="unitPlacementOnlyAllowedIn" value="Washington D.C.:New York:Boston:Philadelphia:Buffalo:Pittsburgh:San Diego:Memphis:Indianapolis:New Orleans:Los Angeles:Denver:Milwaukee:Detroit:Houston:Chicago:San Francisco:Portland:Tampa:Kansas City:St. Louis:Salt Lake City:Seattle:San Antonio:Dallas:Phoenix:Minneapolis:Atlanta:Miami:Cleveland"/>
 		</attachment>
 
@@ -1091,11 +1083,8 @@
 			<option name="defense" value="0"/>
 			<option name="isSuicide" value ="true"/>
 			<option name="isKamikaze" value="true"/>
-			<!-- <option name="placementLimit" value="owned" count="1"/> 
 			<option name="movementLimit" value="owned" count="1"/>
-			<option name="attackingLimit" value="owned" count="1"/> -->
-			<!-- <option name="requiresUnits" value="laser"/>
-			<option name="unitPlacementOnlyAllowedIn" value="Northern Command"/> -->
+			<option name="attackingLimit" value="owned" count="1"/>
 		</attachment>
 
 		<!-- Reinforce -->
@@ -1103,23 +1092,32 @@
 			<option name="movement" value="0"/>
 			<option name="attack" value="0"/>
 			<option name="defense" value="0"/>
-			<option name="unitPlacementOnlyAllowedIn" value="W-1:S-5:E-6:Canada:Northern Command"/>
 		</attachment>
 
 		<!-- Truck (Invader only unit) -->
 		<attachment name="unitAttachment" attachTo="truck" javaClass="games.strategy.triplea.attachments.UnitAttachment" type="unitType">
-			<option name="isFactory" value="true"/>
+			<option name="canBeDamaged" value="true"/>
+			<option name="isInfrastructure" value="true"/>
+			<option name="canProduceUnits" value="true"/>
+			<option name="isConstruction" value="true"/>
+			<option name="constructionType" value="factory"/>
+			<option name="maxConstructionsPerTypePerTerr" value="1"/>
+			<option name="constructionsPerTerrPerTypePerTurn" value="1"/>
 			<option name="canProduceXUnits" value="-1"/>
 			<option name="destroyedWhenCapturedBy" value="Americans"/>
-			<option name="unitPlacementOnlyAllowedIn" value="Seattle:S-1:S-2:S-3:S-4:S-5:Dallas:N-1:N-2:N-3:N-4:N-5:Canada:Atlanta"/>
 		</attachment>
 
 		<!-- Transport (Invader only unit) -->
 		<attachment name="unitAttachment" attachTo="transport" javaClass="games.strategy.triplea.attachments.UnitAttachment" type="unitType">
-			<option name="isFactory" value="true"/>
+			<option name="canBeDamaged" value="true"/>
+			<option name="isInfrastructure" value="true"/>
+			<option name="canProduceUnits" value="true"/>
+			<option name="isConstruction" value="true"/>
+			<option name="constructionType" value="factory"/>
+			<option name="maxConstructionsPerTypePerTerr" value="1"/>
+			<option name="constructionsPerTerrPerTypePerTurn" value="1"/>
 			<option name="canProduceXUnits" value="-1"/>
 			<option name="destroyedWhenCapturedBy" value="Americans"/>
-			<option name="unitPlacementOnlyAllowedIn" value="W-1:W-2:W-3:W-4:W-5:W-6:S-6:E-1:E-2:E-3:E-4:E-5:E-6"/>
 		</attachment>
 
 		<!-- Territory Attachments -->
@@ -1301,42 +1299,42 @@
 		<!-- Victory Cities -->
 		<attachment name="territoryAttachment" attachTo="Washington D.C." javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
-			<option name="unitProduction" value="0"/>
+			<option name="unitProduction" value="5"/>
 			<option name="territoryEffect" value="city"/>
 			<option name="capital" value="Americans"/>                        
 		</attachment>
 
 		<attachment name="territoryAttachment" attachTo="New York" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
-			<option name="unitProduction" value="0"/>
+			<option name="unitProduction" value="5"/>
 			<option name="territoryEffect" value="city"/>
 			<option name="capital" value="Americans"/>                        
 		</attachment>
 
 		<attachment name="territoryAttachment" attachTo="Boston" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
-			<option name="unitProduction" value="0"/>
+			<option name="unitProduction" value="5"/>
 			<option name="territoryEffect" value="city"/>
 			<option name="capital" value="Americans"/>                        
 		</attachment>
 
 		<attachment name="territoryAttachment" attachTo="Philadelphia" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
-			<option name="unitProduction" value="0"/>
+			<option name="unitProduction" value="5"/>
 			<option name="territoryEffect" value="city"/>
 			<option name="capital" value="Americans"/>                        
 		</attachment>
 
 		<attachment name="territoryAttachment" attachTo="Buffalo" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
-			<option name="unitProduction" value="0"/>
+			<option name="unitProduction" value="5"/>
 			<option name="territoryEffect" value="city"/>
 			<option name="capital" value="Americans"/>                        
 		</attachment>
 
 		<attachment name="territoryAttachment" attachTo="Pittsburgh" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
-			<option name="unitProduction" value="0"/>
+			<option name="unitProduction" value="5"/>
 			<option name="territoryEffect" value="city"/>
 			<option name="territoryEffect" value="mountain"/>
 			<option name="capital" value="Americans"/>                        
@@ -1344,42 +1342,42 @@
 
 		<attachment name="territoryAttachment" attachTo="San Diego" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
-			<option name="unitProduction" value="0"/>
+			<option name="unitProduction" value="5"/>
 			<option name="territoryEffect" value="city"/>
 			<option name="capital" value="Americans"/>                        
 		</attachment>
 
 		<attachment name="territoryAttachment" attachTo="Memphis" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
-			<option name="unitProduction" value="0"/>
+			<option name="unitProduction" value="5"/>
 			<option name="territoryEffect" value="city"/>
 			<option name="capital" value="Americans"/>                        
 		</attachment>
 
 		<attachment name="territoryAttachment" attachTo="Indianapolis" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
-			<option name="unitProduction" value="0"/>
+			<option name="unitProduction" value="5"/>
 			<option name="territoryEffect" value="city"/>
 			<option name="capital" value="Americans"/>                        
 		</attachment>
 
 		<attachment name="territoryAttachment" attachTo="New Orleans" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
-			<option name="unitProduction" value="0"/>
+			<option name="unitProduction" value="5"/>
 			<option name="territoryEffect" value="city"/>
 			<option name="capital" value="Americans"/>                        
 		</attachment>
 
 		<attachment name="territoryAttachment" attachTo="Los Angeles" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
-			<option name="unitProduction" value="0"/>
+			<option name="unitProduction" value="5"/>
 			<option name="territoryEffect" value="city"/>
 			<option name="capital" value="Americans"/>                        
 		</attachment>
 
 		<attachment name="territoryAttachment" attachTo="Denver" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
-			<option name="unitProduction" value="0"/>
+			<option name="unitProduction" value="5"/>
 			<option name="territoryEffect" value="city"/>
 			<option name="territoryEffect" value="mountain"/>
 			<option name="capital" value="Americans"/>                        
@@ -1387,70 +1385,70 @@
 
 		<attachment name="territoryAttachment" attachTo="Milwaukee" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
-			<option name="unitProduction" value="0"/>
+			<option name="unitProduction" value="5"/>
 			<option name="territoryEffect" value="city"/>
 			<option name="capital" value="Americans"/> 
 		</attachment>
 
 		<attachment name="territoryAttachment" attachTo="Detroit" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
-			<option name="unitProduction" value="0"/>
+			<option name="unitProduction" value="5"/>
 			<option name="territoryEffect" value="city"/>
 			<option name="capital" value="Americans"/>                        
 		</attachment>
 
 		<attachment name="territoryAttachment" attachTo="Houston" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
-			<option name="unitProduction" value="0"/>
+			<option name="unitProduction" value="5"/>
 			<option name="territoryEffect" value="city"/>
 			<option name="capital" value="Americans"/>                        
 		</attachment>
 
 		<attachment name="territoryAttachment" attachTo="Chicago" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
-			<option name="unitProduction" value="0"/>
+			<option name="unitProduction" value="5"/>
 			<option name="territoryEffect" value="city"/>
 			<option name="capital" value="Americans"/>                        
 		</attachment>
 
 		<attachment name="territoryAttachment" attachTo="San Francisco" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
-			<option name="unitProduction" value="0"/>
+			<option name="unitProduction" value="5"/>
 			<option name="territoryEffect" value="city"/>
 			<option name="capital" value="Americans"/>                        
 		</attachment>
 
 		<attachment name="territoryAttachment" attachTo="Portland" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
-			<option name="unitProduction" value="0"/>
+			<option name="unitProduction" value="5"/>
 			<option name="territoryEffect" value="city"/>
 			<option name="capital" value="Americans"/>                        
 		</attachment>
 
 		<attachment name="territoryAttachment" attachTo="Tampa" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
-			<option name="unitProduction" value="0"/>
+			<option name="unitProduction" value="5"/>
 			<option name="territoryEffect" value="city"/>
 			<option name="capital" value="Americans"/>                        
 		</attachment>
 
 		<attachment name="territoryAttachment" attachTo="Kansas City" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
-			<option name="unitProduction" value="0"/>
+			<option name="unitProduction" value="5"/>
 			<option name="territoryEffect" value="city"/>
 			<option name="capital" value="Americans"/>                        
 		</attachment>
 
 		<attachment name="territoryAttachment" attachTo="St. Louis" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
-			<option name="unitProduction" value="0"/>
+			<option name="unitProduction" value="5"/>
 			<option name="territoryEffect" value="city"/>
 			<option name="capital" value="Americans"/>                        
 		</attachment>
 
 		<attachment name="territoryAttachment" attachTo="Salt Lake City" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
-			<option name="unitProduction" value="0"/>
+			<option name="unitProduction" value="5"/>
 			<option name="territoryEffect" value="city"/>
 			<option name="capital" value="Americans"/>                        
 		</attachment>
@@ -1472,21 +1470,21 @@
 
 		<attachment name="territoryAttachment" attachTo="Dallas" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
-			<option name="unitProduction" value="0"/>
+			<option name="unitProduction" value="5"/>
 			<option name="territoryEffect" value="city"/>
 			<option name="capital" value="Americans"/>                        
 		</attachment>
 
 		<attachment name="territoryAttachment" attachTo="Phoenix" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
-			<option name="unitProduction" value="0"/>
+			<option name="unitProduction" value="5"/>
 			<option name="territoryEffect" value="city"/>
 			<option name="capital" value="Americans"/>                        
 		</attachment>
 
 		<attachment name="territoryAttachment" attachTo="Minneapolis" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
-			<option name="unitProduction" value="0"/>
+			<option name="unitProduction" value="5"/>
 			<option name="territoryEffect" value="city"/>
 			<option name="capital" value="Americans"/>                        
 		</attachment>
@@ -1501,14 +1499,14 @@
 
 		<attachment name="territoryAttachment" attachTo="Miami" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
-			<option name="unitProduction" value="0"/>
+			<option name="unitProduction" value="5"/>
 			<option name="territoryEffect" value="city"/>
 			<option name="capital" value="Americans"/>                        
 		</attachment>
 
 		<attachment name="territoryAttachment" attachTo="Cleveland" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="4"/>
-			<option name="unitProduction" value="0"/>
+			<option name="unitProduction" value="5"/>
 			<option name="territoryEffect" value="city"/>
 			<option name="capital" value="Americans"/>                        
 		</attachment>
@@ -2123,7 +2121,8 @@
 
 		<attachment name="conditionAttachmentUseTutorialNotifications" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="gameProperty" value="Turn Off Tutorial Notifications"/>
-			<option name="invert" value="true"/>
+			<!-- Undo to turn on Tutorial
+			<option name="invert" value="true"/> -->
 		</attachment>
 
 		<!-- Display Story Notifications -->
@@ -2227,41 +2226,41 @@
 		
 		<!-- Western Reinforcements by territory PUs -->
 		<attachment name="conditionAttachmentWesternPUsReinforcements" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
-			<option name="gameProperty" value="Asian Alliance uses PUs to buy reinforcements"/>
+			<option name="gameProperty" value="Asian Alliance (Western) uses PUs to buy reinforcements"/>
 		</attachment>
 
 		<attachment name="conditionAttachmentWesternNoPUsReinforcements" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
-			<option name="gameProperty" value="Asian Alliance uses PUs to buy reinforcements"/>
+			<option name="gameProperty" value="Asian Alliance (Western) uses PUs to buy reinforcements"/>
 			<option name="invert" value="true"/>
 		</attachment>
 
 		<!-- Southern Reinforcements by territory PUs -->
 		<attachment name="conditionAttachmentSouthernPUsReinforcements" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
-			<option name="gameProperty" value="People's Liberation Front uses PUs to buy reinforcements"/>
+			<option name="gameProperty" value="People's Liberation Front (Southern) uses PUs to buy reinforcements"/>
 		</attachment>
 
 		<attachment name="conditionAttachmentSouthernNoPUsReinforcements" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
-			<option name="gameProperty" value="People's Liberation Front uses PUs to buy reinforcements"/>
+			<option name="gameProperty" value="People's Liberation Front (Southern) uses PUs to buy reinforcements"/>
 			<option name="invert" value="true"/>
 		</attachment>
 
 		<!-- Eastern Reinforcements by territory PUs -->
 		<attachment name="conditionAttachmentEasternPUsReinforcements" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
-			<option name="gameProperty" value="Euro-Hegemony uses PUs to buy reinforcements"/>
+			<option name="gameProperty" value="Euro-Hegemony (Eastern) uses PUs to buy reinforcements"/>
 		</attachment>
 
 		<attachment name="conditionAttachmentEasternNoPUsReinforcements" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
-			<option name="gameProperty" value="Euro-Hegemony uses PUs to buy reinforcements"/>
+			<option name="gameProperty" value="Euro-Hegemony (Eastern) uses PUs to buy reinforcements"/>
 			<option name="invert" value="true"/>
 		</attachment>
 
 		<!-- Northern Reinforcements by territory PUs -->
 		<attachment name="conditionAttachmentNorthernernPUsReinforcements" attachTo="Northern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
-			<option name="gameProperty" value="Euro-Asian Group uses PUs to buy reinforcements"/>
+			<option name="gameProperty" value="Euro-Asian Group (Northern) uses PUs to buy reinforcements"/>
 		</attachment>
 
 		<attachment name="conditionAttachmentNorthernNoPUsReinforcements" attachTo="Northern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
-			<option name="gameProperty" value="Euro-Asian Group uses PUs to buy reinforcements"/>
+			<option name="gameProperty" value="Euro-Asian Group (Northern) uses PUs to buy reinforcements"/>
 			<option name="invert" value="true"/>
 		</attachment>
 		<!-- End Game Option Conditions -->
@@ -4411,59 +4410,6 @@
 			<option name="conditions" value="conditionAttachmentNorthernMinneapolisOwnership:conditionAttachmentUseReinforcements:conditionAttachmentFowardLandingsZones"/>
 		</attachment>
 		
-		<!-- Political Action Conditions -->
-		<!-- Western Conditions -->
-		<attachment name="conditionAttachmentWesternNeutralSouthernFor3Turns" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
-			<option name="relationship" value="Western:Southern:anyNeutral:3"/>
-		</attachment>
-
-		<attachment name="conditionAttachmentWesternNeutralEasternFor3Turns" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
-			<option name="relationship" value="Western:Eastern:anyNeutral:3"/>
-		</attachment>
-
-		<attachment name="conditionAttachmentWesternNeutralNorthernFor3Turns" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
-			<option name="relationship" value="Western:Northern:anyNeutral:3"/>
-		</attachment>
-
-		<!-- Southern Conditions -->
-		<attachment name="conditionAttachmentSouthernNeutralWesternFor3Turns" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
-			<option name="relationship" value="Southern:Western:anyNeutral:3"/>
-		</attachment>
-
-		<attachment name="conditionAttachmentSouthernNeutralEasternFor3Turns" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
-			<option name="relationship" value="Southern:Eastern:anyNeutral:3"/>
-		</attachment>
-
-		<attachment name="conditionAttachmentSouthernNeutralNorthrnFor3Turns" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
-			<option name="relationship" value="Southern:Northern:anyNeutral:3"/>
-		</attachment>
-
-		<!-- Eastern Conditions -->
-		<attachment name="conditionAttachmentEasternNeutralWesternFor3Turns" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
-			<option name="relationship" value="Eastern:Western:anyNeutral:3"/>
-		</attachment>
-
-		<attachment name="conditionAttachmentEasternNeutralSouthernFor3Turns" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
-			<option name="relationship" value="Eastern:Southern:anyNeutral:3"/>
-		</attachment>
-
-		<attachment name="conditionAttachmentEasternNeutralNorthernFor3Turns" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
-			<option name="relationship" value="Eastern:Northern:anyNeutral:3"/>
-		</attachment>
-
-		<!-- Northern Conditions -->
-		<attachment name="conditionAttachmentNorthernNeutralWesternFor3Turns" attachTo="Northern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
-			<option name="relationship" value="Northern:Western:anyNeutral:3"/>
-		</attachment>
-
-		<attachment name="conditionAttachmentNorthernNeutralSouthernFor3Turns" attachTo="Northern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
-			<option name="relationship" value="Northern:Southern:anyNeutral:3"/>
-		</attachment>
-
-		<attachment name="conditionAttachmentNorthernNeutralEasternFor3Turns" attachTo="Northern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
-			<option name="relationship" value="Northern:Eastern:anyNeutral:3"/>
-		</attachment>
-
 		<!-- Game Triggers -->
 		<!-- Use Northern Player -->
 		<!-- American Human Player -->
@@ -4522,7 +4468,6 @@
 			<option name="resourceCount" value="-999"/>
 			<option name="players" value="Americans:Western:Southern:Eastern:Northern"/>
 			<option name="when" value="after:americanEndTurn"/>
-			<option name="uses" value="1"/>
 		</attachment>
 
 		<!-- American Initial Laser Triggers -->
@@ -8346,6 +8291,25 @@
 			<option name="uses" value="1"/>
 		</attachment>
 
+		<attachment name="triggerAttachmentAmericanNoMoreReinforce" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentAmericansWin"/>
+			<option name="removeUnits" value="Northern Command:reinforce" count="99"/>
+			<option name="when" value="before:american1TechActivation"/>
+		</attachment>
+
+		<attachment name="triggerAttachmentAmericanProductionPUs" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentAmericansWin:conditionAttachmentUseReinforcements"/>
+			<option name="frontier" value="productionPUs"/>
+			<option name="players" value="Americans"/>
+			<option name="playerAttachmentName" value="RulesAttachment" count="rulesAttachment"/>
+			<option name="playerProperty" value="movementRestrictionTerritories" count="-reset-Northern Command"/>
+			<option name="unitAttachmentName" value="UnitAttachment" count="unitAttachment"/>
+			<option name="unitType" value="mechanized:helicopter:bomber:armor:infantry"/>
+			<option name="unitProperty" value="maxBuiltPerPlayer" count="-reset-"/>
+			<option name="when" value="after:americanEndTurn"/>
+			<option name="uses" value="1"/>
+		</attachment>
+
 		<!-- Invader Victory -->
 		<attachment name="triggerAttachmentInvaderVictory" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericansLose"/>
@@ -8723,7 +8687,7 @@
 		<!-- Rules Restrictions -->
 		<!-- American Rules -->
 		<attachment name="rulesAttachment" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
-			<option name="movementRestrictionTerritories" value="W-1:W-2:W-3:W-4:W-5:W-6:S-1:S-2:S-3:S-4:S-5:S-6:E-2:E-3:E-4:E-5:E-6:N-1:N-2:N-3:N-4:N-5:Canada"/>
+			<option name="movementRestrictionTerritories" value="W-1:W-2:W-3:W-4:W-5:W-6:S-1:S-2:S-3:S-4:S-5:S-6:E-1:E-2:E-3:E-4:E-5:E-6:N-1:N-2:N-3:N-4:N-5:Canada"/>
 			<option name="movementRestrictionType" value="disallowed"/>
 			<option name="placementAnyTerritory" value="true"/>
 			<option name="placementPerTerritory" value="5"/>  
@@ -8802,64 +8766,6 @@
 			<option name="placementLimit" value="owned:bomber:helicopter:armor:mechanized:infantry" count="5"/>
 			<option name="retainCapitalNumber" value="1"/>
 			<option name="retainCapitalProduceNumber" value="1"/>
-		</attachment>
-
-		<!-- Political Action Attachments -->
-		<!-- Western Actions -->
-		<attachment name="politicalActionAttachmentWesternDeclareWarOnSouthern" attachTo="Western" javaClass="games.strategy.triplea.attachments.PoliticalActionAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentWesternNeutralSouthernFor3Turns"/>
-			<option name="relationshipChange" value="Western:Southern:War"/>
-			<option name="text" value="Western_Declares_War_Southern"/>
-			<option name="chance" value="6:6"/>
-			<option name="costPU" value="0"/>
-			<option name="attemptsPerTurn" value="1"/>
-		</attachment>
-
-		<attachment name="politicalActionAttachmentWesternDeclareWarOnEastern" attachTo="Western" javaClass="games.strategy.triplea.attachments.PoliticalActionAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentWesternNeutralEasternFor3Turns"/>
-			<option name="relationshipChange" value="Western:Eastern:War"/>
-			<option name="text" value="Western_Declares_War_Eastern"/>
-			<option name="chance" value="6:6"/>
-			<option name="costPU" value="0"/>
-			<option name="attemptsPerTurn" value="1"/>
-		</attachment>
-
-		<!-- Southern Actions -->
-		<attachment name="politicalActionAttachmentSouthernDeclareWarOnWestern" attachTo="Southern" javaClass="games.strategy.triplea.attachments.PoliticalActionAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentSouthernNeutralWesternFor3Turns"/>
-			<option name="relationshipChange" value="Southern:Western:War"/>
-			<option name="text" value="Southern_Declares_War_Western"/>
-			<option name="chance" value="6:6"/>
-			<option name="costPU" value="0"/>
-			<option name="attemptsPerTurn" value="1"/>
-		</attachment>
-
-		<attachment name="politicalActionAttachmentSouthernDeclareWarOnEastern" attachTo="Southern" javaClass="games.strategy.triplea.attachments.PoliticalActionAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentSouthernNeutralEasternFor3Turns"/>
-			<option name="relationshipChange" value="Southern:Eastern:War"/>
-			<option name="text" value="Southern_Declares_War_Eastern"/>
-			<option name="chance" value="6:6"/>
-			<option name="costPU" value="0"/>
-			<option name="attemptsPerTurn" value="1"/>
-		</attachment>
-
-		<!-- Eastern Actions -->
-		<attachment name="politicalActionAttachmentEasternDeclareWarOnWestern" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.PoliticalActionAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentEasternNeutralWesternFor3Turns"/>
-			<option name="relationshipChange" value="Eastern:Western:War"/>
-			<option name="text" value="Eastern_Declares_War_Western"/>
-			<option name="chance" value="6:6"/>
-			<option name="costPU" value="0"/>
-			<option name="attemptsPerTurn" value="1"/>
-		</attachment>
-
-		<attachment name="politicalActionAttachmentEasternDeclareWarOnSouthern" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.PoliticalActionAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentEasternNeutralSouthernFor3Turns"/>
-			<option name="relationshipChange" value="Eastern:Southern:War"/>
-			<option name="text" value="Eastern_Declares_War_Southern"/>
-			<option name="chance" value="6:6"/>
-			<option name="costPU" value="0"/>
-			<option name="attemptsPerTurn" value="1"/>
 		</attachment>
 
 		<!-- Awarding Human Player Tech -->
@@ -9074,7 +8980,7 @@
 			<boolean/>
 		</property>
 
-		<property name="Use Politics" value="false" editable="true">
+		<property name="Use Politics" value="false" editable="false">
 			<boolean/>
 		</property>
 
@@ -9099,7 +9005,7 @@
 			<boolean/>
 		</property>
 
-		<property name="Remove All Tech Tokens At End Of Turn" value="false" editable="true">
+		<property name="Remove All Tech Tokens At End Of Turn" value="false" editable="false">
 			<boolean/>
 		</property>
 
@@ -9155,11 +9061,7 @@
 			<boolean/>
 		</property>
 
-		<property name="Unplaced units live when not placed" value ="false" editable="true">
-			<boolean/>
-		</property>
-
-		<property name="Occupied Territories" value="true" editable="false">
+		<property name="Unplaced units live when not placed" value ="false" editable="false">
 			<boolean/>
 		</property>
 
@@ -9290,7 +9192,7 @@
 		</property>
 
 		<!-- Custom Game Properties -->
-		<property name="Turn Off Tutorial Notifications" value="true" editable="false">
+		<property name="Turn Off Tutorial Notifications" value="true" editable="true">
 			<boolean/>
 		</property>
 
@@ -9310,7 +9212,7 @@
 			<boolean/>
 		</property>
 
-		<property name="Use American Pre-Setup" value="false" editable="true">
+		<property name="Use American Pre-Setup" value="false" editable="false">
 			<boolean/>
 		</property>
 
@@ -9334,19 +9236,19 @@
 			<boolean/>
 		</property>
 
-		<property name="Asian Alliance uses PUs to buy reinforcements" value="false" editable="true">
+		<property name="Asian Alliance (Western) uses PUs to buy reinforcements" value="false" editable="true">
 			<boolean/>
 		</property>
 
-		<property name="People's Liberation Front uses PUs to buy reinforcements" value="false" editable="true">
+		<property name="People's Liberation Front (Southern) uses PUs to buy reinforcements" value="false" editable="true">
 			<boolean/>
 		</property>
 
-		<property name="Euro-Hegemony uses PUs to buy reinforcements" value="false" editable="true">
+		<property name="Euro-Hegemony (Eastern) uses PUs to buy reinforcements" value="false" editable="true">
 			<boolean/>
 		</property>
 
-		<property name="Euro-Asian Group uses PUs to buy reinforcements" value="false" editable="true">
+		<property name="Euro-Asian Group (Northern) uses PUs to buy reinforcements" value="false" editable="true">
 			<boolean/>
 		</property>
 
@@ -9359,9 +9261,7 @@
 			<string/>
 			<value>
 				<![CDATA[
-<html>
-<body bgcolor="DADADA">
-<br />
+<div style="padding:5px;font-size:12px;text-align:justify;width:402px;">
 <center>
 <table border="1"bgcolor="AD3800">
 <tr>
@@ -9374,7 +9274,7 @@
 <th style="font-size:140%;000000"><center>Apocalypse</center></th>
 </tr>
 </table>
-<br />
+<br>
 <table border="1"bgcolor="AD3800">
 <tr>
  <th 
@@ -9384,71 +9284,186 @@
 </table>
 </center>
 <br><center><b>The economy of the world is in turmoil!</b></center>
-The United States of America, against the advise of the United Nations, has continued thier development of Advance Laser Technology.
-<br />As the first tower nears compleation, many European, Asian and third world nations begin recalling their diplomats home.
-<br />Now the world waits...
-<br />
-<br /><center>Will you deploy that first laser...</center>
-<br />
-<br /><b>Gameplay</b><ul>
-<li>When game startes there will be an initial deployment phase before turn 1 begins. 
-<li>The Americans first places all its 60 units (24 Infantry, 9 Mechanized, 12 Armor, 9 Helicopters and 6 Bombers) when the game starts. It has to place 2 units on all of the 30 US cities.
-<li>Starting with Western each invader then places 20 predefined units, on its attack zones: 8 Infantry, 3 Mechanized, 4 Armor, 3 Helicopters and 2 Bombers. Each invasion zone has a unit placement limit of 5. 
-<li>After all the invaders place their 20 units turn 1 will start. The order of play for each turn is: Western, Southern and Eastern, with the Americans playing last.  
-<li>The turn sequence is: Develop Reinforcements/Place Reinforcements/Combat Move/Battle/Non Combat Move.</ul>
-<br /><b>Americans Objectives</b><ul>
+<br>The United States of America, against the advise of the United Nations, has continued thier development of Advance Laser Technology.
+<br>As the first tower nears compleation, many European, Asian and third world nations begin recalling their diplomats home.
+<br>Now the world waits...
+<br><center>Will you deploy that first laser...</center>
+<hr><align="left"><b>Note:</b> To play Apocalypse, set 'Add fifth Player (Northern)' in 'Game Options' Screen</align><hr>
+<br><b>Objectives</b><ul>
 <li>Americans player objective: control at least 13 cities until turn 12.
-<li>The Americans receive 1 Lase Tower at the beginning of each turn to place into any American controled city.
-<li>The Americans also have the chance to recive additional military unit by use of Technology Rolls.
-<li>Americans cannot move into the starting invasion zones.</ul>
-<b>Invader(s) Objectives</b><ul>
-<li>Invader player(s) objective: conquer and hold at least 18 cities at the end of the Americans turn.  After which the invader will be at war with each other.
-<li>The invaders are not allied and can attack and take territories from one another, after a declaration of war. However, they cannot move into the others' invasion zones.
-<li>A Single invade is the winner by controlling 13 cities on its own.</ul>
-<br />
-<b>Units (Attack/Defense/Movement/PU Cost (Count)):</b><ul> 
-<li>Infantry&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3/3/1/3 (24)
-<li>Militia&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5(3)/3/1/- (-)&nbsp;&nbsp;&nbsp;(Militia attack at 3 when stacked with non-militia units) 
-<li>Mechanized&nbsp;&nbsp;&nbsp;&nbsp;3/3/2/4 (9)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(may transport one infantry/militia with transport option)
-<li>Armor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5/5/2/5 (12)&nbsp;&nbsp;&nbsp;&nbsp;(can blitz) 
-<li>Helicopter&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5/5/4/8 (9)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(may transport one infantry/militia with transport option)
-<li>Bomber&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7/7/6/12 (6)
-<li>Laser Tower&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0/0/0/- (-)nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(US only)</ul>
-<li>Strike&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7/0/99/- (-)nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(US only - gains one token per laser tower)</ul>
-<br />
-<b>Reinforcements/Bids</b>
-<br /><b>The American Player</b> has a limit to the number of certain units available:<ul>
-<li>Infanty - 24</li>
-<li>Mechanized - 9</li>
-<li>Armor - 12</li>
-<li>Helicopters - 9</li>
-<li>Bombers - 6</li</ul>
-These limits are suspended only during the American Bid purchase phase, which comes after the American Initial deployment phase.  After the American Bid Purchase, the unit limits are again in effect.ie...
-<br /> The American Bid is 15, during the American Bid purchase the American Player may purchase 3 Armor units, at 5PUs each, giving the American Player a total of 15 Armor units.
-<br />If during the American Reinforcement/Tech Roll phase the American Player is granted the option to purchase another Armor unit, the American Player will not be able to purchase this Armor unit unless 4 or more Armor units were lost prior to this deployment.  And the chance to purchase this Armor unit is lost.
-<br />There are 2 Game Options that can change this out come:
-<br />1) <b>Retain Unused American Resources:</b> Allows the American Player the ability to keep the Armor purchase until the unit count falls below 12.
-<br />2) <b>Add American Reinforcements to Purchase:</b> Which grants the American Player the Armor unit without the need to purchase it.
-<br />And there is also the: <b>No Reinforcement:</b> Which <b><u>all</u></b> Players use only their starting units.
-<br />Reinforcement/Bid Units are placed using the following rules:<ul>
-<li>The American Player may place only two units in the same territory at one time, this includes the Laser Canon, and can stack no more then 5 units in a territory.
-<li>Militia units can only be stacked 2 high in a single territory.</ul>
-<li>Strike counters will be placed in the Northern Command territory.</ul>
-<br /><b>The Invader Players</b> do thier Bid purchase before their initial deployment.  These extra units are added to the initial deployment, and they do not count against their total reinforcements.
-For their reinforcements, the Invaders have the ability to purchase between 0 and 8 units during their next 9 turns, as long as their total unit purchases does not exceed 40 units.
-Invader units are deployed into their 6 home invasion zones, and they can only stack 5 units in each zone.
-<br />
-<br /><b>Cities and mountians territories:</b> Attacker suffers a -1 penalty for attacking into these territories.
-<br /><b>Combined Arms:</b> Units gain an attack benefit when attacking with different classed units:
-<br />(Ground/Mobile/Air)
-<br /><b>Militia Units</b> do <b><i>not</i></b> benefit from Combined Arms.
-<br />
-<br />Invasion USA Team:
-<br />Author: Hobbes__
-<br />Images: Dagon81
-<br />Testing & Ideas: Pwnator
-</body>
-</html>
+<li>Invading player(s) objective: conquer and hold at least 18 cities at the end of the Americans turn.</ul>
+<b>Combantants</b><ul>
+<li>The Asian Alliance (Western)
+<li>The People's Liberation Front (Southern)
+<li>The Euro-Hegemony (Eastern)
+<li>Americans</ul>
+<b>Game Play</b><ul>
+<li>Initial Deployment Phase
+<li>Aquire Reinforcements
+<li>Deploy Reinforcements
+<li>Combat Movement
+<li>Combat
+<li>Non-Combat Movement</ul>
+
+<b>The Combat Units</b>
+<br><table border="1"><tr><td><center><b>Image</b></center></td><td><center><b>Name</b></center></td><td><center><b>At/Df/Mv</b></center></td><td colspan=2><center><b>Cost</b></center></td><td><center><b>Special</b></center></td></tr>
+<tr><td><img src="infantry.png"/></td><td><center>Infantry</center></td><td><center>3/3/1</center></td><td><center>3PUs</center></td><td><center>1IUs</center></td><td>Limit 24</td></tr>
+<tr><td><img src="mechanized.png"/></td><td><center>Mechanized</center></td><td><center>3/3/2</td><td><center>4PUs</center></td><td><center>1MUs</center></td><td>Limit 9</td></tr>
+<tr><td><img src="armor.png"/></td><td><center>Armor</center></td><td><center>5/5/2</center></td><td><center>5PUs</center></td><td><center>1AUs</center></td><td>Limit 12<br>Can Blitz</td></tr>
+<tr><td><img src="helicopters.png"/></td><td><center>Helicopter</center></td><td><center>5/5/4</center></td><td><center>8       PUs</center></td><td><center>1HUs</center></td><td>Limit 9</td></tr>
+<tr><td><img src="bomber.png"/></td><td><center>Bomber</center></td><td><center>7/7/6</center></td><td><center>12PUs</center></td><td><center>1BUs</center></td><td>Limit 6</td></tr>
+<tr><td colspan="6">Limit is the total number of that unit that the Invaders have.  The Invaders are given 8 Infantry, 3 Mechanized, 4 Armor, 3 Helicopters and 2 Bombers, for a total of 20 units.<br/>
+The Invaders will also receive 16 IUs, 6 MUs, 8 AUs, 6 HUs and 4 BUs at the start of the game.  Starting on the 2ed round, the Invaders will receive 8PUs.  Using 1 PUs and 1 IUs the may purchase a single Infantry Unit.<br/>
+Every combat unit cost 1 PUs and 1 of the corisponding resource. IUs not spent will be removed at the end of the round, with another 8 IUs given at the begining of each round until round 10.
+ On round 10 a message will inform you that this is the last round to bring in your remaining reinforcements.<br>
+Bid units do not cost resources since you pay full PUs price for each unit.<br>
+<br>To the Americans this Limit is the total number of that type of unit it can have on the map a any time and they start with all 60 unit in play. Bid unit are the only exception to this rule and only during the Bid process. Once the Bid process is over, those unit will count against the unit limit.</td></tr>
+<tr><td colspan="6"><center><b>American Only Units</b></center></td></tr>
+<tr><td><img src="militia.png"/></td><td><center>Militia</center></td><td><center>5/5/1</center></td><td><center>6PUs</center></td><td><center>--</center></td><td>Only 2 Militia can stack together</td></tr>
+<tr><td><img src="laser.png"/></td><td><center>Laser Tower</center></td><td><center>0/0/0</center></td><td><center>25PUs</center></td><td><center>--</center></td><td>Given During Deployment</td></tr>
+<tr><td><img src="strike.png"/></td><td><center>Strike</center></td><td><center>7/0/99</center></td><td><center>5PUs</center></td><td><center>--</center></td><td>One for each tower owned</td></tr>
+<tr><td colspan="6">There are no Limits to the above units. The Militia unit may be given during reinforcements, but can never be purchased. One Laser Tower is give the Americans at the beginning of their turn every round, as long as they own at least 13 Victory Cities.
+ And 1 Strike Token is given for each Laser Tower the Americans own, plus 1 for the new tower if they have 13 or more Victory Cities.</td></tr>
+<tr><td colspan="6"><center><b>Invader Only Units</b></center></td></tr>
+<tr><td><img src="truck.png"/></td><td><center>Truck</center></td><td><center>0/0/0</center></td><td><center>25PUs</center></td><td><center>--</center></td><td>Allows the Deployment of 5 units</td></tr>
+<tr><td><img src="transport.png"/></td><td><center>Transport</center></td><td><center>0/0/0</center></td><td><center>25PUs</center></td><td><center>--</center></td><td>Allows the Deployment of 5 units<</td></tr>
+<tr><td colspan="6">These units are placed on the map to mark the location where the Invaders may deploy their units</td></tr></table>
+<br><br>Invasion USA Team:
+<br>Author: Hobbes__
+<br>Images: Dagon81
+<br>Testing & Ideas: Pwnator
+</div>
+
+<div style="padding:5px;font-size:12px;background-color:#848400;text-align:justify;width:402px;">
+<center><b>Initial Deployment Phase</b></center><hr>
+<br><b>Americans:</b><ol>
+<li>Deploy initial Laser Tower into one of the 30 Victory Cities
+<li>Deploy initial 60 combat unit into the 30 Victory Cities. Placing 2 units on each location.
+<li>Purchase Bid combat units
+<li>Deploy Bid combat units. Placing no more the 2 units on any territory. May place unit in Victory Cities.</ol>
+<b>Invaders:</b><ol>
+<li>Purchase Bid combat units
+<li>Deploy Bid combat units and 20 more combat units into your Deployment Zones. Can not place more then 5 units in each zone</ol>
+<b>Note:</b> All unplaced units are removed from play.
+</div>
+
+<div style="padding:5px;font-size:12px;background-color:#e6e86f;text-align:justify;width:402px;">
+<center><b>Aquire Reinforcements</b></center><hr>
+<b>Invaders:</b><ol>
+<li>At the begining of the game each Invading Player received 16IUs, 6MUs, 8AUs, 6HUs, and 4BUs to use for purchasing reinforcements.
+<li>Begining in round 2, each Invading Player will receive 8PUs.
+<li>Purchase combat units (ie: 1PUs+1IUs=1 Infantry, 1PUs+1MUs=1 Mechanized, etc...)</ol>
+<b>Note:</b> All unspent PUs are removed from play.<br>
+<b>Americans:</b><ol>
+<li>Tech Roll for each Reinforcement Token located on the 'Northern Command' territory<ul>
+<li>You receive 2 Reinforcement Tokens at the end of each turn as long as you maintain control of 3 Victory Cities</ul>
+<li>Purchase combat units (ie: 1PUs+1IUs=1 Infantry, 1PUs+1MUs=1 Mechanized, etc...)<ul>
+<li>Militia units are give to the American Player.
+<li>A Laser Tower is given if you have maintained controlled of at least 13 Victory Cities
+<li>Strike Tokens are placed in 'Northern Command'. 1 for each tower you.</ul></ol>
+<b>Note:</b> All unspent resources are removed from play.
+</div>
+
+<div style="padding:5px;font-size:12px;background-color:#8494c6;text-align:justify;width:402px;">
+<center><b>Deploy Reinforcements</b></center><hr>
+<b>Invaders:</b><ul>
+<li>Deploy Reinforcements into your Deployment Zones.
+<li>You can not stack more then 5 units in each zone</ul>
+<b>Note:</b> All unplaced units are removed from play<br>
+<b>Americans</b><ul>
+<li>You can deploy 2 Reinforcements into any controlled territory
+<li>You can not stack more then 5 units in a territory
+<li>You can not have more the 2 Militia units in a territory<ul>
+<li>You may have other units stacked with Militia.</ul>
+<li>Laser Tower must be placed inside a controlled Victory City<ul>
+<li>That Victory City must not already contain a Laser Tower
+<li>The Laser Tower counts against the 2 unit placement
+<li>Already placed Laser Towers do not count against the 5 unit stacking limit</ul></ul>
+<b>Note:</b> All unplaced units are removed from play.
+</div>
+
+<div style="padding:5px;font-size:12px;background-color:#bd6363;text-align:justify;width:402px;">
+<center><b>Combat Movement</b></center><hr>
+You may move some, none or all of your units into contested territories<ul>
+<li>You can not move through a controlled territory that already contains 5 friendly units<ul>
+<li>This includes air units
+<li>Militia Units can not move through a controlled territory that contains 2 Militia units</ul>
+<li>you can leave a contested territory and enter a controlled uncontested territory.
+<li>You can not leave a contested territory and enter another contested territory.
+<li>Any unit that can reach a contested territory may enter that territory.</ul>
+
+<center><b>Combat</b></center><hr>
+Battling in contested territory<ul>
+<li>Attacker choses where to battle
+<li>After casualty are removed the battle ends (1 round battles)</ul>
+
+<center><b>Non-Combat Movement</b></center><hr>
+Non-Combat Movement is handled like Combat Movement except<ul>
+<li>You may only move those units that did not move during Combat Movement
+<li>You may not enter into any uncontrolled territory
+<li>Air units that took part in an uncontrolled contested battle must also move</ul>
+<b>Note:</b>Any air unit that has not moved to a territory that was controlled at the start of the turn, will be removed from play
+</div>
+
+<div style="padding:5px;font-size:12px;background-color:#7e7e7e;text-align:justify;width:402px;">
+<center><b>Etc...</b></center><hr>
+<b>Liberating a Victory City for Reinforcement Tokens</b><br>
+There are 3 test for Liberating a Victory City<ol>
+<li>Did a battle take place in the Victory City during the Americans turn
+<li>Do the Americans have control of the Victory City
+<li>There are no enemy units in the Victory City</ol>
+
+<b>Controlled and contested territories</b><ul>
+<li>Americans can deploy to controlled contested territories that have less the 5 American units in them
+<li>Militia units can be deployed to controlled contested territories as long as there are less then 2 Militia units there
+<li>Air units can move to controlled contested territories during Non-Combat Movement as long a there are less then 5 friendly units there</ul>
+
+<center><b>Game Options</b></center><hr>
+<b>Bids</b><ul>
+<li>Place Bid amounts for each player here: Default 0</ul>
+<b>Low Luck</b><ul>
+<li>Use Low Luck rules for battles: Default Unchecked (False)</ul>
+<b>Land Battle Rounds</b><ul>
+<li>Number of rounds use to determine a battles outcome: Default 1 (Change to -1 to allow the battle to continue until there is a winner)</ul>
+<b>AI Bonus Attack</b><br>
+<b>AI Bonus Defense</b><ul>
+<li>Amount to be added to AI Attack/Defense Rolls: Default 0 (Can set to 0, 1, 2)</ul>
+<b>Turn Off Tutorial Notifications</b> Deactivated<ul>
+<li>Turns off in game tutorial system: Default Unchecked (False)</ul>
+<b>Turn Off Story Notifications</b><ul>
+<li>Turns off the game messaging system: Default Unchecked (False)</ul>
+<b>Transport Infantry</b><ul>
+<li>Allows Mechanized and Helicopters to transport Infantry/Militia units at 1 to 1: Default Unchecked(False)</ul>
+<b>No Reinforcement</b><ul>
+<li>Uses only the starting units and Bid units during the game: Default Unchecked (False)</ul>
+<b>No Laser Tower for Americans</b><ul>
+<li>Americans do not have access to the Laser Tower and Strike Token: Default Unchecked (False)</ul>
+<b>Add 1 Extra American Reinforcement/TechRoll</b><ul>
+<li>Three Reinforcement Token will be placed on 'Northern Command': Default Unchecked (False - Stays at 2 tokens)</ul>
+<b>Retain Unused American Resources</b><ul>
+<li>Unspent PUs, IUs, etc... are kept by the American Player to use later in the game: Default Unchecked (False)</ul>
+<b>Add American Reinforcements to Purchase</b><ul>
+<li>All Tech Roll/Reinforcements are given to the Americans: Default Unchecked (False)</ul>
+<b>Add fifth Player (Northern)</b><ul>
+<li>Add the Euro-Asian Group (Northern Player): Default Unchecked (False)<ol>
+<li>Northern Deployment Zones are located in Canada
+<li>Invaders start with 15 combat units, purchased from the original 20 units
+<li>Invaders receive 9PUs per turn</ol></ul>
+<b>Invaders use forward Landing Zones</b>
+<li>Allows the player to deploy the reinforcements at certain Victory Cities: Default Unchecked (False)<ul>
+<li>Western uses Seattle
+<li>Southern uses San Antonio
+<li>Eastern uses Atlanta
+<li>Northern uses Minneapolis (If fifth player is added)</ul></ul>
+The following options allow the Invaders to purchase the reinforcements by just using PUs (ie 3PUs Infantry, 4PUs Mechanized etc...)<br>
+<b>Asian Alliance (Western) uses PUs to buy reinforcements:</b> Default Unchecked (False)<br>
+<b>People's Liberation Front (Southern) uses PUs to buy reinforcements:</b> Default Unchecked (False)<br>
+<b>Euro-Hegemony (Eastern) uses PUs to buy reinforcements:</b> Default Unchecked (False)<br>
+<b>Euro-Asian Group (Northern) uses PUs to buy reinforcements:</b> Default Unchecked (False) (If fifth player is added)
+</div>
+
+
+
 
 				]]>
                         </value>
