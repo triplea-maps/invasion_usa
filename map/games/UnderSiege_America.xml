@@ -9288,10 +9288,23 @@
 <br>As the first tower nears compleation, many European, Asian and third world nations begin recalling their diplomats home.
 <br>Now the world waits...
 <br><center>Will you deploy that first laser...</center>
-<hr><align="left"><b>Note:</b> To play Apocalypse, set 'Add fifth Player (Northern)' in 'Game Options' Screen</align><hr>
-<br><b>Objectives</b><ul>
-<li>Americans player objective: control at least 13 cities until turn 12.
-<li>Invading player(s) objective: conquer and hold at least 18 cities at the end of the Americans turn.</ul>
+</div>
+
+<div style="padding:5px;font-size:12px;background-color:#AD3800;text-align:justify;width:402px;">
+<hr><center><b>Apocalypse</b></center>
+<center>'Game Options'</center>
+<center>'Add fifth Player (Northern)' Checked</center>
+<hr>
+</div>
+
+<div style="padding:5px;font-size:12px;text-align:justify;width:402px;">
+<b>Objectives</b><ul>
+<li>Americans player objective: control at least 13 cities until turn 12
+<li>Invading player(s) objective: conquer and hold at least 18 cities at the end of the Americans turn</ul>
+<i>What Happens After...</i><ul>
+<li>The Americans can purchase reinforcements using PUs with on unit limits <i>or...</i>
+<li>The Invaders become enemies and they use PUs with no unit limits</ul>
+
 <b>Combantants</b><ul>
 <li>The Asian Alliance (Western)
 <li>The People's Liberation Front (Southern)
@@ -9305,6 +9318,13 @@
 <li>Combat
 <li>Non-Combat Movement</ul>
 
+<br>Invasion USA Team:
+<br>Author: Hobbes__
+<br>Images: Dagon81
+<br>Testing & Ideas: Pwnator
+</div>
+
+<div style="padding:5px;font-size:12px;background-color:#424200;text-align:justify;width:402px;">
 <b>The Combat Units</b>
 <br><table border="1"><tr><td><center><b>Image</b></center></td><td><center><b>Name</b></center></td><td><center><b>At/Df/Mv</b></center></td><td colspan=2><center><b>Cost</b></center></td><td><center><b>Special</b></center></td></tr>
 <tr><td><img src="infantry.png"/></td><td><center>Infantry</center></td><td><center>3/3/1</center></td><td><center>3PUs</center></td><td><center>1IUs</center></td><td>Limit 24</td></tr>
@@ -9328,11 +9348,6 @@ Bid units do not cost resources since you pay full PUs price for each unit.<br>
 <tr><td><img src="truck.png"/></td><td><center>Truck</center></td><td><center>0/0/0</center></td><td><center>25PUs</center></td><td><center>--</center></td><td>Allows the Deployment of 5 units</td></tr>
 <tr><td><img src="transport.png"/></td><td><center>Transport</center></td><td><center>0/0/0</center></td><td><center>25PUs</center></td><td><center>--</center></td><td>Allows the Deployment of 5 units<</td></tr>
 <tr><td colspan="6">These units are placed on the map to mark the location where the Invaders may deploy their units</td></tr></table>
-<br><br>Invasion USA Team:
-<br>Author: Hobbes__
-<br>Images: Dagon81
-<br>Testing & Ideas: Pwnator
-</div>
 
 <div style="padding:5px;font-size:12px;background-color:#848400;text-align:justify;width:402px;">
 <center><b>Initial Deployment Phase</b></center><hr>
