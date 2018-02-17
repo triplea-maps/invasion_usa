@@ -4587,7 +4587,7 @@
 
 		<!-- AI Player Pre-Set (Place Denver Bomber) -->
 		<attachment name="triggerAttachmentUseAmericanPreSetAIPlayer" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentAmericanAIPlayer"/>
+			<option name="conditions" value="conditionAttachmentUseAmericanPreSet:conditionAttachmentAmericanAIPlayer"/>
 			<option name="placement" value="Denver:bomber" count="1"/>
 			<option name="when" value="before:americanInitialPlace"/>
 			<option name="uses" value="1"/>
@@ -4595,7 +4595,7 @@
 
 		<!-- American Territory Ownership -->
 		<attachment name="triggerAttachmentAmericanOwnership" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseAmericanPreSet:conditionAttachmentAmericanVCCount13"/>
+			<option name="conditions" value="conditionAttachmentAmericanVCCount13"/>
 			<option name="changeOwnership" value="WWa:any:Americans:false"/>
 			<option name="changeOwnership" value="NWC:any:Americans:false"/>
 			<option name="changeOwnership" value="CCa:any:Americans:false"/>
