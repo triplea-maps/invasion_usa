@@ -2864,17 +2864,17 @@
 		<!-- American Victory 12 turns 13 cities -->
 		<attachment name="conditionAttachmentAmericansWin" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount13"/>
-			<option name="rounds" value="12-+"/>
+			<option name="rounds" value="13-+"/>
 		</attachment>
 		
 		<attachment name="conditionAttachmentAmericansPower" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount18"/>
-			<option name="rounds" value="12-+"/>
+			<option name="rounds" value="13-+"/>
 		</attachment>
 		
 		<attachment name="conditionAttachmentAmericansTotal" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericanVCCount30"/>
-			<option name="rounds" value="12-+"/>
+			<option name="rounds" value="13-+"/>
 		</attachment>
 		
 		<!-- Joint Invader Victory (Americans Lose) -->
@@ -8297,15 +8297,8 @@
 			<option name="uses" value="1"/>
 		</attachment>
 
-		<attachment name="triggerAttachmentAmericanNoMoreReinforce" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentAmericansWin"/>
-			<option name="removeUnits" value="Northern Command:reinforce" count="99"/>
-			<option name="when" value="before:american1TechActivation"/>
-		</attachment>
-
 		<attachment name="triggerAttachmentAmericanProductionPUs" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericansWin:conditionAttachmentUseReinforcements:conditionAttachmentNorthernNotInGame"/>
-			<option name="frontier" value="productionPUs"/>
 			<option name="players" value="Americans"/>
 			<option name="playerAttachmentName" value="RulesAttachment" count="rulesAttachment"/>
 			<option name="playerProperty" value="movementRestrictionTerritories" count="-reset-N-1:N-2:N-3:N-4:N-5:Canada:Northern Command"/>
@@ -8318,7 +8311,6 @@
 
 		<attachment name="triggerAttachmentAmericanProductionPUs_5" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentAmericansWin:conditionAttachmentUseReinforcements:conditionAttachmentNorthernInGame"/>
-			<option name="frontier" value="productionPUs"/>
 			<option name="players" value="Americans"/>
 			<option name="playerAttachmentName" value="RulesAttachment" count="rulesAttachment"/>
 			<option name="playerProperty" value="movementRestrictionTerritories" count="-reset-Northern Command"/>
@@ -9334,7 +9326,7 @@
 <li>Americans player objective: control at least 13 cities until turn 12
 <li>Invading player(s) objective: conquer and hold at least 18 cities at the end of the Americans turn</ul>
 <i>What Happens After...</i><ul>
-<li>The Americans can purchase reinforcements using PUs with on unit limits <i>or...</i>
+<li>The Americans continue to receive reinforcements but there are no unit limits<i>or...</i>
 <li>The Invaders become enemies and they use PUs with no unit limits</ul>
 
 <b>Combantants</b><ul>
