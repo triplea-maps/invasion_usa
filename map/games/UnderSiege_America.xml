@@ -3,7 +3,7 @@
 <!DOCTYPE game SYSTEM "game.dtd">
 
 <game>
-	<info name="UNDER SIEGE: America" version="2.5.0"/>
+	<info name="UNDER SIEGE: America" version="2.5.5"/>
 	<loader javaClass="games.strategy.triplea.TripleA"/>
 	<triplea minimumVersion="1.9.0"/>
 
@@ -3362,7 +3362,7 @@
 		
 		<!-- Remove unused strike counters -->
 		<attachment name="triggerAttachmentAmericanStrikeRemove" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentAmericanInitialLaser:conditionAttachmentAmericanHumanPlayer"/>
+			<option name="conditions" value="conditionAttachmentAmericanInitialLaser"/>
 			<option name="removeUnits" value="all:strike" count="30"/>
 			<option name="when" value="before:americanEndTurn"/>
 		</attachment>
@@ -8941,7 +8941,7 @@
 <table border="1"bgcolor="AD3800">
 <tr>
  <th 
-<span style="font-size:120%;000000"colspan="2">Version 2.5.0</span>
+<span style="font-size:120%;000000"colspan="2">Version 2.5.5</span>
  </th>
 </tr>
 </table>
