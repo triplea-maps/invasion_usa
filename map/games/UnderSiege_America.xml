@@ -3,9 +3,9 @@
 <!DOCTYPE game SYSTEM "game.dtd">
 
 <game>
-	<info name="UNDER SIEGE: America" version="2.5.5"/>
+	<info name="UNDER SIEGE: America" version="2.5.5.1"/>
 	<loader javaClass="games.strategy.triplea.TripleA"/>
-	<triplea minimumVersion="1.9.0"/>
+	<triplea minimumVersion="1.9.0.0.8923"/>
 
 	<!-- Setting dice sides to 10 -->
 	<diceSides value="10"/>
@@ -427,8 +427,8 @@
 		<resource name="HUs"/>
 		<resource name="BUs"/>
 		<resource name="RAs"/>
-		<resource name="techTokens"/>
-		<!-- <resource name="techTokens" isDisplayedFor="NONE"/> -->
+		<!-- <resource name="techTokens"/> -->
+		<resource name="techTokens" isDisplayedFor="NONE"/>
 	</resourceList>
 
 	<!-- Player list with Alliances added -->
@@ -2309,6 +2309,12 @@
 		<!-- End Game Option Conditions -->
 
 		<!-- Game Conditions -->
+		<!-- Invading AI Player Check -->
+		<attachment name="conditionAttachmentInvaderAIPlayer" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentWesternAIPlayer:conditionAttachmentSouthernAIPlayer:conditionAttachmentEasternAIPlayer"/>
+			<option name="conditionType" value="OR"/>
+		</attachment>
+
 		<!-- Use for Tutorial only -->
 		<attachment name="conditionAttachmentWesternTurn2" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="rounds" value="2-9"/>
@@ -7943,7 +7949,6 @@
 			<option name="notification" value="Americans_Win"/>
 			<option name="players" value="Americans:Western:Southern:Eastern:Northern"/>
 			<option name="when" value="after:americanEndTurn"/>
-			<option name="uses" value="1"/>
 		</attachment>
 
 		<attachment name="triggerAttachmentAmericanProductionPUs" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
@@ -8342,6 +8347,48 @@
 			<option name="players" value="Americans:Western:Southern:Eastern:Northern"/>
 			<option name="activateTrigger" value="triggerAttachmentNotifactionGameOptions1:1:false:false:false:false"/>
 			<option name="when" value="before:americanInitialLaserPlace"/>
+			<option name="uses" value="1"/>
+		</attachment>
+
+		<!-- Invader AI Player Notification -->
+		<attachment name="triggerAttachmentNotifactionInvaderAI" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentAmericanHumanPlayer:conditionAttachmentInvaderAIPlayer"/>
+			<option name="notification" value="InvaderPlayer_AI"/>
+			<option name="players" value="Americans:Western:Southern:Eastern:Northern"/>
+			<option name="when" value="after:americanUserActions"/>
+			<option name="uses" value="1"/>
+		</attachment>
+
+		<!-- American AI Player Notification -->
+		<attachment name="triggerAttachmentNotifactionAmericanAIWestern" attachTo="Western" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentWesternHumanPlayer:conditionAttachmentAmericanAIPlayer"/>
+			<option name="notification" value="AmericanPlayer_AI"/>
+			<option name="players" value="Americans:Western:Southern:Eastern:Northern"/>
+			<option name="when" value="after:westernUserActions"/>
+			<option name="uses" value="1"/>
+		</attachment>
+
+		<attachment name="triggerAttachmentNotifactionAmericanAISouthern" attachTo="Southern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentSouthernHumanPlayer:conditionAttachmentAmericanAIPlayer:conditionAttachmentWesternAIPlayer"/>
+			<option name="notification" value="AmericanPlayer_AI"/>
+			<option name="players" value="Americans:Western:Southern:Eastern:Northern"/>
+			<option name="when" value="after:southernUserActions"/>
+			<option name="uses" value="1"/>
+		</attachment>
+
+		<attachment name="triggerAttachmentNotifactionAmericanAIEastern" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentEasternHumanPlayer:conditionAttachmentAmericanAIPlayer:conditionAttachmentWesternAIPlayer:conditionAttachmentSouthernAIPlayer"/>
+			<option name="notification" value="AmericanPlayer_AI"/>
+			<option name="players" value="Americans:Western:Southern:Eastern:Northern"/>
+			<option name="when" value="after:easternUserActions"/>
+			<option name="uses" value="1"/>
+		</attachment>
+
+		<attachment name="triggerAttachmentNotifactionAmericanAINorthern" attachTo="Northern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentNorthernHumanPlayer:conditionAttachmentAmericanAIPlayer:conditionAttachmentWesternAIPlayer:conditionAttachmentSouthernAIPlayer:conditionAttachmentEasternAIPlayer:conditionAttachmentNorthernInGame"/>
+			<option name="notification" value="AmericanPlayer_AI"/>
+			<option name="players" value="Americans:Western:Southern:Eastern:Northern"/>
+			<option name="when" value="after:northernUserActions"/>
 			<option name="uses" value="1"/>
 		</attachment>
 
@@ -8941,7 +8988,7 @@
 <table border="1"bgcolor="AD3800">
 <tr>
  <th 
-<span style="font-size:120%;000000"colspan="2">Version 2.5.5</span>
+<span style="font-size:120%;000000"colspan="2">Version 2.5.5.1</span>
  </th>
 </tr>
 </table>
@@ -9124,42 +9171,58 @@ There are 3 test for Liberating a Victory City<ol>
 <b>AI Bonus Attack</b><br>
 <b>AI Bonus Defense</b><ul>
 <li>Amount to be added to AI Attack/Defense Rolls: Default 0 (Can set to 0, 1, 2)</ul>
-<b>Turn Off Tutorial Notifications</b> Deactivated<ul>
-<li>Turns off in game tutorial system: Default Unchecked (False)</ul>
+<b>Turn Off Tutorial Notifications</b><ul>
+<li>Turns off in game tutorial system: Default Checked (True)</ul>
 <b>Turn Off Story Notifications</b><ul>
 <li>Turns off the game messaging system: Default Unchecked (False)</ul>
 <b>Transport Infantry</b><ul>
-<li>Allows Mechanized and Helicopters to transport Infantry/Militia units at 1 to 1: Default Unchecked(False)</ul>
+<li>Allows Mechanized and Helicopters to transport Infantry/Militia units at 1 to 1: Default Unchecked(False)
+<li>(can be set for AI play)</ul>
 <b>No Reinforcement</b><ul>
-<li>Uses only the starting units and Bid units during the game: Default Unchecked (False)</ul>
+<li>Uses only the starting units and Bid units during the game: Default Unchecked (False)
+<li>(can be set for AI play)</ul>
 <b>No Laser Tower for Americans</b><ul>
-<li>Americans do not have access to the Laser Tower and Strike Token: Default Unchecked (False)</ul>
+<li>Americans do not have access to the Laser Tower and Strike Token: Default Unchecked (False)
+<li>(can be set for AI play)</ul>
 <b>Add 1 Extra American Reinforcement/TechRoll</b><ul>
-<li>Three Reinforcement Token will be placed on 'Northern Command': Default Unchecked (False - Stays at 2 tokens)</ul>
+<li>Three Reinforcement Token will be placed on 'Northern Command': Default Unchecked (False - Stays at 2 tokens)
+<li>(can be set for AI play)</ul>
 <b>Retain Unused American Resources</b><ul>
-<li>Unspent PUs, IUs, etc... are kept by the American Player to use later in the game: Default Unchecked (False)</ul>
+<li>Unspent PUs, IUs, etc... are kept by the American Player to use later in the game: Default Unchecked (False)
+<li>(No effect for AI)</ul>
 <b>Add American Reinforcements to Purchase</b><ul>
-<li>All Tech Roll/Reinforcements are given to the Americans: Default Unchecked (False)</ul>
+<li>All Tech Roll/Reinforcements are given to the Americans: Default Unchecked (False)
+<li>(Used automaticly for American AI player)</ul>
 <b>Add fifth Player (Northern)</b><ul>
 <li>Add the Euro-Asian Group (Northern Player): Default Unchecked (False)<ol>
 <li>Northern Deployment Zones are located in Canada
 <li>Invaders start with 15 combat units, purchased from the original 20 units
-<li>Invaders receive 9PUs per turn</ol></ul>
+<li>Invaders receive 9PUs per turn</ol>
+<li>(can be set for AI play)</ul>
 <b>Invaders use forward Landing Zones</b>
 <li>Allows the player to deploy the reinforcements at certain Victory Cities: Default Unchecked (False)<ul>
 <li>Western uses Seattle
 <li>Southern uses San Antonio
 <li>Eastern uses Atlanta
-<li>Northern uses Minneapolis (If fifth player is added)</ul></ul>
-The following options allow the Invaders to purchase the reinforcements by just using PUs (ie 3PUs Infantry, 4PUs Mechanized etc...)<br>
+<li>Northern uses Minneapolis (If fifth player is added)</ul>
+<li>(can be set for AI play)</ul>
+<p>The following options allow the Invaders to purchase the reinforcements by just using PUs (ie 3PUs Infantry, 4PUs Mechanized etc...)<br>
+(Have no effect on Invader AI)<br>
 <b>Asian Alliance (Western) uses PUs to buy reinforcements:</b> Default Unchecked (False)<br>
 <b>People's Liberation Front (Southern) uses PUs to buy reinforcements:</b> Default Unchecked (False)<br>
 <b>Euro-Hegemony (Eastern) uses PUs to buy reinforcements:</b> Default Unchecked (False)<br>
-<b>Euro-Asian Group (Northern) uses PUs to buy reinforcements:</b> Default Unchecked (False) (If fifth player is added)
+<b>Euro-Asian Group (Northern) uses PUs to buy reinforcements:</b> Default Unchecked (False) (If fifth player is added)</p>
 </div>
 
-
-
+<div style="padding:5px;font-size:12px;background-color:#AD3800;text-align:justify;width:402px;">
+<center><b>AI Players</b></center><hr>
+This game tries to detect when there are AI players<br>
+<b>American AI:</b><ul>
+<li>The AI does not purchase Reinforcements ('Add American Reinforcements to Purchase')
+<li>The AI places it 'Strike Tokens' on the map. Strike Tokens are not preplaced in 'Northern Command'</ul>
+<b>Invader AI</b><ul>
+<li>Will always bring in the maximum allow units during the 'Reinforcement Phase' (8 or 9)<ul>
+</div>
 
 				]]>
                         </value>
