@@ -2754,7 +2754,6 @@
 		<!-- Southern -->
 		<attachment name="conditionAttachmentSouthernSanAntonioOwnership" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="directOwnershipTerritories" value="San Antonio"/>
-			<option name="rounds" value="2-+"/>
 		</attachment>
 		
 		<!-- Atlanta -->
@@ -2777,7 +2776,6 @@
 		
 		<attachment name="conditionAttachmentEasternAtlantaOwnership" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
 			<option name="directOwnershipTerritories" value="Atlanta"/>
-			<option name="rounds" value="2-+"/>
 		</attachment>
 		
 		<!-- Reinforce Counters -->
@@ -3215,6 +3213,27 @@
 			<option name="techs" value="MorePlainsRiders" count="1"/>
 		</attachment>
 
+		<!-- Game Objectives -->
+		<!-- Western Forward Landing Zone -->
+		<attachment name="objectiveAttachmentWestern_has_control_Foward_Landing_Zone_Seattle" attachTo="Western" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentWesternSeattleOwnership"/>
+		</attachment>
+		
+		<!-- Southern Forward Landing Zone -->
+		<attachment name="objectiveAttachmentSouthern_has_control_Foward_Landing_Zone_San_Antonio" attachTo="Southern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentSouthernSanAntonioOwnership"/>
+		</attachment>
+		
+		<!-- Eastern Forward Landing Zone -->
+		<attachment name="objectiveAttachmentEastern_has_control_Foward_Landing_Zone_Atlanta" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentEasternAtlantaOwnership"/>
+		</attachment>
+		
+		<!-- Northern Forward Landing Zone -->
+		<attachment name="objectiveAttachmentNorthern_has_control_Foward_Landing_Zone_Minneapolis" attachTo="Northern" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentNorthernMinneapolisOwnership"/>
+		</attachment>
+		
 		<!-- Game Triggers -->
 		<!-- Use Northern Player -->
 		<!-- American Human Player -->
@@ -3257,6 +3276,16 @@
 			<option name="uses" value="1"/>
 		</attachment>
 
+		<!-- American is AI Player Restrict Northern Command -->
+		<attachment name="triggerAttachmentAmericanAINoNC" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentAmericanAIPlayer"/>
+			<option name="players" value="Americans"/>
+			<option name="playerAttachmentName" value="RulesAttachment" count="rulesAttachment"/>
+			<option name="playerProperty" value="movementRestrictionTerritories" count="-reset-W-1:W-2:W-3:W-4:W-5:W-6:S-1:S-2:S-3:S-4:S-5:S-6:E-1:E-2:E-3:E-4:E-5:E-6:N-1:N-2:N-3:N-4:N-5:Canada:Northern Command"/>
+			<option name="when" value="before:americanInitialPlace"/>
+			<option name="uses" value="1"/>
+		</attachment>
+
 		<!-- Northern Territory Ownership -->
 		<attachment name="triggerAttachmentNorthernOwnership" attachTo="Northern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentNorthernInGame"/>
@@ -3266,7 +3295,7 @@
 			<option name="changeOwnership" value="N-4:any:Northern:false"/>
 			<option name="changeOwnership" value="N-5:any:Northern:false"/>
 			<option name="changeOwnership" value="Canada:any:Northern:false"/>
-			<option name="when" value="after:northernUserActions"/>
+			<option name="when" value="before:americanInitialPlace"/>
 			<option name="uses" value="1"/>
 		</attachment>
 
@@ -3333,7 +3362,7 @@
 		
 		<!-- Remove unused strike counters -->
 		<attachment name="triggerAttachmentAmericanStrikeRemove" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentAmericanInitialLaser"/>
+			<option name="conditions" value="conditionAttachmentAmericanInitialLaser:conditionAttachmentAmericanHumanPlayer"/>
 			<option name="removeUnits" value="all:strike" count="30"/>
 			<option name="when" value="before:americanEndTurn"/>
 		</attachment>
@@ -3935,20 +3964,26 @@
 		</attachment>
 		
 		<!-- Western AI Reinforce -->
-		<attachment name="triggerAttachmentWesternRemoveReinforceAI" attachTo="Western" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements"/>
+		<attachment name="triggerAttachmentWesternRemoveReinforce" attachTo="Western" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWesternAIPlayer"/>
 			<option name="removeUnits" value="W-1:reinforce" count="1"/>
-			<option name="resource" value="RAs"/>
-			<option name="resourceCount" value="-1"/>
 			<option name="when" value="after:westernRollTech"/>
-			<option name="uses" value="10"/>
+			<option name="uses" value="6"/>
 		</attachment>
 
-		<attachment name="triggerAttachmentWesternPlaceReinforceAI" attachTo="Western" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+		<attachment name="triggerAttachmentWesternAddReinforce" attachTo="Western" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWesternAIPlayer"/>
 			<option name="placement" value="W-1:reinforce" count="1"/>
 			<option name="when" value="before:westernEndTurn"/>
 			<option name="uses" value="5"/>
+		</attachment>
+
+		<attachment name="triggerAttachmentWesternRemoveRAs" attachTo="Western" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentUseReinforcements"/>
+			<option name="resource" value="RAs"/>
+			<option name="resourceCount" value="-1"/>
+			<option name="when" value="before:westernEndTurn"/>
+			<option name="uses" value="10"/>
 		</attachment>
 
 		<!-- Southern Initial Forces Triggers -->
@@ -4055,20 +4090,26 @@
 		</attachment>
 
 		<!-- Southern AI Reinforce -->
-		<attachment name="triggerAttachmentSouthernRemoveReinforceAI" attachTo="Southern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements"/>
+		<attachment name="triggerAttachmentSouthernRemoveReinforce" attachTo="Southern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentSouthernAIPlayer"/>
 			<option name="removeUnits" value="S-5:reinforce" count="1"/>
-			<option name="resource" value="RAs"/>
-			<option name="resourceCount" value="-1"/>
 			<option name="when" value="after:southernRollTech"/>
-			<option name="uses" value="10"/>
+			<option name="uses" value="6"/>
 		</attachment>
 
-		<attachment name="triggerAttachmentSouthernPlaceReinforceAI" attachTo="Southern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+		<attachment name="triggerAttachmentSouthernAddReinforce" attachTo="Southern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentSouthernAIPlayer"/>
 			<option name="placement" value="S-5:reinforce" count="1"/>
 			<option name="when" value="before:southernEndTurn"/>
 			<option name="uses" value="5"/>
+		</attachment>
+
+		<attachment name="triggerAttachmentSouthernRemoveRAs" attachTo="Southern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentUseReinforcements"/>
+			<option name="resource" value="RAs"/>
+			<option name="resourceCount" value="-1"/>
+			<option name="when" value="before:southernEndTurn"/>
+			<option name="uses" value="10"/>
 		</attachment>
 
 		<!-- Eastern Initial Forces Triggers -->
@@ -4174,20 +4215,26 @@
 		</attachment>
 
 		<!-- Eastern AI Reinforce -->
-		<attachment name="triggerAttachmentEasternRemoveReinforceAI" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements"/>
+		<attachment name="triggerAttachmentEasternRemoveReinforce" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentEasternAIPlayer"/>
 			<option name="removeUnits" value="E-6:reinforce" count="1"/>
-			<option name="resource" value="RAs"/>
-			<option name="resourceCount" value="-1"/>
 			<option name="when" value="after:easternRollTech"/>
-			<option name="uses" value="10"/>
+			<option name="uses" value="6"/>
 		</attachment>
 
-		<attachment name="triggerAttachmentEasternPlaceReinforceAI" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+		<attachment name="triggerAttachmentEasternAddReinforce" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentEasternAIPlayer"/>
 			<option name="placement" value="E-6:reinforce" count="1"/>
 			<option name="when" value="before:easternEndTurn"/>
 			<option name="uses" value="5"/>
+		</attachment>
+
+		<attachment name="triggerAttachmentEasternRemoveRAs" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentUseReinforcements"/>
+			<option name="resource" value="RAs"/>
+			<option name="resourceCount" value="-1"/>
+			<option name="when" value="before:easternEndTurn"/>
+			<option name="uses" value="10"/>
 		</attachment>
 
 		<!-- Northern Initial Forces Triggers -->
@@ -4274,20 +4321,26 @@
 		</attachment>
 
 		<!-- Northern AI Reinforce -->
-		<attachment name="triggerAttachmentNorthernRemoveReinforceAI" attachTo="Northern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentNorthernInGame"/>
+		<attachment name="triggerAttachmentNorthernRemoveReinforce" attachTo="Northern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentNorthernInGame:conditionAttachmentNorthernAIPlayer"/>
 			<option name="removeUnits" value="Canada:reinforce" count="1"/>
-			<option name="resource" value="RAs"/>
-			<option name="resourceCount" value="-1"/>
 			<option name="when" value="after:northernRollTech"/>
-			<option name="uses" value="10"/>
+			<option name="uses" value="6"/>
 		</attachment>
 
-		<attachment name="triggerAttachmentNorthernPlaceReinforceAI" attachTo="Northern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentNorthernAIPlayer:conditionAttachmentNorthernInGame"/>
+		<attachment name="triggerAttachmentNorthernAddReinforce" attachTo="Northern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentNorthernInGame:conditionAttachmentNorthernAIPlayer"/>
 			<option name="placement" value="Canada:reinforce" count="1"/>
 			<option name="when" value="before:northernEndTurn"/>
 			<option name="uses" value="5"/>
+		</attachment>
+
+		<attachment name="triggerAttachmentNorthernRemoveRAs" attachTo="Northern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentNorthernInGame"/>
+			<option name="resource" value="RAs"/>
+			<option name="resourceCount" value="-1"/>
+			<option name="when" value="before:northernEndTurn"/>
+			<option name="uses" value="10"/>
 		</attachment>
 
 		<!-- Change Western Production to use Resources -->
@@ -5512,54 +5565,61 @@
 		
 		<!-- Western Give 8 PUs before purchase -->
 		<attachment name="triggerAttachmentWesternNo8x5_8Turns" attachTo="Western" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWesternTurn2:conditionAttachmentWesternHumanPlayer:conditionAttachmentAmericanVCCount13"/>
+			<option name="conditions" value="conditionAttachmentWesternNoPUsReinforcements:conditionAttachmentUseReinforcements:conditionAttachmentWesternTurn2:conditionAttachmentWesternHumanPlayer:conditionAttachmentAmericanVCCount13"/>
 			<option name="resource" value="PUs"/>
 			<option name="resourceCount" value="8"/>
+			<option name="uses" value="9"/>
 			<option name="when" value="before:westernPurchase"/>
 		</attachment>
 
 		<attachment name="triggerAttachmentWesternNo8x5_8Turns_4" attachTo="Western" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWesternTurn2:conditionAttachmentWesternHumanPlayer:conditionAttachmentAmericanVCCount13:conditionAttachmentNorthernInGame"/>
+			<option name="conditions" value="conditionAttachmentWesternNoPUsReinforcements:conditionAttachmentUseReinforcements:conditionAttachmentWesternTurn2:conditionAttachmentWesternHumanPlayer:conditionAttachmentAmericanVCCount13:conditionAttachmentNorthernInGame"/>
 			<option name="resource" value="PUs"/>
 			<option name="resourceCount" value="1"/>
+			<option name="uses" value="9"/>
 			<option name="when" value="before:westernPurchase"/>
 		</attachment>
 
 		<!-- Southern Give 8 PUs before purchase -->
 		<attachment name="triggerAttachmentSouthernNo8x5_8Turns" attachTo="Southern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWesternTurn2:conditionAttachmentSouthernHumanPlayer:conditionAttachmentAmericanVCCount13"/>
+			<option name="conditions" value="conditionAttachmentSouthernNoPUsReinforcements:conditionAttachmentUseReinforcements:conditionAttachmentWesternTurn2:conditionAttachmentSouthernHumanPlayer:conditionAttachmentAmericanVCCount13"/>
 			<option name="resource" value="PUs"/>
 			<option name="resourceCount" value="8"/>
+			<option name="uses" value="9"/>
 			<option name="when" value="before:southernPurchase"/>
 		</attachment>
 
 		<attachment name="triggerAttachmentSouthernNo8x5_8Turns_4" attachTo="Southern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWesternTurn2:conditionAttachmentSouthernHumanPlayer:conditionAttachmentAmericanVCCount13:conditionAttachmentNorthernInGame"/>
+			<option name="conditions" value="conditionAttachmentSouthernNoPUsReinforcements:conditionAttachmentUseReinforcements:conditionAttachmentWesternTurn2:conditionAttachmentSouthernHumanPlayer:conditionAttachmentAmericanVCCount13:conditionAttachmentNorthernInGame"/>
 			<option name="resource" value="PUs"/>
 			<option name="resourceCount" value="1"/>
+			<option name="uses" value="9"/>
 			<option name="when" value="before:southernPurchase"/>
 		</attachment>
 
 		<!-- Eastern Give 8 PUs before purchase -->
 		<attachment name="triggerAttachmentEasternNo8x5_8Turns" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWesternTurn2:conditionAttachmentEasternHumanPlayer:conditionAttachmentAmericanVCCount13"/>
+			<option name="conditions" value="conditionAttachmentEasternNoPUsReinforcements:conditionAttachmentUseReinforcements:conditionAttachmentWesternTurn2:conditionAttachmentEasternHumanPlayer:conditionAttachmentAmericanVCCount13"/>
 			<option name="resource" value="PUs"/>
 			<option name="resourceCount" value="8"/>
+			<option name="uses" value="9"/>
 			<option name="when" value="before:easternPurchase"/>
 		</attachment>
 
 		<attachment name="triggerAttachmentEasternNo8x5_8Turns_4" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWesternTurn2:conditionAttachmentEasternHumanPlayer:conditionAttachmentAmericanVCCount13:conditionAttachmentNorthernInGame"/>
+			<option name="conditions" value="conditionAttachmentEasternNoPUsReinforcements:conditionAttachmentUseReinforcements:conditionAttachmentWesternTurn2:conditionAttachmentEasternHumanPlayer:conditionAttachmentAmericanVCCount13:conditionAttachmentNorthernInGame"/>
 			<option name="resource" value="PUs"/>
 			<option name="resourceCount" value="1"/>
+			<option name="uses" value="9"/>
 			<option name="when" value="before:easternPurchase"/>
 		</attachment>
 
-		<!-- Northern Give 8 PUs before purchase -->
+		<!-- Northern Give 9 PUs before purchase -->
 		<attachment name="triggerAttachmentNorthernNo8x5_8Turns" attachTo="Northern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWesternTurn2:conditionAttachmentNorthernHumanPlayer:conditionAttachmentAmericanVCCount13:conditionAttachmentNorthernInGame"/>
+			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWesternTurn2:conditionAttachmentNorthernHumanPlayer:conditionAttachmentAmericanVCCount13:conditionAttachmentNorthernNoPUsReinforcements:conditionAttachmentNorthernInGame"/>
 			<option name="resource" value="PUs"/>
 			<option name="resourceCount" value="9"/>
+			<option name="uses" value="9"/>
 			<option name="when" value="before:northernPurchase"/>
 		</attachment>
 
@@ -8452,14 +8512,6 @@
 			<territoryOwner territory="E-4" owner="Eastern"/>
 			<territoryOwner territory="E-5" owner="Eastern"/>
 			<territoryOwner territory="E-6" owner="Eastern"/>
-
-			<!-- Northern Owned Territories
-			<territoryOwner territory="N-1" owner="Northern"/>
-			<territoryOwner territory="N-2" owner="Northern"/>
-			<territoryOwner territory="N-3" owner="Northern"/>
-			<territoryOwner territory="N-4" owner="Northern"/>
-			<territoryOwner territory="N-5" owner="Northern"/>
-			<territoryOwner territory="Canada" owner="Northern"/> -->
 
 			<!-- Americans Owned Territories -->
 			<territoryOwner territory="Northern Command" owner="Americans"/>
