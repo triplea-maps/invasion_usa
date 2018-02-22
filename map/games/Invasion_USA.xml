@@ -454,6 +454,7 @@
 		<player name="Eastern" optional="false" canBeDisabled="false" defaultType="Human" isHidden="false"/>
 		<player name="Northern" optional="false" canBeDisabled="true" defaultType="DoesNothing" isHidden="false"/>
 		<player name="Americans" optional="false" canBeDisabled="false" defaultType="Human" isHidden="false"/>
+		<player name="Neutral" optional="false" canBeDisabled="false" defaultType="DoesNothing" isHidden="true"/>
 
 		<alliance player="Western" alliance="Asian Alliance"/>
 		<alliance player="Southern" alliance="People's Liberation Front"/>
@@ -1155,44 +1156,32 @@
 		<attachment name="territoryAttachment" attachTo="Canada" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="0"/>
 			<option name="unitProduction" value="5"/>
-			<!-- <option name="isImpassable" value="true"/> -->
-			<option name="capital" value="Northern"/>
-			<option name="originalOwner" value="Northern"/>
+			<option name="capital" value="Neutral"/>
 		</attachment>
 
 		<attachment name="territoryAttachment" attachTo="N-1" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="0"/>
 			<option name="unitProduction" value="5"/>
-			<!-- <option name="isImpassable" value="true"/> -->
-			<option name="originalOwner" value="Northern"/>
 		</attachment>
 
 		<attachment name="territoryAttachment" attachTo="N-2" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="0"/>
 			<option name="unitProduction" value="5"/>
-			<!-- <option name="isImpassable" value="true"/> -->
-			<option name="originalOwner" value="Northern"/>
 		</attachment>
 
 		<attachment name="territoryAttachment" attachTo="N-3" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="0"/>
 			<option name="unitProduction" value="5"/>
-			<!-- <option name="isImpassable" value="true"/> -->
-			<option name="originalOwner" value="Northern"/>
 		</attachment>
 
 		<attachment name="territoryAttachment" attachTo="N-4" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="0"/>
 			<option name="unitProduction" value="5"/>
-			<!-- <option name="isImpassable" value="true"/> -->
-			<option name="originalOwner" value="Northern"/>
 		</attachment>
 
 		<attachment name="territoryAttachment" attachTo="N-5" javaClass="games.strategy.triplea.attachments.TerritoryAttachment" type="territory">
 			<option name="production" value="0"/>
 			<option name="unitProduction" value="5"/>
-			<!-- <option name="isImpassable" value="true"/> -->
-			<option name="originalOwner" value="Northern"/>
 		</attachment>
 
 		<!-- Western Landing Zones -->
@@ -3195,6 +3184,9 @@
 			<option name="changeOwnership" value="N-4:any:Northern:false"/>
 			<option name="changeOwnership" value="N-5:any:Northern:false"/>
 			<option name="changeOwnership" value="Canada:any:Northern:false"/>
+			<option name="territories" value="Canada"/>
+			<option name="territoryAttachmentName" value="TerritoryAttachment" count="territoryAttachment"/>
+			<option name="territoryProperty" value="capital" count="Northern"/>
 			<option name="when" value="before:americanInitialPlace"/>
 			<option name="uses" value="1"/>
 		</attachment>
@@ -4254,10 +4246,26 @@
 			<option name="uses" value="1"/>
 		</attachment>
 
+		<attachment name="triggerAttachmentWesternIU_4" attachTo="Western" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentNorthernInGame:conditionAttachmentWesternAIPlayer:conditionAttachmentUseReinforcements:conditionAttachmentWesternNoPUsReinforcements"/>
+			<option name="resource" value="IUs"/>
+			<option name="resourceCount" value="1"/>
+			<option name="when" value="before:westernInitialPlace"/>
+			<option name="uses" value="1"/>
+		</attachment>
+
 		<attachment name="triggerAttachmentWesternMUs" attachTo="Western" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWesternNoPUsReinforcements"/>
 			<option name="resource" value="MUs"/>
 			<option name="resourceCount" value="6"/>
+			<option name="when" value="before:westernInitialPlace"/>
+			<option name="uses" value="1"/>
+		</attachment>
+
+		<attachment name="triggerAttachmentWesternResourceMUs_4" attachTo="Western" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentNorthernInGame:conditionAttachmentWesternAIPlayer:conditionAttachmentUseReinforcements:conditionAttachmentWesternNoPUsReinforcements"/>
+			<option name="resource" value="MUs"/>
+			<option name="resourceCount" value="1"/>
 			<option name="when" value="before:westernInitialPlace"/>
 			<option name="uses" value="1"/>
 		</attachment>
@@ -4270,10 +4278,26 @@
 			<option name="uses" value="1"/>
 		</attachment>
 
+		<attachment name="triggerAttachmentWesternAUs_4" attachTo="Western" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentNorthernInGame:conditionAttachmentWesternAIPlayer:conditionAttachmentUseReinforcements:conditionAttachmentWesternNoPUsReinforcements"/>
+			<option name="resource" value="AUs"/>
+			<option name="resourceCount" value="1"/>
+			<option name="when" value="before:westernInitialPlace"/>
+			<option name="uses" value="1"/>
+		</attachment>
+
 		<attachment name="triggerAttachmentWesternHUs" attachTo="Western" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWesternNoPUsReinforcements"/>
 			<option name="resource" value="HUs"/>
 			<option name="resourceCount" value="6"/>
+			<option name="when" value="before:westernInitialPlace"/>
+			<option name="uses" value="1"/>
+		</attachment>
+
+		<attachment name="triggerAttachmentWesternHUs_4" attachTo="Western" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentNorthernInGame:conditionAttachmentWesternAIPlayer:conditionAttachmentUseReinforcements:conditionAttachmentWesternNoPUsReinforcements"/>
+			<option name="resource" value="HUs"/>
+			<option name="resourceCount" value="1"/>
 			<option name="when" value="before:westernInitialPlace"/>
 			<option name="uses" value="1"/>
 		</attachment>
@@ -4286,6 +4310,14 @@
 			<option name="uses" value="1"/>
 		</attachment>
 		
+		<attachment name="triggerAttachmentWesternBUs_4" attachTo="Western" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentNorthernInGame:conditionAttachmentWesternAIPlayer:conditionAttachmentUseReinforcements:conditionAttachmentWesternNoPUsReinforcements"/>
+			<option name="resource" value="BUs"/>
+			<option name="resourceCount" value="1"/>
+			<option name="when" value="before:westernInitialPlace"/>
+			<option name="uses" value="1"/>
+		</attachment>
+
 		<!-- Western TechTokens for Tech Roll -->
 		<attachment name="triggerAttachmentWesternTechTokensForTechRoll" attachTo="Western" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentWesternReinforce"/>
@@ -4557,11 +4589,29 @@
 			<option name="uses" value="1"/>
 		</attachment>
 
+		<attachment name="triggerAttachmentSouthernIUs_4" attachTo="Southern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentNorthernInGame:conditionAttachmentSouthernAIPlayer:conditionAttachmentUseReinforcements:conditionAttachmentWesternNoPUsReinforcements"/>
+			<option name="conditionType" value="AND"/>
+			<option name="resource" value="IUs"/>
+			<option name="resourceCount" value="1"/>
+			<option name="when" value="before:southernInitialPlace"/>
+			<option name="uses" value="1"/>
+		</attachment>
+
 		<attachment name="triggerAttachmentSouthernMUs" attachTo="Southern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentSouthernNoPUsReinforcements"/>
 			<option name="conditionType" value="AND"/>
 			<option name="resource" value="MUs"/>
 			<option name="resourceCount" value="6"/>
+			<option name="when" value="before:southernInitialPlace"/>
+			<option name="uses" value="1"/>
+		</attachment>
+
+		<attachment name="triggerAttachmentSouthernMUs_4" attachTo="Southern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentNorthernInGame:conditionAttachmentSouthernAIPlayer:conditionAttachmentUseReinforcements:conditionAttachmentWesternNoPUsReinforcements"/>
+			<option name="conditionType" value="AND"/>
+			<option name="resource" value="MUs"/>
+			<option name="resourceCount" value="1"/>
 			<option name="when" value="before:southernInitialPlace"/>
 			<option name="uses" value="1"/>
 		</attachment>
@@ -4575,6 +4625,15 @@
 			<option name="uses" value="1"/>
 		</attachment>
 
+		<attachment name="triggerAttachmentSouthernAUs_4" attachTo="Southern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentNorthernInGame:conditionAttachmentSouthernAIPlayer:conditionAttachmentUseReinforcements:conditionAttachmentWesternNoPUsReinforcements"/>
+			<option name="conditionType" value="AND"/>
+			<option name="resource" value="AUs"/>
+			<option name="resourceCount" value="1"/>
+			<option name="when" value="before:southernInitialPlace"/>
+			<option name="uses" value="1"/>
+		</attachment>
+
 		<attachment name="triggerAttachmentSouthernHUs" attachTo="Southern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentSouthernNoPUsReinforcements"/>
 			<option name="conditionType" value="AND"/>
@@ -4584,11 +4643,29 @@
 			<option name="uses" value="1"/>
 		</attachment>
 
+		<attachment name="triggerAttachmentSouthernHUs_4" attachTo="Southern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentNorthernInGame:conditionAttachmentSouthernAIPlayer:conditionAttachmentUseReinforcements:conditionAttachmentWesternNoPUsReinforcements"/>
+			<option name="conditionType" value="AND"/>
+			<option name="resource" value="HUs"/>
+			<option name="resourceCount" value="1"/>
+			<option name="when" value="before:southernInitialPlace"/>
+			<option name="uses" value="1"/>
+		</attachment>
+
 		<attachment name="triggerAttachmentSouthernBUs" attachTo="Southern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentSouthernNoPUsReinforcements"/>
 			<option name="conditionType" value="AND"/>
 			<option name="resource" value="BUs"/>
 			<option name="resourceCount" value="4"/>
+			<option name="when" value="before:southernInitialPlace"/>
+			<option name="uses" value="1"/>
+		</attachment>
+
+		<attachment name="triggerAttachmentSouthernBUs_4" attachTo="Southern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentNorthernInGame:conditionAttachmentSouthernAIPlayer:conditionAttachmentUseReinforcements:conditionAttachmentWesternNoPUsReinforcements"/>
+			<option name="conditionType" value="AND"/>
+			<option name="resource" value="BUs"/>
+			<option name="resourceCount" value="1"/>
 			<option name="when" value="before:southernInitialPlace"/>
 			<option name="uses" value="1"/>
 		</attachment>
@@ -4864,11 +4941,29 @@
 			<option name="uses" value="1"/>
 		</attachment>
 
+		<attachment name="triggerAttachmentEasternIUs_4" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentNorthernInGame:conditionAttachmentEasternAIPlayer:conditionAttachmentUseReinforcements:conditionAttachmentWesternNoPUsReinforcements"/>
+			<option name="conditionType" value="AND"/>
+			<option name="resource" value="IUs"/>
+			<option name="resourceCount" value="1"/>
+			<option name="when" value="before:easternInitialPlace"/>
+			<option name="uses" value="1"/>
+		</attachment>
+
 		<attachment name="triggerAttachmentEasternMUs" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentEasternNoPUsReinforcements"/>
 			<option name="conditionType" value="AND"/>
 			<option name="resource" value="MUs"/>
 			<option name="resourceCount" value="6"/>
+			<option name="when" value="before:easternInitialPlace"/>
+			<option name="uses" value="1"/>
+		</attachment>
+
+		<attachment name="triggerAttachmentEasternMUs_4" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentNorthernInGame:conditionAttachmentEasternAIPlayer:conditionAttachmentUseReinforcements:conditionAttachmentWesternNoPUsReinforcements"/>
+			<option name="conditionType" value="AND"/>
+			<option name="resource" value="MUs"/>
+			<option name="resourceCount" value="1"/>
 			<option name="when" value="before:easternInitialPlace"/>
 			<option name="uses" value="1"/>
 		</attachment>
@@ -4882,6 +4977,15 @@
 			<option name="uses" value="1"/>
 		</attachment>
 
+		<attachment name="triggerAttachmentEasternAUs_4" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentNorthernInGame:conditionAttachmentEasternAIPlayer:conditionAttachmentUseReinforcements:conditionAttachmentWesternNoPUsReinforcements"/>
+			<option name="conditionType" value="AND"/>
+			<option name="resource" value="AUs"/>
+			<option name="resourceCount" value="1"/>
+			<option name="when" value="before:easternInitialPlace"/>
+			<option name="uses" value="1"/>
+		</attachment>
+
 		<attachment name="triggerAttachmentEasternHUs" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentEasternNoPUsReinforcements"/>
 			<option name="conditionType" value="AND"/>
@@ -4891,11 +4995,29 @@
 			<option name="uses" value="1"/>
 		</attachment>
 
+		<attachment name="triggerAttachmentEasternHUs_4" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentNorthernInGame:conditionAttachmentEasternAIPlayer:conditionAttachmentUseReinforcements:conditionAttachmentWesternNoPUsReinforcements"/>
+			<option name="conditionType" value="AND"/>
+			<option name="resource" value="HUs"/>
+			<option name="resourceCount" value="1"/>
+			<option name="when" value="before:easternInitialPlace"/>
+			<option name="uses" value="1"/>
+		</attachment>
+
 		<attachment name="triggerAttachmentEasternBUs" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentEasternNoPUsReinforcements"/>
 			<option name="conditionType" value="AND"/>
 			<option name="resource" value="BUs"/>
 			<option name="resourceCount" value="4"/>
+			<option name="when" value="before:easternInitialPlace"/>
+			<option name="uses" value="1"/>
+		</attachment>
+
+		<attachment name="triggerAttachmentEasternBUs_4" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentNorthernInGame:conditionAttachmentEasternAIPlayer:conditionAttachmentUseReinforcements:conditionAttachmentWesternNoPUsReinforcements"/>
+			<option name="conditionType" value="AND"/>
+			<option name="resource" value="BUs"/>
+			<option name="resourceCount" value="1"/>
 			<option name="when" value="before:easternInitialPlace"/>
 			<option name="uses" value="1"/>
 		</attachment>
@@ -5171,6 +5293,15 @@
 			<option name="uses" value="1"/>
 		</attachment>
 
+		<attachment name="triggerAttachmentNorthernIUs_4" attachTo="Northern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentNorthernInGame:conditionAttachmentNorthernAIPlayer:conditionAttachmentUseReinforcements:conditionAttachmentWesternNoPUsReinforcements"/>
+			<option name="conditionType" value="AND"/>
+			<option name="resource" value="IUs"/>
+			<option name="resourceCount" value="1"/>
+			<option name="when" value="before:northernInitialPlace"/>
+			<option name="uses" value="1"/>
+		</attachment>
+
 		<attachment name="triggerAttachmentNorthernMUs" attachTo="Northern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentNorthernNoPUsReinforcements:conditionAttachmentNorthernInGame"/>
 			<option name="conditionType" value="AND"/>
@@ -5180,11 +5311,29 @@
 			<option name="uses" value="1"/>
 		</attachment>
 
-		<attachment name="triggerAttachmentNorthernAUs" attachTo="Northern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+		<attachment name="triggerAttachmentNorthernMUs_4" attachTo="Northern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentNorthernInGame:conditionAttachmentNorthernAIPlayer:conditionAttachmentUseReinforcements:conditionAttachmentWesternNoPUsReinforcements"/>
+			<option name="conditionType" value="AND"/>
+			<option name="resource" value="MUs"/>
+			<option name="resourceCount" value="1"/>
+			<option name="when" value="before:northernInitialPlace"/>
+			<option name="uses" value="1"/>
+		</attachment>
+
+		<attachment name="triggerAttachmentNorthernMUs" attachTo="Northern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentNorthernNoPUsReinforcements:conditionAttachmentNorthernInGame"/>
 			<option name="conditionType" value="AND"/>
-			<option name="resource" value="AUs"/>
+			<option name="resource" value="MUs"/>
 			<option name="resourceCount" value="8"/>
+			<option name="when" value="before:northernInitialPlace"/>
+			<option name="uses" value="1"/>
+		</attachment>
+
+		<attachment name="triggerAttachmentNorthernAUs_4" attachTo="Northern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentNorthernInGame:conditionAttachmentNorthernAIPlayer:conditionAttachmentUseReinforcements:conditionAttachmentWesternNoPUsReinforcements"/>
+			<option name="conditionType" value="AND"/>
+			<option name="resource" value="AUs"/>
+			<option name="resourceCount" value="1"/>
 			<option name="when" value="before:northernInitialPlace"/>
 			<option name="uses" value="1"/>
 		</attachment>
@@ -5198,11 +5347,29 @@
 			<option name="uses" value="1"/>
 		</attachment>
 
+		<attachment name="triggerAttachmentNorthernHUs_4" attachTo="Northern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentNorthernInGame:conditionAttachmentNorthernAIPlayer:conditionAttachmentUseReinforcements:conditionAttachmentWesternNoPUsReinforcements"/>
+			<option name="conditionType" value="AND"/>
+			<option name="resource" value="IUs"/>
+			<option name="resourceCount" value="1"/>
+			<option name="when" value="before:northernInitialPlace"/>
+			<option name="uses" value="1"/>
+		</attachment>
+
 		<attachment name="triggerAttachmentNorthernBUs" attachTo="Northern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
 			<option name="conditions" value="conditionAttachmentUseReinforcements:conditionAttachmentNorthernNoPUsReinforcements:conditionAttachmentNorthernInGame"/>
 			<option name="conditionType" value="AND"/>
 			<option name="resource" value="BUs"/>
 			<option name="resourceCount" value="4"/>
+			<option name="when" value="before:northernInitialPlace"/>
+			<option name="uses" value="1"/>
+		</attachment>
+
+		<attachment name="triggerAttachmentNorthernBUs_4" attachTo="Northern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentNorthernInGame:conditionAttachmentNorthernAIPlayer:conditionAttachmentUseReinforcements:conditionAttachmentWesternNoPUsReinforcements"/>
+			<option name="conditionType" value="AND"/>
+			<option name="resource" value="BUs"/>
+			<option name="resourceCount" value="1"/>
 			<option name="when" value="before:northernInitialPlace"/>
 			<option name="uses" value="1"/>
 		</attachment>
@@ -8226,7 +8393,7 @@
 
 		<!-- Invader AI Player Notification -->
 		<attachment name="triggerAttachmentNotifactionAmericanInvaderAI" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentAmericanHumanPlayer:conditionAttachmentInvaderAIPlayer"/>
+			<option name="conditions" value="conditionAttachmentHumanPlayer:conditionAttachmentInvaderAIPlayer"/>
 			<option name="notification" value="InvaderPlayer_AI"/>
 			<option name="players" value="Americans:Western:Southern:Eastern:Northern"/>
 			<option name="when" value="after:easternUserActions"/>
@@ -8433,6 +8600,82 @@
 			<territoryOwner territory="Atlanta" owner="Americans"/>
 			<territoryOwner territory="Miami" owner="Americans"/>
 			<territoryOwner territory="Cleveland" owner="Americans"/>
+			
+			<!-- Neutral Territories -->
+			<!-- Canada -->
+			<territoryOwner territory="N-1" owner="Neutral"/>
+			<territoryOwner territory="N-2" owner="Neutral"/>
+			<territoryOwner territory="N-3" owner="Neutral"/>
+			<territoryOwner territory="N-4" owner="Neutral"/>
+			<territoryOwner territory="N-5" owner="Neutral"/>
+			<territoryOwner territory="Canada" owner="Neutral"/>
+			<!-- Americans -->
+			<territoryOwner territory="WWa" owner="Neutral"/>
+			<territoryOwner territory="NWC" owner="Neutral"/>
+			<territoryOwner territory="CCa" owner="Neutral"/>
+			<territoryOwner territory="SFV" owner="Neutral"/>
+			<territoryOwner territory="EOr" owner="Neutral"/>
+			<territoryOwner territory="NEC" owner="Neutral"/>
+			<territoryOwner territory="ECa" owner="Neutral"/>
+			<territoryOwner territory="SCa" owner="Neutral"/>
+			<territoryOwner territory="NId" owner="Neutral"/>
+			<territoryOwner territory="WId" owner="Neutral"/>
+			<territoryOwner territory="EId" owner="Neutral"/>
+			<territoryOwner territory="ENv" owner="Neutral"/>
+			<territoryOwner territory="WNv" owner="Neutral"/>
+			<territoryOwner territory="SNv" owner="Neutral"/>
+			<territoryOwner territory="SUt" owner="Neutral"/>
+			<territoryOwner territory="WMt" owner="Neutral"/>
+			<territoryOwner territory="CMt" owner="Neutral"/>
+			<territoryOwner territory="NWy" owner="Neutral"/>
+			<territoryOwner territory="CWy" owner="Neutral"/>
+			<territoryOwner territory="SWy" owner="Neutral"/>
+			<territoryOwner territory="NCo" owner="Neutral"/>
+			<territoryOwner territory="CCo" owner="Neutral"/>
+			<territoryOwner territory="WCo" owner="Neutral"/>
+			<territoryOwner territory="SCo" owner="Neutral"/>
+			<territoryOwner territory="NAz" owner="Neutral"/>
+			<territoryOwner territory="NWN" owner="Neutral"/>
+			<territoryOwner territory="NEN" owner="Neutral"/>
+			<territoryOwner territory="SWN" owner="Neutral"/>
+			<territoryOwner territory="SEN" owner="Neutral"/>
+			<territoryOwner territory="WTx" owner="Neutral"/>
+			<territoryOwner territory="TxP" owner="Neutral"/>
+			<territoryOwner territory="NTx" owner="Neutral"/>
+			<territoryOwner territory="CTx" owner="Neutral"/>
+			<territoryOwner territory="ETx" owner="Neutral"/>
+			<territoryOwner territory="STx" owner="Neutral"/>
+			<territoryOwner territory="CAr" owner="Neutral"/>
+			<territoryOwner territory="SAr" owner="Neutral"/>
+			<territoryOwner territory="CMs" owner="Neutral"/>
+			<territoryOwner territory="SMo" owner="Neutral"/>
+			<territoryOwner territory="NAl" owner="Neutral"/>
+			<territoryOwner territory="SAl" owner="Neutral"/>
+			<territoryOwner territory="EMt" owner="Neutral"/>
+			<territoryOwner territory="CND" owner="Neutral"/>
+			<territoryOwner territory="WSD" owner="Neutral"/>
+			<territoryOwner territory="ESD" owner="Neutral"/>
+			<territoryOwner territory="NNe" owner="Neutral"/>
+			<territoryOwner territory="CKs" owner="Neutral"/>
+			<territoryOwner territory="COk" owner="Neutral"/>
+			<territoryOwner territory="SMn" owner="Neutral"/>
+			<territoryOwner territory="CIa" owner="Neutral"/>
+			<territoryOwner territory="NMi" owner="Neutral"/>
+			<territoryOwner territory="SIl" owner="Neutral"/>
+			<territoryOwner territory="SIn" owner="Neutral"/>
+			<territoryOwner territory="CMe" owner="Neutral"/>
+			<territoryOwner territory="CVt" owner="Neutral"/>
+			<territoryOwner territory="CPa" owner="Neutral"/>
+			<territoryOwner territory="CVa" owner="Neutral"/>
+			<territoryOwner territory="WVa" owner="Neutral"/>
+			<territoryOwner territory="SVa" owner="Neutral"/>
+			<territoryOwner territory="CKy" owner="Neutral"/>
+			<territoryOwner territory="ETn" owner="Neutral"/>
+			<territoryOwner territory="SGa" owner="Neutral"/>
+			<territoryOwner territory="NSC" owner="Neutral"/>
+			<territoryOwner territory="SSC" owner="Neutral"/>
+			<territoryOwner territory="WNC" owner="Neutral"/>
+			<territoryOwner territory="ENC" owner="Neutral"/>
 		</ownerInitialize>
 
 
@@ -8763,7 +9006,7 @@
 			<boolean/>
 		</property>
 
-		<property name="Use American Pre-Setup" value="false" editable="false">
+		<property name="Use American Pre-Setup" value="true" editable="true">
 			<boolean/>
 		</property>
 
