@@ -8860,9 +8860,9 @@
 <br>Author: Hobbes__
 <br>Images: Dagon81
 <br>Testing & Ideas: Pwnator
-<br>Additional xml: wc_sumpton
+<br>Additional xml: wc_sumpton<br>
 
-<b>Combantants</b><ul>
+<br><b>Combantants</b><ul>
 <li>The Asian Alliance (Western)
 <li>The People's Liberation Front (Southern)
 <li>The Euro-Hegemony (Eastern)
@@ -8878,6 +8878,7 @@
 
 <div style="padding:5px;font-size:12px;background-color:#424200;text-align:justify;width:402px;">
 <center><b>The Resource Bar</b></center><hr>
+<center><img src="resource.png"/></center><br>
 <table border="1"><tr><td><center><img src="PUs_large.png"/><br>PUs</center></td><td>This is the amount of PUs you have left so spend on reinforcements</td></tr>
 <tr><td><center><img src="VCs_large.png"/><br>Victory Cities</center></td><td>This is the number of Victory Cities that were controlled since the end of your last turn.</td></tr>
 <tr><td rowspan="2"><center><img src="IUs_large.png"/><br>IUs</center><td>Invaders: Shows the number of Infantry left that can be purchase</td></tr>
