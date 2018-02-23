@@ -452,9 +452,9 @@
 		<player name="Western" optional="false" canBeDisabled="false" defaultType="Human" isHidden="false"/>
 		<player name="Southern" optional="false" canBeDisabled="false" defaultType="Human" isHidden="false"/>
 		<player name="Eastern" optional="false" canBeDisabled="false" defaultType="Human" isHidden="false"/>
-		<player name="Northern" optional="false" canBeDisabled="true" defaultType="DoesNothing" isHidden="false"/>
+		<player name="Northern" optional="true" canBeDisabled="true" defaultType="DoesNothing" isHidden="false"/>
 		<player name="Americans" optional="false" canBeDisabled="false" defaultType="Human" isHidden="false"/>
-		<player name="Neutral" optional="false" canBeDisabled="false" defaultType="DoesNothing" isHidden="true"/>
+		<player name="Neutral" optional="true" canBeDisabled="false" defaultType="DoesNothing" isHidden="true"/>
 
 		<alliance player="Western" alliance="Asian Alliance"/>
 		<alliance player="Southern" alliance="People's Liberation Front"/>
@@ -9006,7 +9006,7 @@
 			<boolean/>
 		</property>
 
-		<property name="Use American Pre-Setup" value="true" editable="true">
+		<property name="Use American Pre-Setup" value="false" editable="false">
 			<boolean/>
 		</property>
 
