@@ -5878,7 +5878,7 @@
 		
 		<!-- Cleanup Triggers for American Reinforcements -->
 		<attachment name="triggerAttachmentRemovePUsFromPurchase" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentNoReinforcements:conditionAttachmentNoRetainAmericanResources"/>
+			<option name="conditions" value="conditionAttachmentNoReinforcements"/>
 			<option name="conditionType" value="OR"/>
 			<option name="resource" value="PUs"/>
 			<option name="resourceCount" value="-999"/>
