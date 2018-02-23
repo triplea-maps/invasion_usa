@@ -5,7 +5,7 @@
 <game>
 	<info name="Invasion USA" version="2.0.3.0"/>
 	<loader javaClass="games.strategy.triplea.TripleA"/>
-	<triplea minimumVersion="1.9.0.0.8923"/>
+	<triplea minimumVersion="1.9.0."/>
 	<!-- Author's Notes -->
 	<!-- This version of Invasion USA is designed to replace the following:
 		Invasion_USA_1.5.0
@@ -443,8 +443,8 @@
 		<resource name="HUs"/>
 		<resource name="BUs"/>
 		<resource name="RAs"/>
-		<!-- <resource name="techTokens"/> -->
-		<resource name="techTokens" isDisplayedFor="NONE"/>
+		<resource name="techTokens"/>
+		<!-- <resource name="techTokens" isDisplayedFor="NONE"/> -->
 	</resourceList>
 
 	<!-- Player list with Alliances added -->
@@ -1003,9 +1003,10 @@
 			<option name="movement" value="1"/>
 			<option name="attack" value="5"/>
 			<option name="defense" value="5"/>
-			<option name="transportCost" value="2"/>
-			<option name="isLandTransportable" value="true"/>
+			<!-- <option name="isLandTransportable" value="true"/> -->
+			<option name="isInfantry" value="true"/>
 			<option name="isAirTransportable" value="true"/>
+			<option name="transportCost" value="2"/>
 			<option name="placementLimit" value="owned" count="2"/>
 			<option name="movementLimit" value="owned" count="2"/>
 			<!-- Unit can not be placed in cities
@@ -1018,9 +1019,10 @@
 			<option name="movement" value="1"/>
 			<option name="attack" value="3"/>
 			<option name="defense" value="3"/>                         
-			<option name="transportCost" value="2"/>
-			<option name="isLandTransportable" value="true"/>
+			<!-- <option name="isLandTransportable" value="true"/> -->
+			<option name="isInfantry" value="true"/>
 			<option name="isAirTransportable" value="true"/>
+			<option name="transportCost" value="2"/>
 			<!-- maxBuiltPerPlayer set to 99 and will be reset after American Bid -->
 			<option name="maxBuiltPerPlayer" value="99"/>
 			<!-- Unlike Militia, Infantry can be placed anywheres, but at the start of the game are restricted to cities and landing zones -->
@@ -1033,7 +1035,7 @@
 			<option name="attack" value="3"/>
 			<option name="defense" value="3"/>
 			<option name="transportCost" value="3"/>
-			<option name="transportCapacity" value="2"/>
+			<!-- <option name="transportCapacity" value="2"/> -->
 			<option name="isAirTransportable" value="false"/>
 			<option name="isLandTransport" value="true"/>
 			<option name="maxBuiltPerPlayer" value="99"/>
