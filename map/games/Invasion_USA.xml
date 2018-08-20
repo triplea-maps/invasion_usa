@@ -443,8 +443,8 @@
 		<resource name="HUs"/>
 		<resource name="BUs"/>
 		<resource name="RAs"/>
-		<resource name="techTokens"/>
-		<!-- <resource name="techTokens" isDisplayedFor="NONE"/> -->
+		<!-- <resource name="techTokens"/> -->
+		<resource name="techTokens" isDisplayedFor="NONE"/>
 	</resourceList>
 
 	<!-- Player list with Alliances added -->
@@ -18162,7 +18162,7 @@
 		</attachment>
 
 		<attachment name="triggerAttachmentMoreMinneapolisMobilizesGiven" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
-			<option name="conditions" value="conditionAttachmentMoreMinneapolisMobilizes:conditionAttachmentAddToAmericanPurchase:conditionAttachmentAmericanMinneapolisOwnership:"/>
+			<option name="conditions" value="conditionAttachmentMoreMinneapolisMobilizes:conditionAttachmentAddToAmericanPurchase:conditionAttachmentAmericanMinneapolisOwnership"/>
 			<option name="purchase" value="mechanized" count="2"/>
 			<option name="purchase" value="helicopter" count="1"/>
 			<option name="when" value="before:americanPurchase"/>
