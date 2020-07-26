@@ -5302,7 +5302,7 @@
 		</property>
 
 		<!-- Map Name: also used for map utils when asked -->
-		<property name="mapName" value="Invasion_USA" editable="false">
+		<property name="mapName" value="invasion_usa" editable="false">
 			<string/>
 		</property>
 
