@@ -609,6 +609,8 @@
 		<connection t1="SCo" t2="NEN"/>
 		<connection t1="NEN" t2="WTx"/>
 		<connection t1="NEN" t2="SEN"/>
+		<connection t1="Northern Command" t2="CMs"/>
+		<connection t1="Northern Command" t2="SAl"/>
 		<connection t1="EMt" t2="CND"/>
 		<connection t1="EMt" t2="WSD"/>
 		<connection t1="CND" t2="WSD"/>
@@ -926,7 +928,9 @@
 			<!-- Rest of Game Sequence -->
 			<step name="americansPurchase" delegate="purchase" player="Americans" display="Partisan Phase"/>
 			<step name="americansPlace" delegate="place" player="Americans" display="Americans deploy reinforcements"/>
-			<step name="americansCombatMove" delegate="move" player="Americans" display="Americans move into combat positions"/>
+			<step name="americansCombatMove" delegate="move" player="Americans" display="Americans move into combat positions">
+				<stepProperty name="resetUnitStateAtStart" value="true"/>
+			</step>
 			<step name="americansBattle" delegate="battle" player="Americans" display="Americans declair combats"/>
 			<step name="americansNonCombatMove" delegate="move" player="Americans" display="Americans regroup forces"/>
 			<step name="americansEndTurn" delegate="endTurnNoPU" player="Americans"/>
@@ -1396,10 +1400,10 @@
 		<attachment name="unitAttachment" attachTo="militia" javaClass="games.strategy.triplea.attachments.UnitAttachment" type="unitType">
 			<option name="movement" value="1"/>
 			<option name="attack" value="3"/>
-			<option name="defense" value="2"/>
+			<option name="defense" value="1"/>
 			<option name="transportCost" value="1"/>
 			<option name="isLandTransportable" value="true"/>
-			<!-- <option name="isAirTransportable" value="true"/> -->
+			<option name="canRetreatOnStalemate" value="true"/>
 			<option name="unitPlacementRestrictions" value="Northern Command"/>
 		</attachment>
 
@@ -1410,7 +1414,7 @@
 			<option name="defense" value="2"/>                         
 			<option name="transportCost" value="1"/>
 			<option name="isLandTransportable" value="true"/>
-			<!-- <option name="isAirTransportable" value="true"/> -->
+			<option name="canRetreatOnStalemate" value="true"/>
 			<option name="maxBuiltPerPlayer" value="99"/>
 			<!-- Unlike Militia, Infantry can be placed anywheres, but at the start of the game are restricted to cities and landing zones -->
 			<option name="unitPlacementRestrictions" value="Northern Command"/>
@@ -1422,6 +1426,7 @@
 			<option name="attack" value="2"/>
 			<option name="defense" value="2"/>
 			<option name="isLandTransport" value="false"/>
+			<option name="canRetreatOnStalemate" value="true"/>
 			<option name="maxBuiltPerPlayer" value="99"/>
 			<option name="unitPlacementRestrictions" value="Northern Command"/>
 		</attachment>
@@ -1433,6 +1438,7 @@
 			<option name="attack" value="3"/>
 			<option name="defense" value="3"/>
 			<option name="isLandTransport" value="false"/>
+			<option name="canRetreatOnStalemate" value="true"/>
 			<option name="maxBuiltPerPlayer" value="99"/>
 			<option name="unitPlacementRestrictions" value="Northern Command"/>
 		</attachment>
@@ -1440,13 +1446,13 @@
 		<!-- Helicopter -->
 		<attachment name="unitAttachment" attachTo="helicopter" javaClass="games.strategy.triplea.attachments.UnitAttachment" type="unitType">
 			<option name="movement" value="4"/>
-			<option name="isAir" value="false"/>   
 			<option name="attack" value="3"/>
 			<option name="defense" value="3"/>
 			<option name="transportCapacity" value="1"/>
 			<option name="isLandTransport" value="false"/>
+			<option name="canRetreatOnStalemate" value="true"/>
 			<option name="canMoveThroughEnemies" value="true"/>
-			<option name="canBeMovedThroughByEnemies" value="false"/>
+			<option name="canBeMovedThroughByEnemies" value="true"/>
 			<option name="maxBuiltPerPlayer" value="99"/>
 			<!-- Unlike other units, Air units can only be placed in cities and landing zones -->
 			<option name="unitPlacementRestrictions" value="Northern Command"/>
@@ -1490,7 +1496,6 @@
 			<option name="placementLimit" value="owned" count="1"/>
 			<option name="movementLimit" value="owned" count="1"/>
 			<option name="attackingLimit" value="owned" count="1"/>
-			<option name="requiresUnits" value="laser"/>
 		</attachment>
 
 		<!-- Owner Token -->
@@ -1577,15 +1582,27 @@
 			<option name="players" value="$AllPlayers$"/>
 		</attachment>
 
-		<!-- Partisan Support (Militia receive a negative support when stacked with other units)-->
+		<!-- Partisan Support (Militia receive a negative attack positive defense support when stacked with other units)-->
 		<attachment name="supportAttachmentMilitia" attachTo="militia" javaClass="games.strategy.triplea.attachments.UnitSupportAttachment" type="unitType">
 			<option name="unitType" value="militia"/>
 			<option name="faction" value="allied"/>
-			<option name="side" value="offence:defence"/>
+			<option name="side" value="offence"/>
 			<option name="dice" value="strength"/>
 			<option name="bonus" value="1"/>
 			<option name="number" value="99"/>
-			<option name="bonusType" value="selfSupport"/>
+			<option name="bonusType" value="selfOffence"/>
+			<option name="impArtTech" value="false"/>
+			<option name="players" value="Americans"/>
+		</attachment>
+
+		<attachment name="supportAttachmentMilitia" attachTo="militia" javaClass="games.strategy.triplea.attachments.UnitSupportAttachment" type="unitType">
+			<option name="unitType" value="militia"/>
+			<option name="faction" value="allied"/>
+			<option name="side" value="defence"/>
+			<option name="dice" value="strength"/>
+			<option name="bonus" value="-1"/>
+			<option name="number" value="99"/>
+			<option name="bonusType" value="selfDefence"/>
 			<option name="impArtTech" value="false"/>
 			<option name="players" value="Americans"/>
 		</attachment>
@@ -1593,11 +1610,23 @@
 		<attachment foreach="$AllUnits$" name="supportAttachmentPartisan_@AllUnits@" attachTo="@AllUnits@" javaClass="games.strategy.triplea.attachments.UnitSupportAttachment" type="unitType">
 			<option name="unitType" value="militia"/>
 			<option name="faction" value="allied"/>
-			<option name="side" value="offence:defence"/>
+			<option name="side" value="offence"/>
 			<option name="dice" value="strength"/>
 			<option name="bonus" value="-1"/>
 			<option name="number" value="99"/>
-			<option name="bonusType" value="militiaSupport" count="2"/>
+			<option name="bonusType" value="militiaOffence" count="2"/>
+			<option name="impArtTech" value="false"/>
+			<option name="players" value="Americans"/>
+		</attachment>
+
+		<attachment foreach="$AllUnits$" name="supportAttachmentPartisan_@AllUnits@" attachTo="@AllUnits@" javaClass="games.strategy.triplea.attachments.UnitSupportAttachment" type="unitType">
+			<option name="unitType" value="militia"/>
+			<option name="faction" value="allied"/>
+			<option name="side" value="defence"/>
+			<option name="dice" value="strength"/>
+			<option name="bonus" value="1"/>
+			<option name="number" value="99"/>
+			<option name="bonusType" value="militiaDefence" count="2"/>
 			<option name="impArtTech" value="false"/>
 			<option name="players" value="Americans"/>
 		</attachment>
@@ -4836,6 +4865,35 @@
 			<option name="uses" value="1"/>
 		</attachment>
 
+		<!-- Americans AI Player Notification -->
+		<attachment name="triggerAttachmentNotifactionAmericansAIWestern" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentInvaderHumanPlayer:conditionAttachmentAmericansAIPlayer"/>
+			<option name="notification" value="AmericansPlayer_AI"/>
+			<option name="players" value="$AllPlayers$"/>
+			<option name="when" value="before:easternUserActions"/>
+			<option name="uses" value="1"/>
+		</attachment>
+
+		<!-- Invader AI Player Notification -->
+		<attachment name="triggerAttachmentNotifactionAmericansInvaderAI" attachTo="Eastern" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentHumanPlayer:conditionAttachmentInvaderAIPlayer"/>
+			<option name="notification" value="InvaderPlayer_AI"/>
+			<option name="players" value="$AllPlayers$"/>
+			<option name="when" value="after:easternUserActions"/>
+			<option name="uses" value="1"/>
+		</attachment>
+
+		<!-- End Tutorial Story Notifications -->
+		<!-- Credits Notification -->
+		<attachment name="triggerAttachmentAmericansNotifactionCredits" attachTo="Americans" javaClass="games.strategy.triplea.attachments.TriggerAttachment" type="player">
+			<option name="conditions" value="conditionAttachmentAlwaysTrue"/>
+			<option name="notification" value="WelcomeCredits"/>
+			<option name="players" value="$AllPlayers$"/>
+			<option name="when" value="before:americansUserActions"/>
+			<option name="uses" value="1"/>
+		</attachment>
+		<!-- End Tutorial Story Notifications -->
+		
 		<!-- Rules Restrictions -->
 		<!-- Americans Rules -->
 		<attachment name="rulesAttachment" attachTo="Americans" javaClass="games.strategy.triplea.attachments.RulesAttachment" type="player">
@@ -5176,7 +5234,13 @@
 		<property name="Surviving Air Move To Land" value="true" editable="false">
 			<boolean/>
 		</property>
+		<property name="Ignore Sub In Movement" value="true" editable="false">
+			<boolean/>
+		</property>
 
+		<property name="Submersible Subs" value="true" editable="false">
+			<boolean/>
+		</property>
 		<!-- Any territory that contains enemy units will not produce any income or resources -->
 		<property name="Contested Territories Produce No Income" value="true" editable="false">
 			<boolean/>
