@@ -1,0 +1,3 @@
+map_name: invasion_usa
+games:
+- {game_name: Invasion U.S.A., file_name: Invasion_USA.xml}
